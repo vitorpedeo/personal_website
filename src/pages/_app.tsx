@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { ChakraWrapper } from '../components/ChakraWrapper';
+import { ChakraWrapper } from '@/components/ChakraWrapper';
 
 import '@fontsource/rubik';
 

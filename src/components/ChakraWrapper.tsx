@@ -6,7 +6,7 @@ import {
 import { GetServerSideProps } from 'next';
 import { ReactNode } from 'react';
 
-import { customTheme } from '../styles/theme';
+import { customTheme } from '@/styles/theme';
 
 interface ChakraWrapperProps {
   cookies: string | undefined;
