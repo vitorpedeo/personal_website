@@ -1,4 +1,3 @@
-import { Container } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -30,10 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
 
-      <Container maxW={1020}>
-        <Header />
-        <Component {...pageProps} />
-      </Container>
+      <Header />
+      <Component {...pageProps} />
     </ChakraWrapper>
   );
 }

@@ -12,7 +12,7 @@ interface LinkItemProps {
 export function LinkItem({ href, title }: LinkItemProps) {
   const { pathname } = useRouter();
 
-  const textColor = useColorModeValue('text.light', 'text.dark');
+  const textColor = useColorModeValue('heading.light', 'white');
   const isMobile = useIsMobile();
 
   const active = href === pathname;

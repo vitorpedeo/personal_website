@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 
 import { Links } from './Links';
 import { Logo } from './Logo';
@@ -10,7 +10,14 @@ export function Header() {
    * It was necessary to use int this way so the page could be rendered correctly.
    */
   return (
-    <Flex as="header" py="8" w="100%" align="center">
+    <Container
+      as="header"
+      maxW={1020}
+      py="8"
+      w="100%"
+      display="flex"
+      alignItems="center"
+    >
       <MobileSidebar
         sx={{
           '@media screen and (min-width: 768px)': {
@@ -35,6 +42,6 @@ export function Header() {
         }}
       />
       <ThemeTogglerButton />
-    </Flex>
+    </Container>
   );
 }

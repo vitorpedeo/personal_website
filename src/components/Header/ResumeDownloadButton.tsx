@@ -1,8 +1,9 @@
-import { Button } from '@chakra-ui/react';
+import { Button, useColorModeValue } from '@chakra-ui/react';
 
 import useIsMobile from '@/hooks/useIsMobile';
 
 export function ResumeDownloadButton() {
+  const textColor = useColorModeValue('heading.light', 'white');
   const isMobile = useIsMobile();
 
   return (
@@ -13,6 +14,7 @@ export function ResumeDownloadButton() {
       pr={isMobile ? '4' : '2'}
       h="auto"
       borderRadius={6}
+      color={textColor}
       fontSize="lg"
       fontWeight="normal"
       textAlign={isMobile ? 'left' : 'center'}
