@@ -1,7 +1,9 @@
+import { Container } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { ChakraWrapper } from '@/components/ChakraWrapper';
+import { Header } from '@/components/Header';
 
 import '@fontsource/rubik';
 
@@ -27,7 +29,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/favicon-16x16.png"
         />
       </Head>
-      <Component {...pageProps} />
+
+      <Container maxW={1020}>
+        <Header />
+        <Component {...pageProps} />
+      </Container>
     </ChakraWrapper>
   );
 }
