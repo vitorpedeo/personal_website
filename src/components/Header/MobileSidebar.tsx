@@ -22,6 +22,7 @@ export function MobileSidebar({ ...rest }: BoxProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const bgColor = useColorModeValue('accent.light', 'accent.dark');
+  const iconColor = useColorModeValue('heading.light', 'white');
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -34,6 +35,7 @@ export function MobileSidebar({ ...rest }: BoxProps) {
         w="12"
         h="12"
         background={bgColor}
+        color={iconColor}
         fontSize="30px"
         icon={<IoMenu />}
         onClick={onOpen}

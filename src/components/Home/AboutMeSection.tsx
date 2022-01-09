@@ -1,25 +1,16 @@
-import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
-import useIsMobile from '@/hooks/useIsMobile';
-
 export function AboutMeSection() {
-  const headingColor = useColorModeValue('heading.light', 'heading.dark');
-  const isMobile = useIsMobile();
-
   return (
     <Flex
       as="section"
       id="about-me"
       pb="24"
-      direction={isMobile ? 'column' : 'row'}
+      direction={['column', 'column', 'row']}
     >
       <Box flex="1">
-        <Heading
-          size="xl"
-          color={headingColor}
-          textAlign={isMobile ? 'center' : 'left'}
-        >
+        <Heading size="xl" textAlign={['center', 'center', 'left']}>
           I’m a developer whose main objective is to{' '}
           <Text as="span" color="primary.regular">
             evolve
@@ -30,7 +21,7 @@ export function AboutMeSection() {
           mt="6"
           fontSize="lg"
           lineHeight="6"
-          textAlign={isMobile ? 'center' : 'left'}
+          textAlign={['center', 'center', 'left']}
         >
           I started my journey in the web development world in 2020 and, since
           then, I already knew that I’ll always need to evolve myself, both as a
@@ -39,7 +30,7 @@ export function AboutMeSection() {
       </Box>
       <Flex
         position="relative"
-        justify={isMobile ? 'center' : 'flex-end'}
+        justify={['center', 'center', 'flex-end']}
         flex="1"
       >
         <Image

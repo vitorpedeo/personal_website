@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { HeroSection } from '@/components/Home/HeroSection';
 import { AboutMeSection } from '@/components/Home/AboutMeSection';
+import { LatestBlogPostSection } from '@/components/Home/LatestBlogPostSection';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Container maxW={1020}>
         <HeroSection />
         <AboutMeSection />
+        <LatestBlogPostSection />
       </Container>
     </>
   );

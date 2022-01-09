@@ -1,22 +1,13 @@
-import {
-  Flex,
-  Heading,
-  HStack,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Flex, Heading, HStack, Text } from '@chakra-ui/react';
 import { IoBriefcase, IoPhonePortraitOutline } from 'react-icons/io5';
 
 import { SectionLink } from './SectionLink';
 
 export function HeroSection() {
-  const headingColor = useColorModeValue('heading.light', 'heading.dark');
-
   return (
     <Flex as="section" py="24" direction="column" align="center">
       <Heading
         fontSize={['3xl', '4xl', '5xl']}
-        color={headingColor}
         fontWeight="bold"
         textAlign="center"
         letterSpacing={1}

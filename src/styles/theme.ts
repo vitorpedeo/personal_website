@@ -32,6 +32,31 @@ const fonts = {
   body: 'Rubik, sans-serif',
 };
 
+const components = {
+  Button: {
+    baseStyle: ({ colorMode }: ChakraProps) => ({
+      background: colorMode === 'light' ? 'primary.regular' : 'primary.light',
+      color: colorMode === 'light' ? 'white' : 'primary.regular',
+    }),
+  },
+  Heading: {
+    baseStyle: ({ colorMode }: ChakraProps) => ({
+      color: colorMode === 'light' ? 'heading.light' : 'heading.dark',
+    }),
+  },
+  Link: {
+    baseStyle: ({ colorMode }: ChakraProps) => ({
+      background: colorMode === 'light' ? 'primary.regular' : 'primary.light',
+      color: colorMode === 'light' ? 'white' : 'primary.regular',
+    }),
+  },
+  Text: {
+    baseStyle: ({ colorMode }: ChakraProps) => ({
+      color: colorMode === 'light' ? 'text.light' : 'text.dark',
+    }),
+  },
+};
+
 const styles = {
   global: ({ colorMode }: ChakraProps) => ({
     body: {
@@ -51,5 +76,6 @@ export const customTheme = extendTheme({
   config,
   colors,
   fonts,
+  components,
   styles,
 });
