@@ -1,6 +1,8 @@
 import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
 
+import HomeContextProvider from '@/contexts/HomeContext';
+
 import { HeroSection } from '@/components/Home/HeroSection';
 import { AboutMeSection } from '@/components/Home/AboutMeSection';
 import { LatestBlogPostSection } from '@/components/Home/LatestBlogPostSection';
@@ -15,11 +17,13 @@ export default function Home() {
       </Head>
 
       <Container maxW={1020}>
-        <HeroSection />
-        <AboutMeSection />
-        <LatestBlogPostSection />
-        <ExperienceSection />
-        <ContactsSection />
+        <HomeContextProvider>
+          <HeroSection />
+          <AboutMeSection />
+          <LatestBlogPostSection />
+          <ExperienceSection />
+          <ContactsSection />
+        </HomeContextProvider>
       </Container>
     </>
   );

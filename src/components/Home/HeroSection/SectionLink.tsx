@@ -1,5 +1,8 @@
 import { Icon, Link, useColorModeValue } from '@chakra-ui/react';
+import { MouseEvent } from 'react';
 import { IconType } from 'react-icons';
+
+import { useHomeContext } from '@/contexts/HomeContext';
 
 interface SectionLinkProps {
   title: string;
@@ -7,10 +10,30 @@ interface SectionLinkProps {
 }
 
 export function SectionLink({ title, icon }: SectionLinkProps) {
+  const { experienceSectionRef, contactsSectionRef } = useHomeContext();
+
   const bgColor = useColorModeValue('primary.regular', 'primary.light');
   const textColor = useColorModeValue('white', 'primary.regular');
 
   const href = `#${title.toLowerCase()}`;
+
+  function scrollToSection(event: MouseEvent<HTMLAnchorElement>) {
+    event.preventDefault();
+
+    const hash = event.currentTarget.hash as '#experience' | '#contacts';
+
+    const refs = {
+      '#experience': experienceSectionRef,
+      '#contacts': contactsSectionRef,
+    };
+    const currRef = refs[hash];
+
+    if (currRef?.current) {
+      currRef?.current?.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  }
 
   return (
     <Link
@@ -33,6 +56,7 @@ export function SectionLink({ title, icon }: SectionLinkProps) {
         textDecoration: 'none',
         filter: 'brightness(0.9)',
       }}
+      onClick={scrollToSection}
     >
       <Icon as={icon} mr="2" w="22px" h="22px" />
       {title}

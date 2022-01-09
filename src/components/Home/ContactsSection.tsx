@@ -7,9 +7,13 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
+import { useHomeContext } from '@/contexts/HomeContext';
+
 export function ContactsSection() {
+  const { contactsSectionRef } = useHomeContext();
+
   return (
-    <Box as="section" id="contacts" pb="24">
+    <Box ref={contactsSectionRef} as="section" id="contacts" pb="24">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
         Contacts
       </Heading>

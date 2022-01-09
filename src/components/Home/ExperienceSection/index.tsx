@@ -1,9 +1,14 @@
 import { Box, Button, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+
+import { useHomeContext } from '@/contexts/HomeContext';
+
 import { ExperienceCard } from './ExperienceCard';
 
 export function ExperienceSection() {
+  const { experienceSectionRef } = useHomeContext();
+
   return (
-    <Box as="section" id="experience" pb="24">
+    <Box ref={experienceSectionRef} as="section" id="experience" pb="24">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
         Experience
       </Heading>
