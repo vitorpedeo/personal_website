@@ -34,7 +34,7 @@ export function ContactsSection() {
             vitorpereiradeoli@gmail.com
           </Link>
         </ListItem>
-        <ListItem fontSize="lg">
+        <ListItem my="4" fontSize="lg">
           Github -{' '}
           <Link
             href="https://github.com/vitorpedeo"

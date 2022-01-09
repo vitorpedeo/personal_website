@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { ChakraWrapper } from '@/components/ChakraWrapper';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 
 import '@fontsource/rubik';
 
@@ -31,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </ChakraWrapper>
   );
 }
