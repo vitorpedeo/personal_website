@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { HeroSection } from '@/components/Home/HeroSection';
 import { AboutMeSection } from '@/components/Home/AboutMeSection';
 import { LatestBlogPostSection } from '@/components/Home/LatestBlogPostSection';
+import { ExperienceSection } from '@/components/Home/ExperienceSection';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <HeroSection />
         <AboutMeSection />
         <LatestBlogPostSection />
+        <ExperienceSection />
       </Container>
     </>
   );

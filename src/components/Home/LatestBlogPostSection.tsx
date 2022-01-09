@@ -75,7 +75,7 @@ export function LatestBlogPostSection() {
             py="3"
             px="4"
             borderRadius={6}
-            fontSize={['md', 'lg']}
+            fontSize="lg"
             fontWeight="600"
             transition="filter 0.2s"
             _hover={{

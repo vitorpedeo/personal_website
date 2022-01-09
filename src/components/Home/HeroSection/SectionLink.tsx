@@ -16,12 +16,12 @@ export function SectionLink({ title, icon }: SectionLinkProps) {
     <Link
       href={href}
       py="3"
-      maxW={[140, 160]}
+      maxW={160}
       w="100%"
       borderRadius={6}
       background={bgColor}
       color={textColor}
-      fontSize={['md', 'lg']}
+      fontSize="lg"
       fontWeight="600"
       textAlign="center"
       decoration="none"
