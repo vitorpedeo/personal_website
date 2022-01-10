@@ -11,6 +11,10 @@ export function Footer() {
       pt={['6', 0]}
       w="full"
       h={220}
+      position="absolute"
+      left={0}
+      right={0}
+      bottom={0}
       direction="column"
       align="center"
       justify="center"
@@ -28,7 +32,7 @@ export function Footer() {
         justify="center"
       >
         <Text
-          fontSize="lg"
+          fontSize={['md', 'lg']}
           fontWeight="500"
           lineHeight="6"
           textAlign={['center', 'center', 'left']}
@@ -38,7 +42,7 @@ export function Footer() {
 
         <Text
           my="4"
-          fontSize="lg"
+          fontSize={['md', 'lg']}
           lineHeight="6"
           textAlign={['center', 'center', 'left']}
         >
@@ -54,7 +58,7 @@ export function Footer() {
         </Text>
 
         <Text
-          fontSize="lg"
+          fontSize={['md', 'lg']}
           lineHeight="6"
           textAlign={['center', 'center', 'left']}
         >

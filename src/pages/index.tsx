@@ -16,7 +16,7 @@ export default function Home() {
         <title>vitorpedeo | Home</title>
       </Head>
 
-      <Container maxW={1020}>
+      <Container pt="24" pb="64" maxW={1020}>
         <HomeContextProvider>
           <HeroSection />
           <AboutMeSection />

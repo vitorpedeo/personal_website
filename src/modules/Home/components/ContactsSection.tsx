@@ -13,7 +13,7 @@ export function ContactsSection() {
   const { contactsSectionRef } = useHomeContext();
 
   return (
-    <Box ref={contactsSectionRef} as="section" id="contacts" pb="24">
+    <Box ref={contactsSectionRef} as="section" id="contacts">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
         Contacts
       </Heading>

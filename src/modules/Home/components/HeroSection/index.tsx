@@ -5,7 +5,7 @@ import { SectionLink } from './SectionLink';
 
 export function HeroSection() {
   return (
-    <Flex as="section" py="24" direction="column" align="center">
+    <Flex as="section" pb="24" direction="column" align="center">
       <Heading
         fontSize={['3xl', '4xl', '5xl']}
         fontWeight="bold"

@@ -60,6 +60,7 @@ const components = {
 const styles = {
   global: ({ colorMode }: ChakraProps) => ({
     body: {
+      minHeight: '100vh',
       background: colorMode === 'light' ? 'bg.light' : 'bg.dark',
       color: colorMode === 'light' ? 'text.light' : 'text.dark',
       fontFamily: 'body',
