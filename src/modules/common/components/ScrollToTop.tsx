@@ -36,10 +36,11 @@ export function ScrollToTop() {
       aria-label="Scroll to the top of the page"
       w="12"
       h="12"
-      background={bgColor}
+      backgroundColor={bgColor}
       color={iconColor}
       fontSize="30px"
       icon={<IoArrowUp />}
+      boxShadow="lg"
       position="fixed"
       right="8"
       bottom="4"

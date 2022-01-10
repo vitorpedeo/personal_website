@@ -18,7 +18,7 @@ const colors = {
     dark: '#1f242a',
   },
   accent: {
-    light: '#e7e7e7',
+    light: '#ededed',
     dark: '#2e313a',
   },
   primary: {

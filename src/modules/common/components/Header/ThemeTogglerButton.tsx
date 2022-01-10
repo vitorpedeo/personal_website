@@ -14,7 +14,7 @@ export function ThemeTogglerButton() {
       ml="auto"
       w="12"
       h="12"
-      background={bgColor}
+      backgroundColor={bgColor}
       color={iconColor}
       fontSize="30px"
       icon={isLightThemeActive ? <IoMoon /> : <IoSunny />}
