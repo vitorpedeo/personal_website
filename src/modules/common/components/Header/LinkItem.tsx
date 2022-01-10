@@ -2,7 +2,7 @@ import { Link, useColorModeValue } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
-import useIsMobile from '@/hooks/useIsMobile';
+import useIsMobile from '@/modules/common/hooks/useIsMobile';
 
 interface LinkItemProps {
   href: string;

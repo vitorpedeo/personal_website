@@ -7,7 +7,7 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
-import { useHomeContext } from '@/contexts/HomeContext';
+import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 export function ContactsSection() {
   const { contactsSectionRef } = useHomeContext();

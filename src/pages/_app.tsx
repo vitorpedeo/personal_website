@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
-import { ChakraWrapper } from '@/components/ChakraWrapper';
-import { Header } from '@/components/Header';
-import { ScrollToTop } from '@/components/ScrollToTop';
-import { Footer } from '@/components/Footer';
+import { Header } from '@/modules/common/components/Header';
+import { ChakraWrapper } from '@/modules/common/components/ChakraWrapper';
+import { ScrollToTop } from '@/modules/common/components/ScrollToTop';
+import { Footer } from '@/modules/common/components/Footer';
 
 import '@fontsource/rubik';
 

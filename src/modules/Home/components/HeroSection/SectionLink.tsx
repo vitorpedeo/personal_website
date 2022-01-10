@@ -2,7 +2,7 @@ import { Icon, Link, useColorModeValue } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { IconType } from 'react-icons';
 
-import { useHomeContext } from '@/contexts/HomeContext';
+import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 interface SectionLinkProps {
   title: string;

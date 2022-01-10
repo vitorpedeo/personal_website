@@ -1,6 +1,6 @@
 import { Button, useColorModeValue } from '@chakra-ui/react';
 
-import useIsMobile from '@/hooks/useIsMobile';
+import useIsMobile from '@/modules/common/hooks/useIsMobile';
 
 export function ResumeDownloadButton() {
   const textColor = useColorModeValue('heading.light', 'white');
