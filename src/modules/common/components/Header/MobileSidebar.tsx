@@ -12,19 +12,26 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useRef } from 'react';
 import { IoMenu } from 'react-icons/io5';
 
 import { Links } from './Links';
 import { Logo } from './Logo';
 
 export function MobileSidebar({ ...rest }: BoxProps) {
+  const { pathname } = useRouter();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const bgColor = useColorModeValue('accent.light', 'accent.dark');
   const iconColor = useColorModeValue('heading.light', 'white');
 
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
 
   return (
     <Box {...rest}>
