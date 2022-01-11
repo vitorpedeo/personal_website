@@ -4,7 +4,22 @@ import Image from 'next/image';
 import { ProjectLink } from './ProjectLink';
 import { Tech } from './Tech';
 
-export function Project() {
+interface ProjectProps {
+  project: {
+    title: string;
+    description: string;
+    repo_url: string;
+    live_url: string;
+    image_url: string;
+    image_alt: string;
+    technologies: {
+      name: string;
+      color: string;
+    }[];
+  };
+}
+
+export function Project({ project }: ProjectProps) {
   return (
     <Box
       as="section"
@@ -23,15 +38,16 @@ export function Project() {
         overflow="hidden"
       >
         <Image
-          src="/images/code.jpg"
-          alt="Code"
+          src={project.image_url}
+          alt={project.image_alt}
           layout="fill"
           objectFit="cover"
+          priority
         />
       </Box>
 
       <Heading size="lg" mt="6" mb="4" textAlign={['center', 'center', 'left']}>
-        Tip Calculator
+        {project.title}
       </Heading>
 
       <Text
@@ -39,19 +55,18 @@ export function Project() {
         textAlign={['center', 'center', 'left']}
         lineHeight="6"
       >
-        Calculator app that distributes the bill and tip among a group of
-        people.
+        {project.description}
       </Text>
 
       <Flex my="4" gap="4" wrap="wrap" align="center" justify="center">
-        <Tech name="HTML" color="#E34B2D" />
-        <Tech name="CSS" color="#399CD3" />
-        <Tech name="Javascript" color="#F7DE3E" />
+        {project.technologies.map(tech => (
+          <Tech key={tech.name} name={tech.name} color={tech.color} />
+        ))}
       </Flex>
 
       <Flex gap="4" wrap="wrap" align="center" justify="center">
-        <ProjectLink urlType="repo" url="http://github.com/" />
-        <ProjectLink urlType="live" url="http://github.com/" />
+        <ProjectLink urlType="repo" url={project.repo_url} />
+        <ProjectLink urlType="live" url={project.live_url} />
       </Flex>
     </Box>
   );

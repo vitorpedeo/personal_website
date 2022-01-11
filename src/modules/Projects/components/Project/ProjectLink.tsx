@@ -10,7 +10,7 @@ export function ProjectLink({ urlType, url }: ProjectLinkProps) {
   const bgColor = useColorModeValue('primary.regular', 'primary.light');
   const textColor = useColorModeValue('white', 'primary.regular');
 
-  const icon = urlType === 'live' ? IoLogoGithub : IoWifi;
+  const icon = urlType === 'live' ? IoWifi : IoLogoGithub;
 
   return (
     <Link
