@@ -70,7 +70,7 @@ const styles = {
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
-  useSystemColorMode: true,
+  useSystemColorMode: false,
 };
 
 export const customTheme = extendTheme({

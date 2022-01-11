@@ -37,5 +37,3 @@ export default function Projects() {
     </>
   );
 }
-
-export { getServerSideProps } from '@/modules/common/components/ChakraWrapper';

@@ -1,8 +1,10 @@
 import type { AppProps } from 'next/app';
+import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
 
+import { customTheme } from '@/modules/common/styles/theme';
+
 import { Header } from '@/modules/common/components/Header';
-import { ChakraWrapper } from '@/modules/common/components/ChakraWrapper';
 import { ScrollToTop } from '@/modules/common/components/ScrollToTop';
 import { Footer } from '@/modules/common/components/Footer';
 
@@ -10,7 +12,7 @@ import '@fontsource/rubik';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraWrapper cookies={pageProps.cookies}>
+    <ChakraProvider theme={customTheme}>
       <Head>
         <link
           rel="apple-touch-icon"
@@ -35,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <ScrollToTop />
       <Footer />
-    </ChakraWrapper>
+    </ChakraProvider>
   );
 }
 
