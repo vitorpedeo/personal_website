@@ -1,4 +1,4 @@
-/* useProjects types end */
+/* useProjects types */
 
 type ProjectImage = {
   data: {

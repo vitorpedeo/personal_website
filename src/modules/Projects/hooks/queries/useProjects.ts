@@ -30,6 +30,7 @@ export async function getProjectsRequest() {
 
 function useProjects() {
   const query = useQuery('projects', getProjectsRequest, {
+    staleTime: Infinity,
     refetchOnWindowFocus: false,
   });
 

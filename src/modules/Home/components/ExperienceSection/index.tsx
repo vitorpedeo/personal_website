@@ -1,10 +1,14 @@
 import { Box, Button, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
+import useExperiences from '@/modules/Home/hooks/queries/useExperiences';
+
 import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 import { ExperienceCard } from './ExperienceCard';
 
 export function ExperienceSection() {
+  const { data } = useExperiences();
+
   const { experienceSectionRef } = useHomeContext();
 
   return (
@@ -35,7 +39,9 @@ export function ExperienceSection() {
       </Flex>
 
       <SimpleGrid columns={[1, 2, 3]} spacing="6">
-        <ExperienceCard />
+        {data?.map(experience => (
+          <ExperienceCard key={experience.id} experience={experience} />
+        ))}
       </SimpleGrid>
     </Box>
   );
