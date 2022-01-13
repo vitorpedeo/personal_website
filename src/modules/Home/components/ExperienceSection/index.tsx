@@ -19,6 +19,32 @@ export function ExperienceSection() {
 
   const { experienceSectionRef } = useHomeContext();
 
+  function renderContent() {
+    if (isError) {
+      return (
+        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
+          Oops, something went wrong 😟 Experiences could not be fetched
+        </Text>
+      );
+    }
+
+    if (isLoading) {
+      return <Skeleton h={317} borderRadius={8} />;
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return (
+      <SimpleGrid columns={[1, 2, 3]} spacing="6">
+        {data.map(experience => (
+          <ExperienceCard key={experience.id} experience={experience} />
+        ))}
+      </SimpleGrid>
+    );
+  }
+
   return (
     <Box ref={experienceSectionRef} as="section" id="experience" pb="24">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
@@ -46,19 +72,7 @@ export function ExperienceSection() {
         </Button>
       </Flex>
 
-      {isError || !data ? (
-        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
-          Oops, something went wrong 😟 Latest post could not be fetched
-        </Text>
-      ) : (
-        <Skeleton isLoaded={!isLoading}>
-          <SimpleGrid columns={[1, 2, 3]} spacing="6">
-            {data.map(experience => (
-              <ExperienceCard key={experience.id} experience={experience} />
-            ))}
-          </SimpleGrid>
-        </Skeleton>
-      )}
+      {renderContent()}
     </Box>
   );
 }

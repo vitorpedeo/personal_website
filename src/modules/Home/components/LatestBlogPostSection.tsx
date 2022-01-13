@@ -17,6 +17,69 @@ export function LatestBlogPostSection() {
 
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
 
+  function renderContent() {
+    if (isError) {
+      return (
+        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
+          Oops, something went wrong 😟 Latest post could not be fetched
+        </Text>
+      );
+    }
+
+    if (isLoading) {
+      return <Skeleton maxW={360} w="full" h={314} borderRadius={8} />;
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return (
+      <NextLink href={`/posts/${data.slug}`} passHref>
+        <Link
+          maxW={[300, 360]}
+          w="full"
+          borderRadius={8}
+          background={latestPostCardBgColor}
+          boxShadow="md"
+          overflow="hidden"
+          pointerEvents={isLoading ? 'none' : 'all'}
+          transition="transform 0.3s ease-in-out"
+          _hover={{
+            textDecoration: 'none',
+            transform: 'scale(1.02)',
+          }}
+        >
+          <Skeleton isLoaded={!isLoading}>
+            <Box position="relative" w="full" h={150}>
+              <Image
+                src={data.image_url}
+                alt={data.image_alt}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </Box>
+
+            <Box p="6">
+              <Heading size="md" fontWeight="700" lineHeight="7">
+                {data.title}
+              </Heading>
+
+              <Text my="2" fontSize="sm" lineHeight="6">
+                {data.read_time}
+              </Text>
+
+              <Text fontSize="lg" lineHeight="6">
+                {data.description}
+              </Text>
+            </Box>
+          </Skeleton>
+        </Link>
+      </NextLink>
+    );
+  }
+
   return (
     <Box as="section" id="latest-blog-post" pb="24">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
@@ -34,54 +97,7 @@ export function LatestBlogPostSection() {
       </Text>
 
       <Flex direction="column" align="center" justify="center">
-        {isError || !data ? (
-          <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
-            Oops, something went wrong 😟 Latest post could not be fetched
-          </Text>
-        ) : (
-          <NextLink href={`/posts/${data.slug}`} passHref>
-            <Link
-              maxW={[300, 360]}
-              w="full"
-              borderRadius={8}
-              background={latestPostCardBgColor}
-              boxShadow="md"
-              overflow="hidden"
-              pointerEvents={isLoading ? 'none' : 'all'}
-              transition="transform 0.3s ease-in-out"
-              _hover={{
-                textDecoration: 'none',
-                transform: 'scale(1.02)',
-              }}
-            >
-              <Skeleton isLoaded={!isLoading}>
-                <Box position="relative" w="full" h={150}>
-                  <Image
-                    src={data.image_url}
-                    alt={data.image_alt}
-                    layout="fill"
-                    objectFit="cover"
-                    priority
-                  />
-                </Box>
-
-                <Box p="6">
-                  <Heading size="md" fontWeight="700" lineHeight="7">
-                    {data.title}
-                  </Heading>
-
-                  <Text my="2" fontSize="sm" lineHeight="6">
-                    {data.read_time}
-                  </Text>
-
-                  <Text fontSize="lg" lineHeight="6">
-                    {data.description}
-                  </Text>
-                </Box>
-              </Skeleton>
-            </Link>
-          </NextLink>
-        )}
+        {renderContent()}
 
         <NextLink href="/blog" passHref>
           <Link

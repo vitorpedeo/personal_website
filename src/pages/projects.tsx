@@ -1,4 +1,4 @@
-import { Container, Heading, Text } from '@chakra-ui/react';
+import { Container, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { dehydrate, QueryClient } from 'react-query';
@@ -10,7 +10,31 @@ import useProjects, {
 import { Project } from '@/modules/Projects/components/Project';
 
 export default function Projects() {
-  const { data, isError } = useProjects();
+  const { data, isError, isLoading } = useProjects();
+
+  function renderContent() {
+    if (isError) {
+      return (
+        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
+          Oops, something went wrong 😟 Could not fetch projects
+        </Text>
+      );
+    }
+
+    if (isLoading) {
+      return (
+        <Flex align="center" justify="center">
+          <Spinner size="xl" />
+        </Flex>
+      );
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return data.map(project => <Project key={project.id} project={project} />);
+  }
 
   return (
     <>
@@ -27,34 +51,18 @@ export default function Projects() {
           My projects 🚀
         </Heading>
 
-        {isError ? (
-          <Text
-            mt="6"
-            mb="12"
-            fontSize={['md', 'lg']}
-            textAlign="center"
-            lineHeight="6"
-          >
-            Oops, something went wrong 😟
-          </Text>
-        ) : (
-          <>
-            <Text
-              mt="6"
-              mb="12"
-              fontSize={['md', 'lg']}
-              textAlign={['center', 'center', 'left']}
-              lineHeight="6"
-            >
-              Here’s a collection of interesting projects that I built during my
-              studies.
-            </Text>
+        <Text
+          mt="6"
+          mb="12"
+          fontSize={['md', 'lg']}
+          textAlign={['center', 'center', 'left']}
+          lineHeight="6"
+        >
+          Here’s a collection of interesting projects that I built during my
+          studies.
+        </Text>
 
-            {data?.map(project => (
-              <Project key={project.id} project={project} />
-            ))}
-          </>
-        )}
+        {renderContent()}
       </Container>
     </>
   );
