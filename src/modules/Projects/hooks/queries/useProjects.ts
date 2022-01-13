@@ -30,7 +30,7 @@ export async function getProjectsRequest() {
 
 function useProjects() {
   const query = useQuery('projects', getProjectsRequest, {
-    staleTime: Infinity,
+    staleTime: 1000 * 60 * 60 * 24, // 1 day
     refetchOnWindowFocus: false,
   });
 

@@ -29,7 +29,7 @@ export function ContactsSection() {
 
       <UnorderedList>
         <ListItem fontSize="lg">
-          Gmail -{' '}
+          E-mail -{' '}
           <Link
             href="mailto:vitorpereiradeoli@gmail.com"
             background="transparent"
@@ -50,7 +50,7 @@ export function ContactsSection() {
           </Link>
         </ListItem>
         <ListItem fontSize="lg">
-          Github -{' '}
+          LinkedIn -{' '}
           <Link
             href="https://www.linkedin.com/in/vitor-pereira-309a7319b/"
             isExternal

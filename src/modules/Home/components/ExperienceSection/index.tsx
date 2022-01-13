@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Skeleton,
+  Text,
+} from '@chakra-ui/react';
 
 import useExperiences from '@/modules/Home/hooks/queries/useExperiences';
 
@@ -7,7 +15,7 @@ import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 import { ExperienceCard } from './ExperienceCard';
 
 export function ExperienceSection() {
-  const { data } = useExperiences();
+  const { data, isError, isLoading } = useExperiences();
 
   const { experienceSectionRef } = useHomeContext();
 
@@ -38,11 +46,19 @@ export function ExperienceSection() {
         </Button>
       </Flex>
 
-      <SimpleGrid columns={[1, 2, 3]} spacing="6">
-        {data?.map(experience => (
-          <ExperienceCard key={experience.id} experience={experience} />
-        ))}
-      </SimpleGrid>
+      {isError || !data ? (
+        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
+          Oops, something went wrong 😟 Latest post could not be fetched
+        </Text>
+      ) : (
+        <Skeleton isLoaded={!isLoading}>
+          <SimpleGrid columns={[1, 2, 3]} spacing="6">
+            {data.map(experience => (
+              <ExperienceCard key={experience.id} experience={experience} />
+            ))}
+          </SimpleGrid>
+        </Skeleton>
+      )}
     </Box>
   );
 }

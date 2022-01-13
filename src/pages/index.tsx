@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { dehydrate, QueryClient } from 'react-query';
 
 import { getExperiencesRequest } from '@/modules/Home/hooks/queries/useExperiences';
+import { getLatestPostRequest } from '@/modules/Home/hooks/queries/useLatestPost';
 
 import HomeContextProvider from '@/modules/Home/contexts/HomeContext';
 
@@ -36,6 +37,7 @@ export default function Home() {
 export const getStaticProps: GetStaticProps = async () => {
   const queryClient = new QueryClient();
 
+  await queryClient.prefetchQuery('latestPost', getLatestPostRequest);
   await queryClient.prefetchQuery('experiences', getExperiencesRequest);
 
   return {

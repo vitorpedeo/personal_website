@@ -27,3 +27,47 @@ export type ExperienceAPIPayload = {
 };
 
 /* useExperiences types end */
+
+/* useLatestPost types */
+
+type PostBanner = {
+  data: {
+    attributes: {
+      alternativeText: string;
+      formats: {
+        small: {
+          url: string;
+        };
+      };
+    };
+  };
+};
+
+type PostTags = {
+  data: [
+    {
+      id: number;
+      attributes: {
+        name: string;
+      };
+    },
+  ];
+};
+
+type Post = {
+  id: number;
+  attributes: {
+    slug: string;
+    title: string;
+    description: string;
+    read_time: string;
+    banner: PostBanner;
+    tags: PostTags;
+  };
+};
+
+export type LatestPostAPIPayload = {
+  data: Post;
+};
+
+/* useLatestPost types end */

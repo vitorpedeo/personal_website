@@ -27,7 +27,7 @@ export async function getExperiencesRequest() {
 
 function useExperiences() {
   const query = useQuery('experiences', getExperiencesRequest, {
-    staleTime: Infinity,
+    staleTime: 1000 * 60 * 60 * 24, // 1 day
     refetchOnWindowFocus: false,
   });
 

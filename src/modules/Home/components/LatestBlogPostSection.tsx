@@ -3,13 +3,18 @@ import {
   Flex,
   Heading,
   Link,
+  Skeleton,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 
+import useLatestPost from '@/modules/Home/hooks/queries/useLatestPost';
+
 export function LatestBlogPostSection() {
+  const { data, isError, isLoading } = useLatestPost();
+
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
 
   return (
@@ -29,47 +34,56 @@ export function LatestBlogPostSection() {
       </Text>
 
       <Flex direction="column" align="center" justify="center">
-        <NextLink href="/latest-post" passHref>
-          <Link
-            maxW={[300, 360]}
-            w="full"
-            borderRadius={8}
-            background={latestPostCardBgColor}
-            boxShadow="md"
-            overflow="hidden"
-            transition="transform 0.3s ease-in-out"
-            _hover={{
-              textDecoration: 'none',
-              transform: 'scale(1.02)',
-            }}
-          >
-            <Box position="relative" w="full" h={150}>
-              <Image
-                src="/images/code.jpg"
-                alt="Code"
-                layout="fill"
-                objectFit="cover"
-              />
-            </Box>
+        {isError || !data ? (
+          <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
+            Oops, something went wrong 😟 Latest post could not be fetched
+          </Text>
+        ) : (
+          <NextLink href={`/posts/${data.slug}`} passHref>
+            <Link
+              maxW={[300, 360]}
+              w="full"
+              borderRadius={8}
+              background={latestPostCardBgColor}
+              boxShadow="md"
+              overflow="hidden"
+              pointerEvents={isLoading ? 'none' : 'all'}
+              transition="transform 0.3s ease-in-out"
+              _hover={{
+                textDecoration: 'none',
+                transform: 'scale(1.02)',
+              }}
+            >
+              <Skeleton isLoaded={!isLoading}>
+                <Box position="relative" w="full" h={150}>
+                  <Image
+                    src={data.image_url}
+                    alt={data.image_alt}
+                    layout="fill"
+                    objectFit="cover"
+                    priority
+                  />
+                </Box>
 
-            <Box p="6">
-              <Heading size="md" fontWeight="700" lineHeight="7">
-                How I built my own blog with NextJS, ChakraUI and Ghost CMS
-              </Heading>
+                <Box p="6">
+                  <Heading size="md" fontWeight="700" lineHeight="7">
+                    {data.title}
+                  </Heading>
 
-              <Text my="2" fontSize="sm" lineHeight="6">
-                15 min read
-              </Text>
+                  <Text my="2" fontSize="sm" lineHeight="6">
+                    {data.read_time}
+                  </Text>
 
-              <Text fontSize="lg" lineHeight="6">
-                In this post I’ll tell all my adventures when building my own
-                blog.
-              </Text>
-            </Box>
-          </Link>
-        </NextLink>
+                  <Text fontSize="lg" lineHeight="6">
+                    {data.description}
+                  </Text>
+                </Box>
+              </Skeleton>
+            </Link>
+          </NextLink>
+        )}
 
-        <NextLink href="/posts" passHref>
+        <NextLink href="/blog" passHref>
           <Link
             mt="6"
             py="3"
