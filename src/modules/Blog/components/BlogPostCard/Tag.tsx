@@ -1,11 +1,15 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Tag as ChakraTag } from '@chakra-ui/react';
 
 export function Tag() {
   return (
-    <Box py="1" px="2" borderRadius={6} background="primary.light">
-      <Text color="primary.regular" fontSize="sm" fontWeight="bold">
-        Front-End
-      </Text>
-    </Box>
+    <ChakraTag
+      size="lg"
+      borderRadius={6}
+      background="primary.light"
+      color="primary.regular"
+      fontWeight="bold"
+    >
+      Front-End
+    </ChakraTag>
   );
 }

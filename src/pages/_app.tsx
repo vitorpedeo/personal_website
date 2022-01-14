@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { customTheme } from '@/modules/common/styles/theme';
 
+import { PageLoading } from '@/modules/common/components/PageLoading';
 import { Header } from '@/modules/common/components/Header';
 import { ScrollToTop } from '@/modules/common/components/ScrollToTop';
 import { Footer } from '@/modules/common/components/Footer';
@@ -39,6 +40,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               href="/favicon-16x16.png"
             />
           </Head>
+
+          <PageLoading />
 
           <Header />
           <Component {...pageProps} />

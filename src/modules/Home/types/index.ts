@@ -1,10 +1,23 @@
+/* General types */
+
+export type TechNames =
+  | 'HTML'
+  | 'CSS'
+  | 'Javascript'
+  | 'React'
+  | 'API Rest'
+  | 'Sass'
+  | 'Next.js';
+
+/* General types end */
+
 /* useExperiences types */
 
 type Technology = {
   data: [
     {
       attributes: {
-        name: string;
+        name: TechNames;
         color: string;
       };
     },

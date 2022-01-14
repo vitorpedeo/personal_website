@@ -3,6 +3,8 @@ import {
   Flex,
   Heading,
   Link,
+  LinkBox,
+  LinkOverlay,
   Skeleton,
   Text,
   useColorModeValue,
@@ -12,6 +14,8 @@ import NextLink from 'next/link';
 
 import useLatestPost from '@/modules/Home/hooks/queries/useLatestPost';
 
+import { CustomAlert } from '@/modules/common/components/CustomAlert';
+
 export function LatestBlogPostSection() {
   const { data, isError, isLoading } = useLatestPost();
 
@@ -20,9 +24,11 @@ export function LatestBlogPostSection() {
   function renderContent() {
     if (isError) {
       return (
-        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
-          Oops, something went wrong 😟 Latest post could not be fetched
-        </Text>
+        <CustomAlert
+          status="error"
+          title="Oops, something went wrong 😟"
+          description="Could not fetch latest post. Please, try again later"
+        />
       );
     }
 
@@ -35,48 +41,48 @@ export function LatestBlogPostSection() {
     }
 
     return (
-      <NextLink href={`/posts/${data.slug}`} passHref>
-        <Link
-          maxW={[300, 360]}
-          w="full"
-          borderRadius={8}
-          background={latestPostCardBgColor}
-          boxShadow="md"
-          overflow="hidden"
-          pointerEvents={isLoading ? 'none' : 'all'}
-          transition="transform 0.3s ease-in-out"
-          _hover={{
-            textDecoration: 'none',
-            transform: 'scale(1.02)',
-          }}
-        >
-          <Skeleton isLoaded={!isLoading}>
-            <Box position="relative" w="full" h={150}>
-              <Image
-                src={data.image_url}
-                alt={data.image_alt}
-                layout="fill"
-                objectFit="cover"
-                priority
-              />
-            </Box>
+      <LinkBox
+        as="article"
+        maxW={[300, 360]}
+        w="full"
+        borderRadius={8}
+        background={latestPostCardBgColor}
+        boxShadow="md"
+        overflow="hidden"
+        transition="transform 0.3s ease-in-out"
+        _hover={{
+          textDecoration: 'none',
+          transform: 'scale(1.02)',
+        }}
+      >
+        <Box position="relative" w="full" h={150}>
+          <Image
+            src={data.image_url}
+            alt={data.image_alt}
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </Box>
 
-            <Box p="6">
+        <Box p="6">
+          <NextLink href={`/posts/${data.slug}`} passHref>
+            <LinkOverlay>
               <Heading size="md" fontWeight="700" lineHeight="7">
                 {data.title}
               </Heading>
+            </LinkOverlay>
+          </NextLink>
 
-              <Text my="2" fontSize="sm" lineHeight="6">
-                {data.read_time}
-              </Text>
+          <Text my="2" fontSize="sm" lineHeight="6">
+            {data.read_time}
+          </Text>
 
-              <Text fontSize="lg" lineHeight="6">
-                {data.description}
-              </Text>
-            </Box>
-          </Skeleton>
-        </Link>
-      </NextLink>
+          <Text fontSize="lg" lineHeight="6">
+            {data.description}
+          </Text>
+        </Box>
+      </LinkBox>
     );
   }
 

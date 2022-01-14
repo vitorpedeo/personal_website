@@ -41,7 +41,7 @@ export function MobileSidebar({ ...rest }: BoxProps) {
         mr="auto"
         w="12"
         h="12"
-        background={bgColor}
+        backgroundColor={bgColor}
         color={iconColor}
         fontSize="30px"
         icon={<IoMenu />}

@@ -1,3 +1,16 @@
+/* General types */
+
+export type TechNames =
+  | 'HTML'
+  | 'CSS'
+  | 'Javascript'
+  | 'React'
+  | 'API Rest'
+  | 'Sass'
+  | 'Next.js';
+
+/* General types end */
+
 /* useProjects types */
 
 type ProjectImage = {

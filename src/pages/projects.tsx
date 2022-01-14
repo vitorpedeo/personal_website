@@ -8,6 +8,7 @@ import useProjects, {
 } from '@/modules/Projects/hooks/queries/useProjects';
 
 import { Project } from '@/modules/Projects/components/Project';
+import { CustomAlert } from '@/modules/common/components/CustomAlert';
 
 export default function Projects() {
   const { data, isError, isLoading } = useProjects();
@@ -15,9 +16,11 @@ export default function Projects() {
   function renderContent() {
     if (isError) {
       return (
-        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
-          Oops, something went wrong 😟 Could not fetch projects
-        </Text>
+        <CustomAlert
+          status="error"
+          title="Oops, something went wrong 😟"
+          description="Could not fetch projects. Please, try again later"
+        />
       );
     }
 

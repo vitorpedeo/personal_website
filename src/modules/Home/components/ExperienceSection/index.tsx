@@ -12,6 +12,7 @@ import useExperiences from '@/modules/Home/hooks/queries/useExperiences';
 
 import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
+import { CustomAlert } from '@/modules/common/components/CustomAlert';
 import { ExperienceCard } from './ExperienceCard';
 
 export function ExperienceSection() {
@@ -22,9 +23,11 @@ export function ExperienceSection() {
   function renderContent() {
     if (isError) {
       return (
-        <Text fontSize={['md', 'lg']} textAlign="center" lineHeight="6">
-          Oops, something went wrong 😟 Experiences could not be fetched
-        </Text>
+        <CustomAlert
+          status="error"
+          title="Oops, something went wrong 😟"
+          description="Could not fetch experiences. Please, try again later"
+        />
       );
     }
 

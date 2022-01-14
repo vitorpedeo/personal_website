@@ -1,18 +1,48 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
+import { useMemo } from 'react';
+import {
+  SiCss3,
+  SiFastapi,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiSass,
+} from 'react-icons/si';
+
+import { TechNames } from '@/modules/Projects/types';
 
 interface TechProps {
-  name: string;
+  name: TechNames;
   color: string;
 }
 
 export function Tech({ name, color }: TechProps) {
+  const icons = useMemo(
+    () => ({
+      HTML: SiHtml5,
+      CSS: SiCss3,
+      Javascript: SiJavascript,
+      React: SiReact,
+      'API Rest': SiFastapi,
+      Sass: SiSass,
+      'Next.js': SiNextdotjs,
+    }),
+    [],
+  );
+
   const lightenColor = `${color}20`;
 
   return (
-    <Box py="1" px="3" borderRadius={6} background={lightenColor}>
-      <Text color={color} fontSize="sm" fontWeight="bold">
-        {name}
-      </Text>
-    </Box>
+    <Tag
+      variant="subtle"
+      size="lg"
+      borderRadius="full"
+      background={lightenColor}
+      color={color}
+    >
+      <TagLeftIcon as={icons[name]} />
+      <TagLabel fontWeight="bold">{name}</TagLabel>
+    </Tag>
   );
 }
