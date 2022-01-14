@@ -66,7 +66,7 @@ export function LatestBlogPostSection() {
         </Box>
 
         <Box p="6">
-          <NextLink href={`/posts/${data.slug}`} passHref>
+          <NextLink href={`/blog/post/${data.slug}`} passHref>
             <LinkOverlay>
               <Heading size="md" fontWeight="700" lineHeight="7">
                 {data.title}

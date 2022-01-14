@@ -1,11 +1,56 @@
-import { Container, Grid, Heading } from '@chakra-ui/react';
+import { Container, Flex, Grid, Heading, Spinner } from '@chakra-ui/react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { dehydrate, QueryClient } from 'react-query';
+
+import useBlogPosts, {
+  getBlogPostsRequest,
+} from '@/modules/Blog/hooks/useBlogPosts';
 
 import { BlogPostCard } from '@/modules/Blog/components/BlogPostCard';
-
-const arr = Array.from(Array(4).keys());
+import { CustomAlert } from '@/modules/common/components/CustomAlert';
 
 export default function Blog() {
+  const { data, isError, isLoading } = useBlogPosts();
+
+  function renderContent() {
+    if (isError) {
+      return (
+        <CustomAlert
+          my="12"
+          status="error"
+          title="Oops, something went wrong 😟"
+          description="Could not fetch blog posts"
+        />
+      );
+    }
+
+    if (isLoading) {
+      return (
+        <Flex my="12" align="center" justify="center">
+          <Spinner size="xl" />
+        </Flex>
+      );
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return (
+      <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
+        {data.map((post, index) => {
+          // Items with index divisible by 3 should span
+          const shouldSpan = (index + 3) % 3 === 0;
+
+          return (
+            <BlogPostCard key={post.id} post={post} shouldSpan={shouldSpan} />
+          );
+        })}
+      </Grid>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -21,15 +66,20 @@ export default function Blog() {
           All posts 📒
         </Heading>
 
-        <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
-          {arr.map((item, index) => {
-            // Items with index divisible by 3 should span
-            const shouldSpan = (index + 3) % 3 === 0;
-
-            return <BlogPostCard key={item} shouldSpan={shouldSpan} />;
-          })}
-        </Grid>
+        {renderContent()}
       </Container>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery('posts', getBlogPostsRequest);
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};

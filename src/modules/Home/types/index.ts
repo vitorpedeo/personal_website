@@ -56,17 +56,6 @@ type PostBanner = {
   };
 };
 
-type PostTags = {
-  data: [
-    {
-      id: number;
-      attributes: {
-        name: string;
-      };
-    },
-  ];
-};
-
 type Post = {
   id: number;
   attributes: {
@@ -75,7 +64,6 @@ type Post = {
     description: string;
     read_time: string;
     banner: PostBanner;
-    tags: PostTags;
   };
 };
 

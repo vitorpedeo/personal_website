@@ -1,6 +1,6 @@
-import { Tag as ChakraTag } from '@chakra-ui/react';
+import { Tag as ChakraTag, TagProps } from '@chakra-ui/react';
 
-export function Tag() {
+export function Tag({ children }: TagProps) {
   return (
     <ChakraTag
       size="lg"
@@ -9,7 +9,7 @@ export function Tag() {
       color="primary.regular"
       fontWeight="bold"
     >
-      Front-End
+      {children}
     </ChakraTag>
   );
 }

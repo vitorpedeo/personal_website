@@ -13,11 +13,25 @@ import NextLink from 'next/link';
 
 import { Tag } from './Tag';
 
+type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  read_time: string;
+  image_url: string;
+  image_alt: string;
+  tags: {
+    id: number;
+    name: string;
+  }[];
+};
+
 interface BlogPostCardProps {
+  post: Post;
   shouldSpan: boolean;
 }
 
-export function BlogPostCard({ shouldSpan }: BlogPostCardProps) {
+export function BlogPostCard({ post, shouldSpan }: BlogPostCardProps) {
   const bgColor = useColorModeValue('white', 'accent.dark');
 
   const colSpan = shouldSpan ? 2 : 1;
@@ -48,34 +62,35 @@ export function BlogPostCard({ shouldSpan }: BlogPostCardProps) {
         position="relative"
       >
         <Image
-          src="/images/code.jpg"
-          alt="Code"
+          src={post.image_url}
+          alt={post.image_alt}
           layout="fill"
           objectFit="cover"
+          priority
         />
       </Box>
 
       <Flex p="6" direction="column">
-        <NextLink href="/" passHref>
+        <NextLink href={`/blog/post/${post.slug}`} passHref>
           <LinkOverlay>
             <Heading size="md" fontWeight="700" lineHeight="7">
-              How I built my own blog with NextJS, ChakraUI and Ghost CMS
+              {post.title}
             </Heading>
           </LinkOverlay>
         </NextLink>
 
         <Text my="2" fontSize="sm" lineHeight="6">
-          15 min read
+          {post.read_time}
         </Text>
 
         <Text mb="4" fontSize="lg" lineHeight="6">
-          In this post I’ll tell all my adventures when building my own blog.
+          {post.description}
         </Text>
 
         <Flex mt="auto" gap="4" wrap="wrap">
-          <Tag />
-          <Tag />
-          <Tag />
+          {post.tags.map(tag => (
+            <Tag key={tag.id}>{tag.name}</Tag>
+          ))}
         </Flex>
       </Flex>
     </LinkBox>

@@ -8,7 +8,7 @@ export async function getLatestPostRequest() {
   const api = setupApiClient();
 
   const { data } = await api.get<LatestPostAPIPayload>(
-    '/posts/findLast?populate=*&fields=slug,title,description,read_time&sort=publishedAt:desc',
+    '/posts/findLast?populate=banner&fields=slug,title,description,read_time&sort=publishedAt:desc',
   );
 
   const formattedPost = {
@@ -21,10 +21,6 @@ export async function getLatestPostRequest() {
       data.data.attributes.banner.data.attributes.formats.small.url,
     ),
     image_alt: data.data.attributes.banner.data.attributes.alternativeText,
-    tags: data.data.attributes.tags.data.map(tag => ({
-      id: tag.id,
-      name: tag.attributes.name,
-    })),
   };
 
   return formattedPost;
