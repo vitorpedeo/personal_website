@@ -28,21 +28,15 @@ type Post = {
 
 interface BlogPostCardProps {
   post: Post;
-  shouldSpan: boolean;
 }
 
-export function BlogPostCard({ post, shouldSpan }: BlogPostCardProps) {
+export function BlogPostCard({ post }: BlogPostCardProps) {
   const bgColor = useColorModeValue('white', 'accent.dark');
-
-  const colSpan = shouldSpan ? 2 : 1;
-  const cardFlexDirection = shouldSpan ? 'row' : 'column';
-  const cardImageWidth = shouldSpan ? '430px' : '100%';
-  const cardImageHeight = shouldSpan ? '100%' : '240px';
 
   return (
     <LinkBox
       as={GridItem}
-      colSpan={[2, 2, colSpan]}
+      colSpan={[2, 2]}
       w="full"
       minH={240}
       borderRadius={12}
@@ -51,16 +45,28 @@ export function BlogPostCard({ post, shouldSpan }: BlogPostCardProps) {
       overflow="hidden"
       transition="transform 0.2s ease-in-out"
       display="flex"
-      flexDirection={['column', 'row', cardFlexDirection]}
+      flexDirection={['column', 'row']}
       _hover={{
         transform: 'scale(1.02)',
       }}
+      sx={{
+        '@media screen and (min-width: 768px)': {
+          'div:first-of-type': {
+            width: 430,
+          },
+
+          '&:not(:nth-of-type(3n + 1))': {
+            gridColumn: 'span 1/span 1',
+            flexDirection: 'column',
+
+            'div:first-of-type': {
+              width: '100%',
+            },
+          },
+        },
+      }}
     >
-      <Box
-        w={['100%', 240, cardImageWidth]}
-        h={[240, cardImageHeight]}
-        position="relative"
-      >
+      <Box w={['100%', 240]} h={[240]} position="relative">
         <Image
           src={post.image_url}
           alt={post.image_alt}

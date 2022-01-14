@@ -39,13 +39,8 @@ export default function Blog() {
 
     return (
       <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
-        {data.map((post, index) => {
-          // Items with index divisible by 3 should span
-          const shouldSpan = (index + 3) % 3 === 0;
-
-          return (
-            <BlogPostCard key={post.id} post={post} shouldSpan={shouldSpan} />
-          );
+        {data.map(post => {
+          return <BlogPostCard key={post.id} post={post} />;
         })}
       </Grid>
     );
