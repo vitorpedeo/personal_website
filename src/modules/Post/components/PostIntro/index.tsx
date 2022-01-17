@@ -1,8 +1,25 @@
 import { Flex, Heading, HStack, Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { IoAlarm, IoCalendar } from 'react-icons/io5';
+
+import usePost from '@/modules/Post/hooks/queries/usePost';
+
 import { Tag } from './Tag';
 
 export function PostIntro() {
+  const { query } = useRouter();
+  const { slug } = query;
+
+  const { data } = usePost(slug as string);
+
+  if (!data) {
+    return null;
+  }
+
+  const formattedPublicationDate = new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'medium',
+  }).format(new Date(data.publishedAt));
+
   return (
     <>
       <Heading
@@ -10,7 +27,7 @@ export function PostIntro() {
         fontWeight="bold"
         textAlign={['center', 'center', 'left']}
       >
-        How I built my own blog with NextJS, ChakraUI and Ghost CMS
+        {data.title}
       </Heading>
 
       <HStack
@@ -22,20 +39,21 @@ export function PostIntro() {
         <HStack spacing="2">
           <IoCalendar size={22} />
           <Text as="time" fontSize="sm">
-            06 January 2022
+            {formattedPublicationDate}
           </Text>
         </HStack>
         <HStack spacing="2">
           <IoAlarm size={22} />
           <Text as="time" fontSize="sm">
-            15 min read
+            {data.read_time}
           </Text>
         </HStack>
       </HStack>
 
       <Flex gap="4" wrap="wrap">
-        <Tag>React</Tag>
-        <Tag>Netx.js</Tag>
+        {data.tags.map(tag => (
+          <Tag key={tag.id}>{tag.name}</Tag>
+        ))}
       </Flex>
     </>
   );

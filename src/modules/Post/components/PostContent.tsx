@@ -1,11 +1,12 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Flex, Spinner } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkBreaks from 'remark-breaks';
 import remarkGfm from 'remark-gfm';
 
-interface PostContentProps {
-  content: string;
-}
+import usePost from '@/modules/Post/hooks/queries/usePost';
+
+import { CustomAlert } from '@/modules/common/components/CustomAlert';
 
 const markdownStyles = {
   '*': {
@@ -54,12 +55,45 @@ const markdownStyles = {
   },
 };
 
-export function PostContent({ content }: PostContentProps) {
+export function PostContent() {
+  const { query } = useRouter();
+  const { slug } = query;
+
+  const { data, isError, isLoading } = usePost(slug as string);
+
+  function renderContent() {
+    if (isError) {
+      return (
+        <CustomAlert
+          status="error"
+          title="Oops, something went wrong 😟"
+          description="Could not fetch post content. Please, try again later"
+        />
+      );
+    }
+
+    if (isLoading) {
+      return (
+        <Flex align="center" justify="center">
+          <Spinner size="xl" />
+        </Flex>
+      );
+    }
+
+    if (!data) {
+      return null;
+    }
+
+    return (
+      <ReactMarkdown remarkPlugins={[remarkBreaks, remarkGfm]}>
+        {data.content}
+      </ReactMarkdown>
+    );
+  }
+
   return (
     <Box mt="8" sx={markdownStyles}>
-      <ReactMarkdown remarkPlugins={[remarkBreaks, remarkGfm]}>
-        {content}
-      </ReactMarkdown>
+      {renderContent()}
     </Box>
   );
 }
