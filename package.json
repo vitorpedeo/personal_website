@@ -19,7 +19,10 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
-    "react-query": "^3.34.7"
+    "react-markdown": "^7.1.2",
+    "react-query": "^3.34.7",
+    "remark-breaks": "^3.0.2",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/node": "17.0.8",
