@@ -1,4 +1,4 @@
-export function getSrapiURL() {
+export function getStrapiURL() {
   const isDevelopment = process.env.NODE_ENV === 'development';
   const strapiURL = isDevelopment
     ? 'http://localhost:1337/api'
@@ -8,8 +8,10 @@ export function getSrapiURL() {
 }
 
 export function getStrapiMedia(rawUrl: string) {
-  const strapiURL = getSrapiURL();
-  const mediaUrl = strapiURL?.replace('/api', rawUrl) as string;
+  const strapiURL = getStrapiURL();
+  const mediaUrl = rawUrl.startsWith('/')
+    ? (strapiURL?.replace('/api', rawUrl) as string)
+    : rawUrl;
 
   return mediaUrl;
 }

@@ -10,7 +10,7 @@ import {
   SiSass,
 } from 'react-icons/si';
 
-import { TechNames } from '@/modules/Home/types';
+import { TechNames } from '@/modules/common/types';
 
 interface TechProps {
   name: TechNames;

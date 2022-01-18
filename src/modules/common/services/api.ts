@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { getSrapiURL } from './strapi';
+import { getStrapiURL } from './strapi';
 
 export function setupApiClient() {
-  const baseURL = getSrapiURL();
+  const baseURL = getStrapiURL();
 
   const apiClient = axios.create({
     baseURL,

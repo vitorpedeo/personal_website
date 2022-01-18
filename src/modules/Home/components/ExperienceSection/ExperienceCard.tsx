@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 
+import { TechNames } from '@/modules/common/types';
+
 import { Tech } from './Tech';
 
 interface ExperienceCardProps {
@@ -9,7 +11,7 @@ interface ExperienceCardProps {
     work_time: string;
     description: string;
     technologies: {
-      name: string;
+      name: TechNames;
       color: string;
     }[];
   };

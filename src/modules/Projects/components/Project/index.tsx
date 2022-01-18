@@ -1,6 +1,8 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
+import { TechNames } from '@/modules/common/types';
+
 import { ProjectLink } from './ProjectLink';
 import { Tech } from './Tech';
 
@@ -13,7 +15,7 @@ interface ProjectProps {
     image_url: string;
     image_alt: string;
     technologies: {
-      name: string;
+      name: TechNames;
       color: string;
     }[];
   };

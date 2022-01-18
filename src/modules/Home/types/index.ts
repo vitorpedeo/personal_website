@@ -1,15 +1,4 @@
-/* General types */
-
-export type TechNames =
-  | 'HTML'
-  | 'CSS'
-  | 'Javascript'
-  | 'React'
-  | 'API Rest'
-  | 'Sass'
-  | 'Next.js';
-
-/* General types end */
+import { TechNames } from '@/modules/common/types';
 
 /* useExperiences types */
 
