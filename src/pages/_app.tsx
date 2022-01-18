@@ -1,11 +1,13 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 import { useState } from 'react';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { customTheme } from '@/modules/common/styles/theme';
+import { SEO } from '@/modules/common/services/seo';
 
 import { PageLoading } from '@/modules/common/components/PageLoading';
 import { Header } from '@/modules/common/components/Header';
@@ -40,6 +42,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               href="/favicon-16x16.png"
             />
           </Head>
+
+          <DefaultSeo {...SEO} />
 
           <PageLoading />
 

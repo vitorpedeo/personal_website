@@ -1,6 +1,5 @@
 import { Container, Flex, Grid, Heading, Spinner } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { dehydrate, QueryClient } from 'react-query';
 
 import useBlogPosts, {
@@ -9,6 +8,7 @@ import useBlogPosts, {
 
 import { BlogPostCard } from '@/modules/Blog/components/BlogPostCard';
 import { CustomAlert } from '@/modules/common/components/CustomAlert';
+import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Blog() {
   const { data, isError, isLoading } = useBlogPosts();
@@ -47,11 +47,10 @@ export default function Blog() {
   }
 
   return (
-    <>
-      <Head>
-        <title>vitorpedeo | Blog</title>
-      </Head>
-
+    <PageWithSeo
+      title="vitorpedeo | Blog"
+      description="These are all my blog posts"
+    >
       <Container pt="24" pb="64" maxW={1020}>
         <Heading
           fontSize={['3xl', '4xl', '5xl']}
@@ -63,7 +62,7 @@ export default function Blog() {
 
         {renderContent()}
       </Container>
-    </>
+    </PageWithSeo>
   );
 }
 

@@ -1,14 +1,14 @@
 import { Container, Flex, Heading, Link, Text } from '@chakra-ui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
+
+import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Custom404() {
   return (
-    <>
-      <Head>
-        <title>vitorpedeo | Page not found</title>
-      </Head>
-
+    <PageWithSeo
+      title="vitorpedeo | Page not found"
+      description="Oops, this page doesn't exist 😟"
+    >
       <Container pt="24" pb="64" maxW={1020}>
         <Heading size="4xl" textAlign="center">
           404
@@ -37,6 +37,6 @@ export default function Custom404() {
           </NextLink>
         </Flex>
       </Container>
-    </>
+    </PageWithSeo>
   );
 }

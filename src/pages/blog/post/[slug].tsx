@@ -1,6 +1,5 @@
 import { Box, Container } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { dehydrate, QueryClient } from 'react-query';
@@ -12,6 +11,7 @@ import usePost, {
 
 import { PostIntro } from '@/modules/Post/components/PostIntro';
 import { PostContent } from '@/modules/Post/components/PostContent';
+import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Post() {
   const { query } = useRouter();
@@ -20,11 +20,10 @@ export default function Post() {
   const { data } = usePost(slug as string);
 
   return (
-    <>
-      <Head>
-        <title>vitorpedeo | {data?.title || 'Post'}</title>
-      </Head>
-
+    <PageWithSeo
+      title={data?.title || 'Post'}
+      description={data?.description || 'This is one of my blog posts'}
+    >
       <Box w="full" h={[200, 300, 400]} position="relative">
         {data ? (
           <Image
@@ -41,7 +40,7 @@ export default function Post() {
         <PostIntro />
         <PostContent />
       </Container>
-    </>
+    </PageWithSeo>
   );
 }
 

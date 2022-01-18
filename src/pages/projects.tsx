@@ -1,6 +1,5 @@
 import { Container, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { dehydrate, QueryClient } from 'react-query';
 
 import useProjects, {
@@ -9,6 +8,7 @@ import useProjects, {
 
 import { Project } from '@/modules/Projects/components/Project';
 import { CustomAlert } from '@/modules/common/components/CustomAlert';
+import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Projects() {
   const { data, isError, isLoading } = useProjects();
@@ -40,11 +40,11 @@ export default function Projects() {
   }
 
   return (
-    <>
-      <Head>
-        <title>vitorpedeo | Projects</title>
-      </Head>
-
+    <PageWithSeo
+      title="vitorpedeo | Projects"
+      description="Here's a collection of interesting projects that I built during my
+    studies."
+    >
       <Container pt="24" pb="64" maxW={1020}>
         <Heading
           fontSize={['3xl', '4xl', '5xl']}
@@ -67,7 +67,7 @@ export default function Projects() {
 
         {renderContent()}
       </Container>
-    </>
+    </PageWithSeo>
   );
 }
 
