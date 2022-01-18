@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Heading,
   SimpleGrid,
@@ -14,6 +13,7 @@ import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 import { CustomAlert } from '@/modules/common/components/CustomAlert';
 import { ExperienceCard } from './ExperienceCard';
+import { ResumeDownloadButton } from './ResumeDownloadButton';
 
 export function ExperienceSection() {
   const { data, isError, isLoading } = useExperiences();
@@ -59,20 +59,7 @@ export function ExperienceSection() {
       </Text>
 
       <Flex mb="6" align="center" justify="center">
-        <Button
-          variant="primary"
-          colorScheme="primary"
-          size="lg"
-          borderRadius={6}
-          fontSize="lg"
-          fontWeight="600"
-          transition="all 0.2s"
-          _hover={{
-            filter: 'brightness(0.9)',
-          }}
-        >
-          Download resume
-        </Button>
+        <ResumeDownloadButton />
       </Flex>
 
       {renderContent()}

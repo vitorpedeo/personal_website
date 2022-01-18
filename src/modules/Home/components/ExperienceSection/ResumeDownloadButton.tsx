@@ -6,37 +6,28 @@ import {
   MenuItem,
   MenuList,
   Text,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import { downloadResume } from '@/modules/common/services/downloadResume';
 
 export function ResumeDownloadButton() {
-  const textColor = useColorModeValue('heading.light', 'white');
-
   return (
     <Menu>
       <MenuButton
         as={Button}
-        variant="unstyled"
-        py={['4', '4', '1']}
-        pl={['4', '4', '2']}
-        pr={['4', '4', '2']}
-        h="auto"
+        variant="primary"
+        colorScheme="primary"
+        size="lg"
         borderRadius={6}
-        color={textColor}
         fontSize="lg"
-        fontWeight="normal"
-        textAlign={['left', 'left', 'center']}
-        sx={{
-          _hover: {
-            background: 'primary.light',
-            color: 'primary.regular',
-          },
+        fontWeight="600"
+        transition="all 0.2s"
+        _hover={{
+          filter: 'brightness(0.9)',
         }}
       >
-        Resume
+        Download resume
       </MenuButton>
 
       <MenuList>
