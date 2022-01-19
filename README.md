@@ -2,15 +2,11 @@
   <img src="./.github/logo.svg" alt="vitorpedeo logo" />
 </p>
 
-<br />
-
 <p align="center">
   <img src='https://img.shields.io/github/languages/top/vitorpedeo/personal_website?color=blue&style=flat' />
   <img src='https://img.shields.io/github/languages/count/vitorpedeo/personal_website?style=flat' />
   <img src='https://img.shields.io/github/languages/code-size/vitorpedeo/personal_website?style=flat' />
 </p>
-
-<br />
 
 <h3 align="center">
   vitorpedeo - Personal Website
