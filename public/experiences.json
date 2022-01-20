@@ -1,0 +1,20 @@
+{
+  "en": [
+    {
+      "id": 1,
+      "company": "Contta Inteligência Fiscal",
+      "role": "Front-End Developer",
+      "work_time": "Sept. 2020 - Nov. 2021",
+      "description": "Developed and maintained the main company's project, which was a Dashboard containing financial information of all registered companies by users."
+    }
+  ],
+  "ptBR": [
+    {
+      "id": 1,
+      "company": "Contta Inteligência Fiscal",
+      "role": "Desenvolvedor Front-End",
+      "work_time": "Set. 2020 - Nov. 2021",
+      "description": "Desenvolveu e deu manutenção no principal projeto da empresa: um Dashboard que contém informações financeiras de todas as empresas cadastradas pelo usuário."
+    }
+  ]
+}

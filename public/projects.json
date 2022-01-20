@@ -1,0 +1,34 @@
+{
+  "en": [
+    {
+      "id": "simple-todo-app",
+      "title": "Simple Todo App",
+      "description": "Basic app to register user todos.",
+      "repo_url": "https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/todo_app",
+      "live_url": "https://laughing-jones-c000f3.netlify.app/"
+    },
+    {
+      "id": "ig-news",
+      "title": "ig.news",
+      "description": "Medium-like app to show users articles about React world.",
+      "repo_url": "https://github.com/vitorpedeo/desafio-deploy-aplicacao/tree/main",
+      "live_url": "https://desafio-deploy-aplicacao.vercel.app/"
+    }
+  ],
+  "ptBR": [
+    {
+      "id": "simple-todo-app",
+      "title": "Todo App Simples",
+      "description": "App básico para registrar as tarefas do usuário.",
+      "repo_url": "https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/todo_app",
+      "live_url": "https://laughing-jones-c000f3.netlify.app/"
+    },
+    {
+      "id": "ig-news",
+      "title": "ig.news",
+      "description": "App no estilo Medium para mostrar aos usuários artigos sobre ecossistema React.",
+      "repo_url": "https://github.com/vitorpedeo/desafio-deploy-aplicacao/tree/main",
+      "live_url": "https://desafio-deploy-aplicacao.vercel.app/"
+    }
+  ]
+}
