@@ -3,36 +3,13 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-type Locale = 'en' | 'ptBR';
-
-type Post = {
-  frontMatter: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    tags: string[];
-  };
-  markdown: string;
-};
-
-type GetAllSlugsParams = {
-  locale?: Locale;
-  removeExtension?: boolean;
-};
-
-type GetAllPostsParams = {
-  locale?: Locale;
-};
-
-type GetLatestPostParams = {
-  locale?: Locale;
-};
-
-type GetPostBySlugParams = {
-  slug: string;
-  locale?: Locale;
-};
+import type {
+  GetLatestPostParams,
+  GetAllPostsParams,
+  GetAllSlugsParams,
+  GetPostBySlugParams,
+  Post,
+} from '@/modules/common/types';
 
 function compareISODates(firstDate: string, secondDate: string) {
   return compareDesc(parseISO(firstDate), parseISO(secondDate));

@@ -1,21 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-type Locale = 'en' | 'ptBR';
-
-type Experience = {
-  id: number;
-  company: string;
-  role: string;
-  work_time: string;
-  description: string;
-};
-
-type ExperiencesByLocale = Record<Locale, Experience[]>;
-
-type GetExperiencesParams = {
-  locale?: Locale;
-};
+import type {
+  ExperiencesByLocale,
+  GetExperiencesParams,
+} from '@/modules/common/types';
 
 export function getExperiences(
   { locale = 'en' }: GetExperiencesParams = { locale: 'en' },
