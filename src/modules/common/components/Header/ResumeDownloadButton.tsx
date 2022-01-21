@@ -56,7 +56,7 @@ export function ResumeDownloadButton() {
               objectFit="cover"
             />
           </Box>
-          <Text as="span">Portuguese - BR</Text>
+          <Text as="span">Português - BR</Text>
         </MenuItem>
 
         <MenuItem onClick={() => downloadResume('enUS')}>
