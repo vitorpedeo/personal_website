@@ -1,43 +1,24 @@
-/* usePosts types */
+/* General types */
 
-type PostBanner = {
-  data: {
-    attributes: {
-      alternativeText: string;
-      formats: {
-        medium: {
-          url: string;
-        };
-      };
-    };
-  };
-};
-
-type PostTags = {
-  data: [
-    {
-      id: number;
-      attributes: {
-        name: string;
-      };
-    },
-  ];
-};
-
-type Post = {
-  id: number;
-  attributes: {
+export type Post = {
+  frontMatter: {
     slug: string;
     title: string;
-    description: string;
-    read_time: string;
-    banner: PostBanner;
-    tags: PostTags;
+    excerpt: string;
+    publishedAt: string;
+    tags: string[];
   };
+  markdown: string;
 };
 
-export type PostsAPIPayload = {
-  data: Post[];
-};
+/* types for @/pages/blog/index.tsx */
 
-/* usePosts types end */
+export interface BlogProps {
+  posts: Post[];
+}
+
+/* types for @/modules/Blog/components/BlogPostCard/index.tsx */
+
+export interface BlogPostCardProps {
+  post: Post;
+}

@@ -1,51 +1,14 @@
-import { Container, Flex, Grid, Heading, Spinner } from '@chakra-ui/react';
+import { Container, Grid, Heading } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
-import { dehydrate, QueryClient } from 'react-query';
 
-import useBlogPosts, {
-  getBlogPostsRequest,
-} from '@/modules/Blog/hooks/useBlogPosts';
+import { getAllPosts } from '@/modules/common/lib/posts';
+
+import type { BlogProps } from '@/modules/Blog/types';
 
 import { BlogPostCard } from '@/modules/Blog/components/BlogPostCard';
-import { CustomAlert } from '@/modules/common/components/CustomAlert';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
-export default function Blog() {
-  const { data, isError, isLoading } = useBlogPosts();
-
-  function renderContent() {
-    if (isError) {
-      return (
-        <CustomAlert
-          my="12"
-          status="error"
-          title="Oops, something went wrong 😟"
-          description="Could not fetch blog posts"
-        />
-      );
-    }
-
-    if (isLoading) {
-      return (
-        <Flex my="12" align="center" justify="center">
-          <Spinner size="xl" />
-        </Flex>
-      );
-    }
-
-    if (!data) {
-      return null;
-    }
-
-    return (
-      <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
-        {data.map(post => {
-          return <BlogPostCard key={post.id} post={post} />;
-        })}
-      </Grid>
-    );
-  }
-
+export default function Blog({ posts }: BlogProps) {
   return (
     <PageWithSeo
       title="vitorpedeo | Blog"
@@ -60,20 +23,22 @@ export default function Blog() {
           All posts 📒
         </Heading>
 
-        {renderContent()}
+        <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
+          {posts.map(post => {
+            return <BlogPostCard key={post.frontMatter.slug} post={post} />;
+          })}
+        </Grid>
       </Container>
     </PageWithSeo>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery('posts', getBlogPostsRequest);
+  const posts = getAllPosts();
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      posts,
     },
     revalidate: 60 * 60 * 24, // 1 day
   };
