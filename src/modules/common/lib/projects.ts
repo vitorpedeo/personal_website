@@ -7,7 +7,7 @@ import type {
 } from '@/modules/common/types';
 
 export function getProjects(
-  { locale = 'en' }: GetProjectsParams = { locale: 'en' },
+  { locale = 'en-US' }: GetProjectsParams = { locale: 'en-US' },
 ) {
   const projectFilePath = path.resolve('public', 'projects.json');
   const projectFile = fs.readFileSync(projectFilePath, 'utf-8');

@@ -11,7 +11,7 @@ export function ThemeTogglerButton() {
   return (
     <IconButton
       aria-label={`Toggle ${isLightThemeActive ? 'dark' : 'light'} theme`}
-      ml="auto"
+      ml="4"
       w="12"
       h="12"
       backgroundColor={bgColor}

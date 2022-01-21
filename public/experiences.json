@@ -1,5 +1,5 @@
 {
-  "en": [
+  "en-US": [
     {
       "id": 1,
       "company": "Contta Inteligência Fiscal",
@@ -18,13 +18,13 @@
       ]
     }
   ],
-  "ptBR": [
+  "pt-BR": [
     {
       "id": 1,
       "company": "Contta Inteligência Fiscal",
       "role": "Desenvolvedor Front-End",
       "work_time": "Set. 2020 - Nov. 2021",
-      "description": "Desenvolveu e deu manutenção no principal projeto da empresa: um Dashboard que contém informações financeiras de todas as empresas cadastradas pelo usuário.",
+      "description": "Desenvolveu e deu manutenção no principal projeto da empresa: um Dashboard que continha informações financeiras de todas as empresas cadastradas pelo usuário.",
       "technologies": [
         {
           "id": 1,

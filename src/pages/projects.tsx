@@ -1,14 +1,18 @@
 import { Container, Heading, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
 import { getProjects } from '@/modules/common/lib/projects';
 
+import type { Locale } from '@/modules/common/types';
 import type { ProjectsProps } from '@/modules/Projects/types';
 
 import { Project } from '@/modules/Projects/components/Project';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Projects({ projects }: ProjectsProps) {
+  const translate = useTranslation();
+
   return (
     <PageWithSeo
       title="vitorpedeo | Projects"
@@ -21,7 +25,7 @@ export default function Projects({ projects }: ProjectsProps) {
           fontWeight="bold"
           textAlign={['center', 'center', 'left']}
         >
-          My projects 🚀
+          {`${translate('title')} 🚀`}
         </Heading>
 
         <Text
@@ -31,8 +35,7 @@ export default function Projects({ projects }: ProjectsProps) {
           textAlign={['center', 'center', 'left']}
           lineHeight="6"
         >
-          Here&apos;s a collection of interesting projects that I built during
-          my studies.
+          {translate('description')}
         </Text>
 
         {projects.map(project => (
@@ -43,8 +46,10 @@ export default function Projects({ projects }: ProjectsProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const projects = getProjects();
+export const getStaticProps: GetStaticProps = async ctx => {
+  const locale = ctx.locale as Locale;
+
+  const projects = getProjects({ locale });
 
   return {
     props: {

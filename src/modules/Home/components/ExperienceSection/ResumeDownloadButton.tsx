@@ -9,9 +9,12 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
 import { downloadResume } from '@/modules/common/services/downloadResume';
 
 export function ResumeDownloadButton() {
+  const translate = useTranslation();
+
   return (
     <Menu>
       <MenuButton
@@ -27,7 +30,7 @@ export function ResumeDownloadButton() {
           filter: 'brightness(0.9)',
         }}
       >
-        Download resume
+        {translate('downloadResumeButtonLabel')}
       </MenuButton>
 
       <MenuList>

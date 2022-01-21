@@ -1,6 +1,8 @@
 /* General types */
 
-type Locale = 'en' | 'ptBR';
+export type Locale = 'en-US' | 'pt-BR';
+
+export type PathNames = '/' | '/projects' | '/blog';
 
 export type TechNames =
   | 'HTML'

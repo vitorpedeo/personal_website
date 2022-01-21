@@ -1,14 +1,18 @@
 import { Container, Grid, Heading } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
 import { getAllPosts } from '@/modules/common/lib/posts';
 
+import type { Locale } from '@/modules/common/types';
 import type { BlogProps } from '@/modules/Blog/types';
 
 import { BlogPostCard } from '@/modules/Blog/components/BlogPostCard';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Blog({ posts }: BlogProps) {
+  const translate = useTranslation();
+
   return (
     <PageWithSeo
       title="vitorpedeo | Blog"
@@ -20,7 +24,7 @@ export default function Blog({ posts }: BlogProps) {
           fontWeight="bold"
           textAlign={['center', 'center', 'left']}
         >
-          All posts 📒
+          {`${translate('title')} 📒`}
         </Heading>
 
         <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
@@ -33,8 +37,10 @@ export default function Blog({ posts }: BlogProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts();
+export const getStaticProps: GetStaticProps = async ctx => {
+  const locale = ctx.locale as Locale;
+
+  const posts = getAllPosts({ locale });
 
   return {
     props: {

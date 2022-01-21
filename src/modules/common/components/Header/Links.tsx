@@ -1,9 +1,14 @@
 import { Stack, StackProps } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 import { LinkItem } from './LinkItem';
 import { ResumeDownloadButton } from './ResumeDownloadButton';
 
 export function Links({ ...rest }: StackProps) {
+  const { locale } = useRouter();
+
+  const isEnglishLocaleActive = locale === 'en-US';
+
   return (
     <Stack
       as="nav"
@@ -18,7 +23,10 @@ export function Links({ ...rest }: StackProps) {
       }}
       {...rest}
     >
-      <LinkItem href="/projects" title="Projects" />
+      <LinkItem
+        href="/projects"
+        title={isEnglishLocaleActive ? 'Projects' : 'Projetos'}
+      />
       <LinkItem href="/blog" title="Blog" />
 
       <ResumeDownloadButton />

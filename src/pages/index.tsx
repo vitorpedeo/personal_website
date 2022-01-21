@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { getExperiences } from '@/modules/common/lib/experiences';
 import { getLatestPost } from '@/modules/common/lib/posts';
 
+import type { Locale } from '@/modules/common/types';
 import type { HomeProps } from '@/modules/Home/types';
 
 import HomeContextProvider from '@/modules/Home/contexts/HomeContext';
@@ -34,9 +35,11 @@ export default function Home({ experiences, latestPost }: HomeProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const experiences = getExperiences();
-  const latestPost = getLatestPost();
+export const getStaticProps: GetStaticProps = async ctx => {
+  const locale = ctx.locale as Locale;
+
+  const experiences = getExperiences({ locale });
+  const latestPost = getLatestPost({ locale });
 
   return {
     props: {

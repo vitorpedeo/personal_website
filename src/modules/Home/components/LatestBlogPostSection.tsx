@@ -10,13 +10,20 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
+
+import useTranslation from '@/modules/common/hooks/useTranslation';
 
 import type { LatestBlogPostSectionProps } from '@/modules/Home/types';
 
 export function LatestBlogPostSection({
   latestPost,
 }: LatestBlogPostSectionProps) {
+  const { locale } = useRouter();
+
+  const translate = useTranslation();
+
   const { frontMatter, markdown } = latestPost;
 
   const readTime = useMemo(() => {
@@ -28,15 +35,17 @@ export function LatestBlogPostSection({
       postContentWithoutSpecialCharacters.split(' ').length;
     const wordsPerMinute = 250;
 
-    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} min read`;
-  }, [markdown]);
+    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} ${
+      locale === 'en-US' ? 'min read' : 'min de leitura'
+    }`;
+  }, [locale, markdown]);
 
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
 
   return (
     <Box as="section" id="latest-blog-post" pb="24">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
-        Latest blog post
+        {translate('latestBlogPostTitle')}
       </Heading>
 
       <Text
@@ -45,8 +54,7 @@ export function LatestBlogPostSection({
         lineHeight="6"
         textAlign={['center', 'center', 'left']}
       >
-        This is the latest post that I made in my personal blog. Go check it
-        out!
+        {translate('latestBlogPostDescription')}
       </Text>
 
       <Flex direction="column" align="center" justify="center">
@@ -107,7 +115,7 @@ export function LatestBlogPostSection({
               filter: 'brightness(0.9)',
             }}
           >
-            View all posts
+            {translate('viewAllPostsLinkLabel')}
           </Link>
         </NextLink>
       </Flex>

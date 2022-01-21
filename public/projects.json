@@ -1,5 +1,5 @@
 {
-  "en": [
+  "en-US": [
     {
       "id": "simple-todo-app",
       "title": "Simple Todo App",
@@ -43,7 +43,7 @@
       ]
     }
   ],
-  "ptBR": [
+  "pt-BR": [
     {
       "id": "simple-todo-app",
       "title": "Todo App Simples",

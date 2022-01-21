@@ -2,6 +2,7 @@ import { Box, Container, useColorModeValue } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 
 import { Links } from './Links';
+import { LocaleSwitcher } from './LocaleSwitcher';
 import { Logo } from './Logo';
 import { MobileSidebar } from './MobileSidebar';
 import { ThemeTogglerButton } from './ThemeTogglerButton';
@@ -65,6 +66,7 @@ export function Header() {
             },
           }}
         />
+        <LocaleSwitcher />
         <ThemeTogglerButton />
       </Container>
     </Box>

@@ -9,11 +9,16 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { downloadResume } from '@/modules/common/services/downloadResume';
 
 export function ResumeDownloadButton() {
+  const { locale } = useRouter();
+
   const textColor = useColorModeValue('heading.light', 'white');
+
+  const isEnglishLocaleActive = locale === 'en-US';
 
   return (
     <Menu>
@@ -36,7 +41,7 @@ export function ResumeDownloadButton() {
           },
         }}
       >
-        Resume
+        {isEnglishLocaleActive ? 'Resume' : 'Currículo'}
       </MenuButton>
 
       <MenuList>

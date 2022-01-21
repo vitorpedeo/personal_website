@@ -28,8 +28,8 @@ function parsePost(rawPost: string) {
 }
 
 export function getAllSlugs(
-  { locale = 'en', removeExtension = false }: GetAllSlugsParams = {
-    locale: 'en',
+  { locale = 'en-US', removeExtension = false }: GetAllSlugsParams = {
+    locale: 'en-US',
     removeExtension: false,
   },
 ) {
@@ -49,7 +49,7 @@ export function getAllSlugs(
 }
 
 export function getAllPosts(
-  { locale = 'en' }: GetAllPostsParams = { locale: 'en' },
+  { locale = 'en-US' }: GetAllPostsParams = { locale: 'en-US' },
 ) {
   // Getting all slugs
   const slugs = getAllSlugs();
@@ -68,7 +68,7 @@ export function getAllPosts(
 }
 
 export function getLatestPost(
-  { locale = 'en' }: GetLatestPostParams = { locale: 'en' },
+  { locale = 'en-US' }: GetLatestPostParams = { locale: 'en-US' },
 ) {
   const posts = getAllPosts({ locale });
   const sortedPosts = posts.sort((a, b) =>
@@ -78,7 +78,7 @@ export function getLatestPost(
   return sortedPosts[0];
 }
 
-export function getPostBySlug({ slug, locale = 'en' }: GetPostBySlugParams) {
+export function getPostBySlug({ slug, locale = 'en-US' }: GetPostBySlugParams) {
   // Generating filename using 'slug'
   const filename = `${slug}.md`;
 

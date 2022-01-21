@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { getAllSlugs, getPostBySlug } from '@/modules/common/lib/posts';
 
+import type { Locale } from '@/modules/common/types';
 import type { PostProps } from '@/modules/Post/types';
 
 import { PostIntro } from '@/modules/Post/components/PostIntro';
@@ -37,11 +38,21 @@ export default function Post({ post }: PostProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const slugs = getAllSlugs({ removeExtension: true });
 
-  const paths = slugs.map(slug => ({
-    params: {
-      slug,
-    },
-  }));
+  const paths = [] as { params: { slug: string }; locale: string }[];
+
+  slugs.forEach(slug => {
+    const ptBR = {
+      params: { slug },
+      locale: 'pt-BR',
+    };
+    paths.push(ptBR);
+
+    const enUS = {
+      params: { slug },
+      locale: 'en-US',
+    };
+    paths.push(enUS);
+  });
 
   return {
     paths,
@@ -49,10 +60,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params as { slug: string };
+export const getStaticProps: GetStaticProps = async ctx => {
+  const { slug } = ctx.params as { slug: string };
+  const locale = ctx.locale as Locale;
 
-  const post = getPostBySlug({ slug });
+  const post = getPostBySlug({ slug, locale });
 
   return {
     props: {

@@ -2,6 +2,7 @@ import { Icon, Link, useColorModeValue } from '@chakra-ui/react';
 import { MouseEvent } from 'react';
 import { IconType } from 'react-icons';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
 import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 interface SectionLinkProps {
@@ -10,6 +11,8 @@ interface SectionLinkProps {
 }
 
 export function SectionLink({ title, icon }: SectionLinkProps) {
+  const translate = useTranslation();
+
   const { experienceSectionRef, contactsSectionRef } = useHomeContext();
 
   const bgColor = useColorModeValue('primary.regular', 'primary.light');
@@ -59,7 +62,9 @@ export function SectionLink({ title, icon }: SectionLinkProps) {
       onClick={scrollToSection}
     >
       <Icon as={icon} mr="2" w="22px" h="22px" />
-      {title}
+      {title === 'Experience'
+        ? translate('experienceLinkLabel')
+        : translate('contactsLinkLabel')}
     </Link>
   );
 }

@@ -7,15 +7,18 @@ import {
   UnorderedList,
 } from '@chakra-ui/react';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
 import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
 export function ContactsSection() {
+  const translate = useTranslation();
+
   const { contactsSectionRef } = useHomeContext();
 
   return (
     <Box ref={contactsSectionRef} as="section" id="contacts">
       <Heading size="xl" textAlign={['center', 'center', 'left']}>
-        Contacts
+        {translate('contactsTitle')}
       </Heading>
 
       <Text
@@ -24,7 +27,7 @@ export function ContactsSection() {
         lineHeight="6"
         textAlign={['center', 'center', 'left']}
       >
-        You can contact me on:
+        {translate('contactsDescription')}
       </Text>
 
       <UnorderedList>

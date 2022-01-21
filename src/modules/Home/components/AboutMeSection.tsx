@@ -1,7 +1,11 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
+
 export function AboutMeSection() {
+  const translate = useTranslation();
+
   return (
     <Flex
       as="section"
@@ -11,9 +15,9 @@ export function AboutMeSection() {
     >
       <Box flex="1">
         <Heading size="xl" textAlign={['center', 'center', 'left']}>
-          I’m a developer whose main objective is to{' '}
+          {translate('aboutMeTitle')}{' '}
           <Text as="span" color="primary.regular">
-            evolve
+            {translate('aboutMeTitleEmphasis')}
           </Text>
         </Heading>
 
@@ -23,9 +27,7 @@ export function AboutMeSection() {
           lineHeight="6"
           textAlign={['center', 'center', 'left']}
         >
-          I started my journey in the web development world in 2020 and, since
-          then, I already knew that I’ll always need to evolve myself, both as a
-          person and a professional.
+          {translate('aboutMeDescription')}
         </Text>
       </Box>
       <Flex

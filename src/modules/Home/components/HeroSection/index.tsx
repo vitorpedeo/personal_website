@@ -1,9 +1,13 @@
 import { Flex, Heading, HStack, Text } from '@chakra-ui/react';
 import { IoBriefcase, IoPhonePortraitOutline } from 'react-icons/io5';
 
+import useTranslation from '@/modules/common/hooks/useTranslation';
+
 import { SectionLink } from './SectionLink';
 
 export function HeroSection() {
+  const translate = useTranslation();
+
   return (
     <Flex as="section" pb="24" direction="column" align="center">
       <Heading
@@ -12,7 +16,7 @@ export function HeroSection() {
         textAlign="center"
         letterSpacing={1}
       >
-        Hi there! I’m Vitor 😀️
+        {`${translate('greeting')} 😀️`}
       </Heading>
 
       <Text
@@ -22,9 +26,7 @@ export function HeroSection() {
         textAlign="center"
         lineHeight="6"
       >
-        I develop websites and, sometimes, I like to write about my work and
-        studies. As you’re visiting my website, feel free to enjoy all of its
-        content!
+        {translate('intro')}
       </Text>
 
       <HStack spacing="6" w="full" align="center" justify="center">

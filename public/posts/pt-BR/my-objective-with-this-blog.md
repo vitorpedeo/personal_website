@@ -1,5 +1,5 @@
 ---
-slug: meu-objetivo-com-esse-blog
+slug: my-objective-with-this-blog
 title: Meu objetivo com esse blog
 excerpt: Nesse post, irei explicar o que desejo alcançar com o meu blog pessoal.
 publishedAt: "2022-01-19"
