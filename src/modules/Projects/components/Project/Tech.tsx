@@ -1,4 +1,9 @@
-import { Tag, TagLabel, TagLeftIcon } from '@chakra-ui/react';
+import {
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { useMemo } from 'react';
 import {
   SiCss3,
@@ -10,36 +15,33 @@ import {
   SiSass,
 } from 'react-icons/si';
 
-import { TechNames } from '@/modules/common/types';
+import { TechProps } from '@/modules/Projects/types';
 
-interface TechProps {
-  name: TechNames;
-  color: string;
-}
+export function Tech({ name }: TechProps) {
+  const textColor = useColorModeValue('white', 'bg.dark');
+  const bgColor = useColorModeValue('bg.dark', 'white');
 
-export function Tech({ name, color }: TechProps) {
   const icons = useMemo(
     () => ({
       HTML: SiHtml5,
       CSS: SiCss3,
       Javascript: SiJavascript,
       React: SiReact,
-      'API Rest': SiFastapi,
+      'Rest API': SiFastapi,
       Sass: SiSass,
       'Next.js': SiNextdotjs,
     }),
     [],
   );
 
-  const lightenColor = `${color}20`;
-
   return (
     <Tag
       variant="subtle"
       size="lg"
       borderRadius="full"
-      background={lightenColor}
-      color={color}
+      background={bgColor}
+      color={textColor}
+      letterSpacing="0.02rem"
     >
       <TagLeftIcon as={icons[name]} />
       <TagLabel fontWeight="bold">{name}</TagLabel>

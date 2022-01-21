@@ -1,45 +1,40 @@
-import { TechNames } from '@/modules/common/types';
+import type { TechNames } from '@/modules/common/types';
 
-/* useProjects types */
-
-type ProjectImage = {
-  data: {
-    attributes: {
-      alternativeText: string;
-      formats: {
-        large: {
-          url: string;
-        };
-      };
-    };
-  };
-};
-
-type ProjectTechnology = {
-  data: [
-    {
-      attributes: {
-        name: TechNames;
-        color: string;
-      };
-    },
-  ];
-};
+/* General types */
 
 type Project = {
-  id: number;
-  attributes: {
-    title: string;
-    description: string;
-    repo_url: string;
-    live_url: string;
-    image: ProjectImage;
-    technologies: ProjectTechnology;
-  };
+  id: string;
+  title: string;
+  description: string;
+  repo_url: string;
+  live_url: string;
+  technologies: {
+    id: number;
+    name: TechNames;
+  }[];
 };
 
-export type ProjectAPIPayload = {
-  data: Project[];
-};
+/* types for @/pages/projects.tsx */
 
-/* useProjects types end */
+export interface ProjectsProps {
+  projects: Project[];
+}
+
+/* types for @/modules/Projects/components/Project/index.tsx */
+
+export interface ProjectProps {
+  project: Project;
+}
+
+/* types for @/modules/Projects/components/Project/ProjectLink.tsx */
+
+export interface ProjectLinkProps {
+  urlType: 'live' | 'repo';
+  url: string;
+}
+
+/* types for @/modules/Projects/components/Project/Tech.tsx */
+
+export interface TechProps {
+  name: TechNames;
+}
