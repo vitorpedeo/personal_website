@@ -1,53 +1,33 @@
-/* usePost types */
+/* General types */
 
-type Banner = {
-  data: {
-    attributes: {
-      alternativeText: string;
-      caption: string;
-      url: string;
-    };
-  };
+type FrontMatter = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  publishedAt: string;
+  tags: string[];
 };
 
-type Tags = {
-  data: [
-    {
-      id: number;
-      attributes: {
-        name: string;
-        slug: string;
-      };
-    },
-  ];
+export type Post = {
+  frontMatter: FrontMatter;
+  markdown: string;
 };
 
-type Post = {
-  id: number;
-  attributes: {
-    slug: string;
-    title: string;
-    description: string;
-    read_time: string;
-    publishedAt: string;
-    content: string;
-    banner: Banner;
-    tags: Tags;
-  };
-};
+/* types for @/pages/blog/index.tsx */
 
-type Slug = {
-  attributes: {
-    slug: string;
-  };
-};
+export interface PostProps {
+  post: Post;
+}
 
-export type PostAPIPayload = {
-  data: Post[];
-};
+/* types for @/modules/Post/components/PostIntro/index.tsx */
 
-export type SlugsAPIPayload = {
-  data: Slug[];
-};
+export interface PostIntroProps {
+  meta: FrontMatter;
+  content: string;
+}
 
-/* usePost types end */
+/* types for @/modules/Post/components/PostContent/index.tsx */
+
+export interface PostContentProps {
+  content: string;
+}

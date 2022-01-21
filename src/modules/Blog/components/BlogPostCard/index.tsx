@@ -10,27 +10,27 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useMemo } from 'react';
+
+import type { BlogPostCardProps } from '@/modules/Blog/types';
 
 import { Tag } from './Tag';
 
-type Post = {
-  slug: string;
-  title: string;
-  description: string;
-  read_time: string;
-  image_url: string;
-  image_alt: string;
-  tags: {
-    id: number;
-    name: string;
-  }[];
-};
-
-interface BlogPostCardProps {
-  post: Post;
-}
-
 export function BlogPostCard({ post }: BlogPostCardProps) {
+  const { frontMatter, markdown } = post;
+
+  const readTime = useMemo(() => {
+    const postContentWithoutSpecialCharacters = markdown.replace(
+      /[^a-zA-Z0-9 ]/g,
+      '',
+    );
+    const postContentTotalWords =
+      postContentWithoutSpecialCharacters.split(' ').length;
+    const wordsPerMinute = 250;
+
+    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} min read`;
+  }, [markdown]);
+
   const bgColor = useColorModeValue('white', 'accent.dark');
 
   return (
@@ -68,8 +68,8 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
     >
       <Box w={['100%', 240]} h={[240]} position="relative">
         <Image
-          src={post.image_url}
-          alt={post.image_alt}
+          src={`/images/posts/${frontMatter.slug}/banner.jpg`}
+          alt={`${frontMatter.title} Thumbnail`}
           layout="fill"
           objectFit="cover"
           priority
@@ -77,25 +77,25 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       </Box>
 
       <Flex p="6" direction="column">
-        <NextLink href={`/blog/post/${post.slug}`} passHref>
+        <NextLink href={`/blog/post/${frontMatter.slug}`} passHref>
           <LinkOverlay>
             <Heading size="md" fontWeight="700" lineHeight="7">
-              {post.title}
+              {frontMatter.title}
             </Heading>
           </LinkOverlay>
         </NextLink>
 
         <Text my="2" fontSize="sm" lineHeight="6">
-          {post.read_time}
+          {readTime}
         </Text>
 
         <Text mb="4" fontSize="lg" lineHeight="6">
-          {post.description}
+          {frontMatter.excerpt}
         </Text>
 
         <Flex mt="auto" gap="4" wrap="wrap">
-          {post.tags.map(tag => (
-            <Tag key={tag.id}>{tag.name}</Tag>
+          {frontMatter.tags.map(tag => (
+            <Tag key={tag}>{tag}</Tag>
           ))}
         </Flex>
       </Flex>

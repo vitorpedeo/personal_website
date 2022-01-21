@@ -1,25 +1,10 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
-import { TechNames } from '@/modules/common/types';
+import type { ProjectProps } from '@/modules/Projects/types';
 
 import { ProjectLink } from './ProjectLink';
 import { Tech } from './Tech';
-
-interface ProjectProps {
-  project: {
-    title: string;
-    description: string;
-    repo_url: string;
-    live_url: string;
-    image_url: string;
-    image_alt: string;
-    technologies: {
-      name: TechNames;
-      color: string;
-    }[];
-  };
-}
 
 export function Project({ project }: ProjectProps) {
   return (
@@ -40,8 +25,8 @@ export function Project({ project }: ProjectProps) {
         overflow="hidden"
       >
         <Image
-          src={project.image_url}
-          alt={project.image_alt}
+          src={`/images/projects/${project.id}.jpg`}
+          alt={`${project.title} Screenshot`}
           layout="fill"
           objectFit="cover"
           priority
@@ -60,9 +45,9 @@ export function Project({ project }: ProjectProps) {
         {project.description}
       </Text>
 
-      <Flex my="4" gap="4" wrap="wrap" align="center" justify="center">
+      <Flex my="6" gap="4" wrap="wrap" align="center" justify="center">
         {project.technologies.map(tech => (
-          <Tech key={tech.name} name={tech.name} color={tech.color} />
+          <Tech key={tech.name} name={tech.name} />
         ))}
       </Flex>
 

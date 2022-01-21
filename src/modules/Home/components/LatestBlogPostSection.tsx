@@ -5,86 +5,33 @@ import {
   Link,
   LinkBox,
   LinkOverlay,
-  Skeleton,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useMemo } from 'react';
 
-import useLatestPost from '@/modules/Home/hooks/queries/useLatestPost';
+import type { LatestBlogPostSectionProps } from '@/modules/Home/types';
 
-import { CustomAlert } from '@/modules/common/components/CustomAlert';
+export function LatestBlogPostSection({
+  latestPost,
+}: LatestBlogPostSectionProps) {
+  const { frontMatter, markdown } = latestPost;
 
-export function LatestBlogPostSection() {
-  const { data, isError, isLoading } = useLatestPost();
+  const readTime = useMemo(() => {
+    const postContentWithoutSpecialCharacters = markdown.replace(
+      /[^a-zA-Z0-9 ]/g,
+      '',
+    );
+    const postContentTotalWords =
+      postContentWithoutSpecialCharacters.split(' ').length;
+    const wordsPerMinute = 250;
+
+    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} min read`;
+  }, [markdown]);
 
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
-
-  function renderContent() {
-    if (isError) {
-      return (
-        <CustomAlert
-          status="error"
-          title="Oops, something went wrong 😟"
-          description="Could not fetch latest post. Please, try again later"
-        />
-      );
-    }
-
-    if (isLoading) {
-      return <Skeleton maxW={360} w="full" h={314} borderRadius={8} />;
-    }
-
-    if (!data) {
-      return null;
-    }
-
-    return (
-      <LinkBox
-        as="article"
-        maxW={[300, 360]}
-        w="full"
-        borderRadius={8}
-        background={latestPostCardBgColor}
-        boxShadow="md"
-        overflow="hidden"
-        transition="transform 0.3s ease-in-out"
-        _hover={{
-          textDecoration: 'none',
-          transform: 'scale(1.02)',
-        }}
-      >
-        <Box position="relative" w="full" h={150}>
-          <Image
-            src={data.image_url}
-            alt={data.image_alt}
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-        </Box>
-
-        <Box p="6">
-          <NextLink href={`/blog/post/${data.slug}`} passHref>
-            <LinkOverlay>
-              <Heading size="md" fontWeight="700" lineHeight="7">
-                {data.title}
-              </Heading>
-            </LinkOverlay>
-          </NextLink>
-
-          <Text my="2" fontSize="sm" lineHeight="6">
-            {data.read_time}
-          </Text>
-
-          <Text fontSize="lg" lineHeight="6">
-            {data.description}
-          </Text>
-        </Box>
-      </LinkBox>
-    );
-  }
 
   return (
     <Box as="section" id="latest-blog-post" pb="24">
@@ -103,7 +50,48 @@ export function LatestBlogPostSection() {
       </Text>
 
       <Flex direction="column" align="center" justify="center">
-        {renderContent()}
+        <LinkBox
+          as="article"
+          maxW={[300, 360]}
+          w="full"
+          borderRadius={8}
+          background={latestPostCardBgColor}
+          boxShadow="md"
+          overflow="hidden"
+          transition="transform 0.3s ease-in-out"
+          _hover={{
+            textDecoration: 'none',
+            transform: 'scale(1.02)',
+          }}
+        >
+          <Box position="relative" w="full" h={150}>
+            <Image
+              src={`/images/posts/${frontMatter.slug}/banner.jpg`}
+              alt={`${frontMatter.title} Thumbnail`}
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          </Box>
+
+          <Box p="6">
+            <NextLink href={`/blog/post/${frontMatter.slug}`} passHref>
+              <LinkOverlay>
+                <Heading size="md" fontWeight="700" lineHeight="7">
+                  {frontMatter.title}
+                </Heading>
+              </LinkOverlay>
+            </NextLink>
+
+            <Text my="2" fontSize="sm" lineHeight="6">
+              {readTime}
+            </Text>
+
+            <Text fontSize="lg" lineHeight="6">
+              {frontMatter.excerpt}
+            </Text>
+          </Box>
+        </LinkBox>
 
         <NextLink href="/blog" passHref>
           <Link

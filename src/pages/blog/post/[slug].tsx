@@ -1,51 +1,41 @@
 import { Box, Container } from '@chakra-ui/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { dehydrate, QueryClient } from 'react-query';
 
-import usePost, {
-  getPost,
-  getSlugs,
-} from '@/modules/Post/hooks/queries/usePost';
+import { getAllSlugs, getPostBySlug } from '@/modules/common/lib/posts';
+
+import type { PostProps } from '@/modules/Post/types';
 
 import { PostIntro } from '@/modules/Post/components/PostIntro';
 import { PostContent } from '@/modules/Post/components/PostContent';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
-export default function Post() {
-  const { query } = useRouter();
-  const { slug } = query;
-
-  const { data } = usePost(slug as string);
+export default function Post({ post }: PostProps) {
+  const { frontMatter, markdown } = post;
 
   return (
-    <PageWithSeo
-      title={data?.title || 'Post'}
-      description={data?.description || 'This is one of my blog posts'}
-    >
+    <PageWithSeo title={frontMatter.title} description={frontMatter.excerpt}>
       <Box w="full" h={[200, 300, 400]} position="relative">
-        {data ? (
-          <Image
-            src={data.image_url}
-            alt={data.image_alt}
-            layout="fill"
-            objectFit="cover"
-            priority
-          />
-        ) : null}
+        <Image
+          src={`/images/posts/${frontMatter.slug}/banner.jpg`}
+          alt={`${frontMatter.title} Banner`}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          priority
+        />
       </Box>
 
       <Container pt="12" pb="80" maxW={1020}>
-        <PostIntro />
-        <PostContent />
+        <PostIntro meta={frontMatter} content={markdown} />
+        <PostContent content={markdown} />
       </Container>
     </PageWithSeo>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await getSlugs();
+  const slugs = getAllSlugs({ removeExtension: true });
 
   const paths = slugs.map(slug => ({
     params: {
@@ -61,13 +51,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string };
-  const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(['post', slug], () => getPost(slug));
+  const post = getPostBySlug({ slug });
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      post,
     },
     revalidate: 60 * 60 * 24, // 1 day
   };

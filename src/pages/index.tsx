@@ -1,9 +1,10 @@
 import { Container } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
-import { dehydrate, QueryClient } from 'react-query';
 
-import { getExperiencesRequest } from '@/modules/Home/hooks/queries/useExperiences';
-import { getLatestPostRequest } from '@/modules/Home/hooks/queries/useLatestPost';
+import { getExperiences } from '@/modules/common/lib/experiences';
+import { getLatestPost } from '@/modules/common/lib/posts';
+
+import type { HomeProps } from '@/modules/Home/types';
 
 import HomeContextProvider from '@/modules/Home/contexts/HomeContext';
 
@@ -14,7 +15,7 @@ import { ContactsSection } from '@/modules/Home/components/ContactsSection';
 import { ExperienceSection } from '@/modules/Home/components/ExperienceSection';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
-export default function Home() {
+export default function Home({ experiences, latestPost }: HomeProps) {
   return (
     <PageWithSeo
       title="vitorpedeo | Home"
@@ -24,8 +25,8 @@ export default function Home() {
         <HomeContextProvider>
           <HeroSection />
           <AboutMeSection />
-          <LatestBlogPostSection />
-          <ExperienceSection />
+          <LatestBlogPostSection latestPost={latestPost} />
+          <ExperienceSection experiences={experiences} />
           <ContactsSection />
         </HomeContextProvider>
       </Container>
@@ -34,14 +35,13 @@ export default function Home() {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery('latestPost', getLatestPostRequest);
-  await queryClient.prefetchQuery('experiences', getExperiencesRequest);
+  const experiences = getExperiences();
+  const latestPost = getLatestPost();
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      experiences,
+      latestPost,
     },
     revalidate: 60 * 60 * 24, // 1 day
   };

@@ -1,44 +1,14 @@
-import { Container, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
+import { Container, Heading, Text } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
-import { dehydrate, QueryClient } from 'react-query';
 
-import useProjects, {
-  getProjectsRequest,
-} from '@/modules/Projects/hooks/queries/useProjects';
+import { getProjects } from '@/modules/common/lib/projects';
+
+import type { ProjectsProps } from '@/modules/Projects/types';
 
 import { Project } from '@/modules/Projects/components/Project';
-import { CustomAlert } from '@/modules/common/components/CustomAlert';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
-export default function Projects() {
-  const { data, isError, isLoading } = useProjects();
-
-  function renderContent() {
-    if (isError) {
-      return (
-        <CustomAlert
-          status="error"
-          title="Oops, something went wrong 😟"
-          description="Could not fetch projects. Please, try again later"
-        />
-      );
-    }
-
-    if (isLoading) {
-      return (
-        <Flex align="center" justify="center">
-          <Spinner size="xl" />
-        </Flex>
-      );
-    }
-
-    if (!data) {
-      return null;
-    }
-
-    return data.map(project => <Project key={project.id} project={project} />);
-  }
-
+export default function Projects({ projects }: ProjectsProps) {
   return (
     <PageWithSeo
       title="vitorpedeo | Projects"
@@ -61,24 +31,24 @@ export default function Projects() {
           textAlign={['center', 'center', 'left']}
           lineHeight="6"
         >
-          Here’s a collection of interesting projects that I built during my
-          studies.
+          Here&apos;s a collection of interesting projects that I built during
+          my studies.
         </Text>
 
-        {renderContent()}
+        {projects.map(project => (
+          <Project key={project.id} project={project} />
+        ))}
       </Container>
     </PageWithSeo>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery('projects', getProjectsRequest);
+  const projects = getProjects();
 
   return {
     props: {
-      dehydratedState: dehydrate(queryClient),
+      projects,
     },
     revalidate: 60 * 60 * 24, // 1 day
   };

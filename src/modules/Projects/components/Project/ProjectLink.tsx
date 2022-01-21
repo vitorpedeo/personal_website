@@ -1,10 +1,7 @@
 import { Icon, Link, useColorModeValue } from '@chakra-ui/react';
 import { IoLogoGithub, IoWifi } from 'react-icons/io5';
 
-interface ProjectLinkProps {
-  urlType: 'live' | 'repo';
-  url: string;
-}
+import type { ProjectLinkProps } from '@/modules/Projects/types';
 
 export function ProjectLink({ urlType, url }: ProjectLinkProps) {
   const bgColor = useColorModeValue('primary.regular', 'primary.light');

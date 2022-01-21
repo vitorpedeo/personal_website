@@ -1,0 +1,90 @@
+{
+  "en": [
+    {
+      "id": "simple-todo-app",
+      "title": "Simple Todo App",
+      "description": "Basic app to register user todos.",
+      "repo_url": "https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/todo_app",
+      "live_url": "https://laughing-jones-c000f3.netlify.app/",
+      "technologies": [
+        {
+          "id": 1,
+          "name": "HTML"
+        },
+        {
+          "id": 2,
+          "name": "Sass"
+        },
+        {
+          "id": 3,
+          "name": "Javascript"
+        }
+      ]
+    },
+    {
+      "id": "ig-news",
+      "title": "ig.news",
+      "description": "Medium-like app to show users articles about React world.",
+      "repo_url": "https://github.com/vitorpedeo/desafio-deploy-aplicacao/tree/main",
+      "live_url": "https://desafio-deploy-aplicacao.vercel.app/",
+      "technologies": [
+        {
+          "id": 1,
+          "name": "React"
+        },
+        {
+          "id": 2,
+          "name": "Sass"
+        },
+        {
+          "id": 3,
+          "name": "Next.js"
+        }
+      ]
+    }
+  ],
+  "ptBR": [
+    {
+      "id": "simple-todo-app",
+      "title": "Todo App Simples",
+      "description": "App básico para registrar as tarefas do usuário.",
+      "repo_url": "https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/todo_app",
+      "live_url": "https://laughing-jones-c000f3.netlify.app/",
+      "technologies": [
+        {
+          "id": 1,
+          "name": "HTML"
+        },
+        {
+          "id": 2,
+          "name": "Sass"
+        },
+        {
+          "id": 3,
+          "name": "Javascript"
+        }
+      ]
+    },
+    {
+      "id": "ig-news",
+      "title": "ig.news",
+      "description": "App no estilo Medium para mostrar aos usuários artigos sobre ecossistema React.",
+      "repo_url": "https://github.com/vitorpedeo/desafio-deploy-aplicacao/tree/main",
+      "live_url": "https://desafio-deploy-aplicacao.vercel.app/",
+      "technologies": [
+        {
+          "id": 1,
+          "name": "React"
+        },
+        {
+          "id": 2,
+          "name": "Sass"
+        },
+        {
+          "id": 3,
+          "name": "Next.js"
+        }
+      ]
+    }
+  ]
+}

@@ -1,24 +1,29 @@
 import { Flex, Heading, HStack, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
+import { format, parseISO } from 'date-fns';
+import { useMemo } from 'react';
 import { IoAlarm, IoCalendar } from 'react-icons/io5';
 
-import usePost from '@/modules/Post/hooks/queries/usePost';
+import type { PostIntroProps } from '@/modules/Post/types';
 
 import { Tag } from './Tag';
 
-export function PostIntro() {
-  const { query } = useRouter();
-  const { slug } = query;
+export function PostIntro({ meta, content }: PostIntroProps) {
+  const formattedPublicationDate = format(
+    parseISO(meta.publishedAt),
+    'dd MMMM yyyy',
+  );
 
-  const { data } = usePost(slug as string);
+  const readTime = useMemo(() => {
+    const postContentWithoutSpecialCharacters = content.replace(
+      /[^a-zA-Z0-9 ]/g,
+      '',
+    );
+    const postContentTotalWords =
+      postContentWithoutSpecialCharacters.split(' ').length;
+    const wordsPerMinute = 250;
 
-  if (!data) {
-    return null;
-  }
-
-  const formattedPublicationDate = new Intl.DateTimeFormat('en-US', {
-    dateStyle: 'medium',
-  }).format(new Date(data.publishedAt));
+    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} min read`;
+  }, [content]);
 
   return (
     <>
@@ -27,7 +32,7 @@ export function PostIntro() {
         fontWeight="bold"
         textAlign={['center', 'center', 'left']}
       >
-        {data.title}
+        {meta.title}
       </Heading>
 
       <HStack
@@ -45,14 +50,14 @@ export function PostIntro() {
         <HStack spacing="2">
           <IoAlarm size={22} />
           <Text as="time" fontSize="sm">
-            {data.read_time}
+            {readTime}
           </Text>
         </HStack>
       </HStack>
 
       <Flex gap="4" wrap="wrap">
-        {data.tags.map(tag => (
-          <Tag key={tag.id}>{tag.name}</Tag>
+        {meta.tags.map(tag => (
+          <Tag key={tag}>{tag}</Tag>
         ))}
       </Flex>
     </>
