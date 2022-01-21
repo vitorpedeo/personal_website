@@ -1,21 +1,8 @@
 import { Box, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
 
-import { TechNames } from '@/modules/common/types';
+import type { ExperienceCardProps } from '@/modules/Home/types';
 
 import { Tech } from './Tech';
-
-interface ExperienceCardProps {
-  experience: {
-    company: string;
-    role: string;
-    work_time: string;
-    description: string;
-    technologies: {
-      name: TechNames;
-      color: string;
-    }[];
-  };
-}
 
 export function ExperienceCard({ experience }: ExperienceCardProps) {
   const bgColor = useColorModeValue('white', 'accent.dark');
@@ -46,7 +33,7 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
 
       <Flex gap="4" align="center" wrap="wrap">
         {experience.technologies.map(tech => (
-          <Tech key={tech.name} name={tech.name} color={tech.color} />
+          <Tech key={tech.name} name={tech.name} />
         ))}
       </Flex>
     </Box>

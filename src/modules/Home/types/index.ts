@@ -1,63 +1,57 @@
-import { TechNames } from '@/modules/common/types';
+import type { TechNames } from '@/modules/common/types';
 
-/* useExperiences types */
-
-type Technology = {
-  data: [
-    {
-      attributes: {
-        name: TechNames;
-        color: string;
-      };
-    },
-  ];
-};
+/* General types */
 
 type Experience = {
   id: number;
-  attributes: {
-    company: string;
-    role: string;
-    work_time: string;
-    description: string;
-    technologies: Technology;
-  };
+  company: string;
+  role: string;
+  work_time: string;
+  description: string;
+  technologies: {
+    id: number;
+    name: TechNames;
+  }[];
 };
 
-export type ExperienceAPIPayload = {
-  data: Experience[];
-};
-
-/* useExperiences types end */
-
-/* useLatestPost types */
-
-type PostBanner = {
-  data: {
-    attributes: {
-      alternativeText: string;
-      formats: {
-        small: {
-          url: string;
-        };
-      };
-    };
-  };
-};
-
-type Post = {
-  id: number;
-  attributes: {
+export type Post = {
+  frontMatter: {
     slug: string;
     title: string;
-    description: string;
-    read_time: string;
-    banner: PostBanner;
+    excerpt: string;
+    publishedAt: string;
+    tags: string[];
   };
+  markdown: string;
 };
 
-export type LatestPostAPIPayload = {
-  data: Post;
-};
+/* types for @/pages/index.tsx */
 
-/* useLatestPost types end */
+export interface HomeProps {
+  latestPost: Post;
+  experiences: Experience[];
+}
+
+/* types for @/modules/Home/components/LatestBlogPostSection.tsx */
+
+export interface LatestBlogPostSectionProps {
+  latestPost: Post;
+}
+
+/* types for @/modules/Home/components/ExperienceSection/index.tsx */
+
+export interface ExperienceSectionProps {
+  experiences: Experience[];
+}
+
+/* types for @/modules/Home/components/ExperienceSection/ExperienceCard.tsx */
+
+export interface ExperienceCardProps {
+  experience: Experience;
+}
+
+/* types for @/modules/Home/components/ExperienceSection/Tech.tsx */
+
+export interface TechProps {
+  name: TechNames;
+}

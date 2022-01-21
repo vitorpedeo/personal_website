@@ -7,7 +7,7 @@ export type TechNames =
   | 'CSS'
   | 'Javascript'
   | 'React'
-  | 'API Rest'
+  | 'Rest API'
   | 'Sass'
   | 'Next.js';
 

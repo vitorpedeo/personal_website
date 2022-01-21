@@ -1,52 +1,14 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Skeleton,
-  Text,
-} from '@chakra-ui/react';
-
-import useExperiences from '@/modules/Home/hooks/queries/useExperiences';
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
 import { useHomeContext } from '@/modules/Home/contexts/HomeContext';
 
-import { CustomAlert } from '@/modules/common/components/CustomAlert';
+import type { ExperienceSectionProps } from '@/modules/Home/types';
+
 import { ExperienceCard } from './ExperienceCard';
 import { ResumeDownloadButton } from './ResumeDownloadButton';
 
-export function ExperienceSection() {
-  const { data, isError, isLoading } = useExperiences();
-
+export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   const { experienceSectionRef } = useHomeContext();
-
-  function renderContent() {
-    if (isError) {
-      return (
-        <CustomAlert
-          status="error"
-          title="Oops, something went wrong 😟"
-          description="Could not fetch experiences. Please, try again later"
-        />
-      );
-    }
-
-    if (isLoading) {
-      return <Skeleton h={317} borderRadius={8} />;
-    }
-
-    if (!data) {
-      return null;
-    }
-
-    return (
-      <SimpleGrid columns={[1, 2, 3]} spacing="6">
-        {data.map(experience => (
-          <ExperienceCard key={experience.id} experience={experience} />
-        ))}
-      </SimpleGrid>
-    );
-  }
 
   return (
     <Box ref={experienceSectionRef} as="section" id="experience" pb="24">
@@ -62,7 +24,11 @@ export function ExperienceSection() {
         <ResumeDownloadButton />
       </Flex>
 
-      {renderContent()}
+      <SimpleGrid columns={[1, 2, 3]} spacing="6">
+        {experiences.map(experience => (
+          <ExperienceCard key={experience.id} experience={experience} />
+        ))}
+      </SimpleGrid>
     </Box>
   );
 }
