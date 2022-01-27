@@ -13,12 +13,13 @@ import type { Locale, PathNames } from '@/modules/common/types';
 
 import { PageLoading } from '@/modules/common/components/PageLoading';
 import { Header } from '@/modules/common/components/Header';
+import { PageTransition } from '@/modules/common/components/PageTransition';
 import { ScrollToTop } from '@/modules/common/components/ScrollToTop';
 import { Footer } from '@/modules/common/components/Footer';
 
 import '@fontsource/rubik';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   const { defaultLocale, locale, pathname } = useRouter();
 
   const currLocale = (locale || 'en-US') as Locale;
@@ -56,7 +57,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <PageLoading />
 
         <Header />
-        <Component {...pageProps} />
+        <PageTransition identifier={router.asPath}>
+          <Component {...pageProps} />
+        </PageTransition>
         <ScrollToTop />
         <Footer />
       </ChakraProvider>

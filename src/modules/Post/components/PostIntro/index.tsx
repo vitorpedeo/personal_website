@@ -65,7 +65,12 @@ export function PostIntro({ meta, content }: PostIntroProps) {
         </HStack>
       </HStack>
 
-      <Flex gap="4" wrap="wrap">
+      <Flex
+        gap="4"
+        wrap="wrap"
+        align="center"
+        justify={['center', 'center', 'flex-start']}
+      >
         {meta.tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>
         ))}
