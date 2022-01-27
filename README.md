@@ -31,7 +31,7 @@ This repo contains all the source code of my [Website](https://www.vitorpedeo.de
 - [Next.js](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Chakra UI](https://chakra-ui.com/)
-- [React Query](https://react-query.tanstack.com/)
+- [React Intl](https://formatjs.io/docs/react-intl/)
 
 ## 🚀 Deploy
 
