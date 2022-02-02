@@ -1,7 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import ReactMarkdown from 'react-markdown';
-import remarkBreaks from 'remark-breaks';
-import remarkGfm from 'remark-gfm';
+import { MDXRemote } from 'next-mdx-remote';
 
 import type { PostContentProps } from '@/modules/Post/types';
 
@@ -55,9 +53,7 @@ const markdownStyles = {
 export function PostContent({ content }: PostContentProps) {
   return (
     <Box mt="8" sx={markdownStyles}>
-      <ReactMarkdown remarkPlugins={[remarkBreaks, remarkGfm]}>
-        {content}
-      </ReactMarkdown>
+      <MDXRemote {...content} />
     </Box>
   );
 }

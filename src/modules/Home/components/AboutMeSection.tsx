@@ -40,6 +40,7 @@ export function AboutMeSection() {
           alt="Developer"
           width={308}
           height={232}
+          priority
         />
       </Flex>
     </Flex>

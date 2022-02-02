@@ -7,6 +7,7 @@ export type Post = {
     excerpt: string;
     publishedAt: string;
     tags: string[];
+    readingTime: number;
   };
   markdown: string;
 };

@@ -28,7 +28,7 @@ export default function Post({ post }: PostProps) {
       </Box>
 
       <Container pt="12" pb="80" maxW={1020}>
-        <PostIntro meta={frontMatter} content={markdown} />
+        <PostIntro meta={frontMatter} />
         <PostContent content={markdown} />
       </Container>
     </PageWithSeo>
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ctx => {
   const { slug } = ctx.params as { slug: string };
   const locale = ctx.locale as Locale;
 
-  const post = getPostBySlug({ slug, locale });
+  const post = await getPostBySlug({ slug, locale });
 
   return {
     props: {

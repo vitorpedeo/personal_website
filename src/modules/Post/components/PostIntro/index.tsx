@@ -3,14 +3,13 @@ import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import enUS from 'date-fns/locale/en-US';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
 import { IoAlarm, IoCalendar } from 'react-icons/io5';
 
 import type { PostIntroProps } from '@/modules/Post/types';
 
 import { Tag } from './Tag';
 
-export function PostIntro({ meta, content }: PostIntroProps) {
+export function PostIntro({ meta }: PostIntroProps) {
   const { locale } = useRouter();
 
   const formattedPublicationDate = format(
@@ -21,19 +20,10 @@ export function PostIntro({ meta, content }: PostIntroProps) {
     },
   );
 
-  const readTime = useMemo(() => {
-    const postContentWithoutSpecialCharacters = content.replace(
-      /[^a-zA-Z0-9 ]/g,
-      '',
-    );
-    const postContentTotalWords =
-      postContentWithoutSpecialCharacters.split(' ').length;
-    const wordsPerMinute = 250;
-
-    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} ${
-      locale === 'en-US' ? 'min read' : 'min de leitura'
-    }`;
-  }, [content, locale]);
+  const readingTime =
+    locale === 'en-US'
+      ? `${meta.readingTime} min read`
+      : `${meta.readingTime} min de leitura`;
 
   return (
     <>
@@ -60,7 +50,7 @@ export function PostIntro({ meta, content }: PostIntroProps) {
         <HStack spacing="2">
           <IoAlarm size={22} />
           <Text as="time" fontSize="sm">
-            {readTime}
+            {readingTime}
           </Text>
         </HStack>
       </HStack>

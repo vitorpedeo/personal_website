@@ -40,7 +40,7 @@ export default function Blog({ posts }: BlogProps) {
 export const getStaticProps: GetStaticProps = async ctx => {
   const locale = ctx.locale as Locale;
 
-  const posts = getAllPosts({ locale });
+  const posts = await getAllPosts({ locale });
 
   return {
     props: {

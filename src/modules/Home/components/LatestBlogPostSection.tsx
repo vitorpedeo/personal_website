@@ -11,7 +11,6 @@ import {
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { useMemo } from 'react';
 
 import useTranslation from '@/modules/common/hooks/useTranslation';
 
@@ -24,21 +23,11 @@ export function LatestBlogPostSection({
 
   const translate = useTranslation();
 
-  const { frontMatter, markdown } = latestPost;
-
-  const readTime = useMemo(() => {
-    const postContentWithoutSpecialCharacters = markdown.replace(
-      /[^a-zA-Z0-9 ]/g,
-      '',
-    );
-    const postContentTotalWords =
-      postContentWithoutSpecialCharacters.split(' ').length;
-    const wordsPerMinute = 250;
-
-    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} ${
-      locale === 'en-US' ? 'min read' : 'min de leitura'
-    }`;
-  }, [locale, markdown]);
+  const { frontMatter } = latestPost;
+  const readingTime =
+    locale === 'en-US'
+      ? `${frontMatter.readingTime} min read`
+      : `${frontMatter.readingTime} min de leitura`;
 
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
 
@@ -92,7 +81,7 @@ export function LatestBlogPostSection({
             </NextLink>
 
             <Text my="2" fontSize="sm" lineHeight="6">
-              {readTime}
+              {readingTime}
             </Text>
 
             <Text fontSize="lg" lineHeight="6">

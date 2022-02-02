@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async ctx => {
   const locale = ctx.locale as Locale;
 
   const experiences = getExperiences({ locale });
-  const latestPost = getLatestPost({ locale });
+  const latestPost = await getLatestPost({ locale });
 
   return {
     props: {

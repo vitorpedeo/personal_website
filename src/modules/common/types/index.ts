@@ -1,3 +1,5 @@
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
+
 /* General types */
 
 export type Locale = 'en-US' | 'pt-BR';
@@ -62,8 +64,9 @@ export type Post = {
     excerpt: string;
     publishedAt: string;
     tags: string[];
+    readingTime: number;
   };
-  markdown: string;
+  markdown: MDXRemoteSerializeResult<Record<string, unknown>>;
 };
 
 export type GetAllSlugsParams = {

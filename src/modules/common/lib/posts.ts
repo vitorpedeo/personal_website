@@ -1,7 +1,9 @@
 import { compareDesc, parseISO } from 'date-fns';
 import fs from 'fs';
 import matter from 'gray-matter';
+import { serialize } from 'next-mdx-remote/serialize';
 import path from 'path';
+import readingTime from 'reading-time';
 
 import type {
   GetLatestPostParams,
@@ -15,14 +17,20 @@ function compareISODates(firstDate: string, secondDate: string) {
   return compareDesc(parseISO(firstDate), parseISO(secondDate));
 }
 
-function parsePost(rawPost: string) {
+async function parsePost(rawPost: string) {
   // Getting front matter information
-  const parsedPost = matter(rawPost);
+  const { content, data } = matter(rawPost);
+
+  const frontMatter = {
+    ...data,
+    readingTime: Math.ceil(readingTime(content).minutes),
+  };
+  const mdxMarkdown = await serialize(content, { scope: frontMatter });
 
   const post = {
-    frontMatter: parsedPost.data,
-    markdown: parsedPost.content,
-  } as Post;
+    frontMatter,
+    markdown: mdxMarkdown,
+  } as unknown as Post;
 
   return post;
 }
@@ -40,7 +48,7 @@ export function getAllSlugs(
   const slugs = fs.readdirSync(postsDir);
 
   if (removeExtension) {
-    const slugsWithoutExtension = slugs.map(slug => slug.replace('.md', ''));
+    const slugsWithoutExtension = slugs.map(slug => slug.replace('.mdx', ''));
 
     return slugsWithoutExtension;
   }
@@ -48,7 +56,7 @@ export function getAllSlugs(
   return slugs;
 }
 
-export function getAllPosts(
+export async function getAllPosts(
   { locale = 'en-US' }: GetAllPostsParams = { locale: 'en-US' },
 ) {
   // Getting all slugs
@@ -62,15 +70,15 @@ export function getAllPosts(
     return fileContent;
   });
 
-  const parsedPosts = rawPosts.map(post => parsePost(post));
+  const parsedPosts = rawPosts.map(async post => parsePost(post));
 
-  return parsedPosts;
+  return Promise.all(parsedPosts);
 }
 
-export function getLatestPost(
+export async function getLatestPost(
   { locale = 'en-US' }: GetLatestPostParams = { locale: 'en-US' },
 ) {
-  const posts = getAllPosts({ locale });
+  const posts = await getAllPosts({ locale });
   const sortedPosts = posts.sort((a, b) =>
     compareISODates(a.frontMatter.publishedAt, b.frontMatter.publishedAt),
   );
@@ -78,9 +86,12 @@ export function getLatestPost(
   return sortedPosts[0];
 }
 
-export function getPostBySlug({ slug, locale = 'en-US' }: GetPostBySlugParams) {
+export async function getPostBySlug({
+  slug,
+  locale = 'en-US',
+}: GetPostBySlugParams) {
   // Generating filename using 'slug'
-  const filename = `${slug}.md`;
+  const filename = `${slug}.mdx`;
 
   // Getting file path
   const filePath = path.join('public', 'posts', locale, filename);
@@ -88,7 +99,7 @@ export function getPostBySlug({ slug, locale = 'en-US' }: GetPostBySlugParams) {
   // Reading file
   const rawPost = fs.readFileSync(filePath, 'utf8');
 
-  const parsedPost = parsePost(rawPost);
+  const parsedPost = await parsePost(rawPost);
 
   return parsedPost;
 }

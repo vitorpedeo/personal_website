@@ -10,26 +10,20 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { useMemo } from 'react';
+import { useRouter } from 'next/router';
 
 import type { BlogPostCardProps } from '@/modules/Blog/types';
 
 import { Tag } from './Tag';
 
 export function BlogPostCard({ post }: BlogPostCardProps) {
-  const { frontMatter, markdown } = post;
+  const { locale } = useRouter();
 
-  const readTime = useMemo(() => {
-    const postContentWithoutSpecialCharacters = markdown.replace(
-      /[^a-zA-Z0-9 ]/g,
-      '',
-    );
-    const postContentTotalWords =
-      postContentWithoutSpecialCharacters.split(' ').length;
-    const wordsPerMinute = 250;
-
-    return `${Math.ceil(postContentTotalWords / wordsPerMinute)} min read`;
-  }, [markdown]);
+  const { frontMatter } = post;
+  const readingTime =
+    locale === 'en-US'
+      ? `${frontMatter.readingTime} min read`
+      : `${frontMatter.readingTime} min de leitura`;
 
   const bgColor = useColorModeValue('white', 'accent.dark');
 
@@ -86,7 +80,7 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         </NextLink>
 
         <Text my="2" fontSize="sm" lineHeight="6">
-          {readTime}
+          {readingTime}
         </Text>
 
         <Text mb="4" fontSize="lg" lineHeight="6">

@@ -6,11 +6,17 @@ type FrontMatter = {
   excerpt: string;
   publishedAt: string;
   tags: string[];
+  readingTime: number;
+};
+
+type PostContent = {
+  compiledSource: string;
+  scope: FrontMatter;
 };
 
 export type Post = {
   frontMatter: FrontMatter;
-  markdown: string;
+  markdown: PostContent;
 };
 
 /* types for @/pages/blog/index.tsx */
@@ -23,11 +29,10 @@ export interface PostProps {
 
 export interface PostIntroProps {
   meta: FrontMatter;
-  content: string;
 }
 
 /* types for @/modules/Post/components/PostContent/index.tsx */
 
 export interface PostContentProps {
-  content: string;
+  content: PostContent;
 }
