@@ -1,5 +1,10 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Link } from '@chakra-ui/react';
 import { MDXRemote } from 'next-mdx-remote';
+import { HTMLProps } from 'react';
+
+import CodeBlock from '@/modules/common/components/CodeBlock';
+import { InlineCode } from '@/modules/common/components/InlineCode';
+import { PostImage } from '@/modules/common/components/PostImage';
 
 import type { PostContentProps } from '@/modules/Post/types';
 
@@ -50,10 +55,26 @@ const markdownStyles = {
   },
 };
 
+const components = {
+  CodeBlock,
+  InlineCode,
+  PostImage,
+  a: (props: HTMLProps<HTMLAnchorElement>) => (
+    <Link
+      href={props.href}
+      isExternal
+      background="transparent"
+      color="primary.regular"
+    >
+      {props.children}
+    </Link>
+  ),
+};
+
 export function PostContent({ content }: PostContentProps) {
   return (
     <Box mt="8" sx={markdownStyles}>
-      <MDXRemote {...content} />
+      <MDXRemote {...content} components={components} />
     </Box>
   );
 }

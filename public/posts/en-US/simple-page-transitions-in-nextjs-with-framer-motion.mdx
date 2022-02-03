@@ -1,0 +1,217 @@
+---
+slug: simple-page-transitions-in-nextjs-with-framer-motion
+title: Simple Page Transitions in Next.js with Framer Motion
+excerpt: Page transitions can be easily implemented with Framer Motion.
+publishedAt: "2022-02-03"
+tags: [Front End, Next.js]
+---
+
+Animations and transitions are a good way to make users entertained while using a software,
+and that's why there is a lot of packages whose object is to facilitate its implementation.
+In this tutorial, I'll be using [Framer Motion](https://www.framer.com/docs/) which is, in
+my opinion, one of the best packages out there to deal with animations (and transitions).
+
+Two things before we start:
+- I assume that you have basic React and Next.js knowledge;
+- This tutorial is using [Typescript](https://www.typescriptlang.org/),
+[Visual Studio Code](https://code.visualstudio.com/) as text editor and
+[yarn](https://yarnpkg.com/) as package manager.
+
+Enough of talking, let's go!
+
+## Project initialization
+
+First of all, start a Next.js project.
+
+<CodeBlock language="bash">
+{`yarn create next-app page-transitions-demo --ts`}
+</CodeBlock>
+
+Next, go to the project root and install <InlineCode>framer-motion</InlineCode> package.
+
+<CodeBlock language="bash">
+{`cd page-transitions-demo`}
+</CodeBlock>
+
+<CodeBlock language="bash">
+{`yarn add framer-motion`}
+</CodeBlock>
+
+Finally, open the project in VSCode.
+
+<CodeBlock language="bash">
+{`code .`}
+</CodeBlock>
+
+Your project root will start with the following folders:
+- node_modules
+- pages
+- public
+- styles
+
+In order to organize our project, delete <InlineCode>styles</InlineCode> folder,
+create a folder named <InlineCode>src</InlineCode> and move <InlineCode>pages</InlineCode> folder
+inside of it. Now, your project root will be something like this:
+- node_modules
+- public
+- src
+  - pages
+
+Now, let's clean our project files. Inside <InlineCode>src</InlineCode> folder, delete <InlineCode>api</InlineCode> folder. Then, select <InlineCode>index.tsx</InlineCode> file and paste the following code:
+
+<CodeBlock language="tsx">
+{`export default function Home() {
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
+}`}
+</CodeBlock>
+
+## Transitions setup
+
+Ok, there's only one file that we didn't modify until now: <InlineCode>_app.tsx</InlineCode>. And the reason
+for that is because this file will be our **main file** in this tutorial, it will contain the transitions
+logic from <InlineCode>framer-motion</InlineCode>.
+
+Inside <InlineCode>_app.tsx</InlineCode>, our first step is to import <InlineCode>motion</InlineCode>.
+
+<CodeBlock language="tsx">
+{`import { motion } from 'framer-motion';`}
+</CodeBlock>
+
+As <InlineCode>framer-motion</InlineCode> docs explains, <InlineCode>motion</InlineCode> component is **
+the core of the Motion API**. It has components for every HTML and SVG elements, but we'll use only <InlineCode>div</InlineCode> in this tutorial.
+
+Next, wrap you <InlineCode>Component</InlineCode> with <InlineCode>motion.div</InlineCode>.
+
+<CodeBlock language="tsx">
+{`<motion.div>
+  <Component {...pageProps} />
+</motion.div>`}
+</CodeBlock>
+
+Let's add two props to <InlineCode>motion.div</InlineCode> component: <InlineCode>initial</InlineCode> and <InlineCode>animate</InlineCode>.
+
+<CodeBlock language="tsx">
+{`<motion.div
+  initial="initial"
+  animate="animate"
+>
+  <Component {...pageProps} />
+</motion.div>`}
+</CodeBlock>
+
+As the name implies, <InlineCode>initial</InlineCode> prop refers to the initial animation state of our component. The <InlineCode>animate</InlineCode> prop refers to the final animation state of our component. I used simpler names just to be clearer, but you can choose any name you want.
+
+These two props are insufficient to our goal, so we'll add another prop: <InlineCode>variants</InlineCode>.
+
+<CodeBlock language="tsx">
+{`<motion.div
+  initial="initial"
+  animate="animate"
+  variants={
+    initial: {
+      x: 300,
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+    },
+  }
+>
+  <Component {...pageProps} />
+</motion.div>`}
+</CodeBlock>
+
+This prop will tell to <InlineCode>motion</InlineCode> how our component will behave on its initial and final animation state. I decided to animate the position and the opacity of my pages, but you can change to whatever you like.
+
+Finally, we need to inform an unique key, so <InlineCode>motion</InlineCode> can identify which component (in our case, page) is currently being shown and animated. For this, we can use the current path our page, as it is an unique value. First, get <InlineCode>router</InlineCode> prop from App props.
+
+<CodeBlock language="tsx">
+{`function MyApp({ Component, pageProps, router }: AppProps)`}
+</CodeBlock>
+
+Now, let's inform that <InlineCode>motion.div</InlineCode> key prop will receive <InlineCode>router.asPath</InlineCode> value.
+
+<CodeBlock language="tsx">
+{`key={router.asPath}`}
+</CodeBlock>
+
+Our <InlineCode>_app.tsx</InlineCode> will look like this:
+
+<CodeBlock language="tsx">
+{`import { motion } from 'framer-motion';
+import type { AppProps } from 'next/app';
+function MyApp({ Component, pageProps, router }: AppProps) {
+  return (
+    <motion.div
+      key={router.asPath}
+      initial="initial"
+      animate="animate"
+      variants={{
+        initial: {
+          x: 300,
+          opacity: 0,
+        },
+        animate: {
+          x: 0,
+          opacity: 1,
+        },
+      }}
+    >
+      <Component {...pageProps} />
+    </motion.div>
+  );
+}
+export default MyApp;`}
+</CodeBlock>
+
+Finally our page transitions are implemented! To see it in action, paste the following code to <InlineCode>index.tsx</InlineCode> file:
+
+<CodeBlock language="tsx">
+{`import Link from 'next/link';
+export default function Home() {
+  return (
+    <div>
+      <Link href="/about">About</Link>
+      <h1>Home</h1>
+    </div>
+  );
+}`}
+</CodeBlock>
+
+Next, create <InlineCode>about.tsx</InlineCode> file and paste the following code:
+
+<CodeBlock language="tsx">
+{`import Link from 'next/link';
+export default function About() {
+  return (
+    <div>
+      <Link href="/">Home</Link>
+      <h1>About</h1>
+    </div>
+  );
+}`}
+</CodeBlock>
+
+To test it, run:
+
+<CodeBlock language="bash">
+{`yarn dev`}
+</CodeBlock>
+
+## Final look
+
+<PostImage
+  src="/images/posts/simple-page-transitions-in-nextjs-with-framer-motion/final.gif"
+  alt="GIF containing final result"
+/>
+
+Some suggestions:
+- Change the animation type (for example, a scale animation);
+- If you pay attention to the above GIF, you'll see that the horizontal scrollbar is appearing and disappearing between the animations. Try to fix it! (Tip: <InlineCode>overflow-x</InlineCode>).
+
+That's it, thanks for reading!
