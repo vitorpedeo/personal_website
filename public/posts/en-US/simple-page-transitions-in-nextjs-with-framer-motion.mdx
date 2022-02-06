@@ -176,13 +176,19 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 export default MyApp;`}
 </CodeBlock>
 
-Finally our page transitions are implemented! To see it in action, paste the following code to <InlineCode>index.tsx</InlineCode> file:
+Finally our page transitions are implemented! To see it in action, firstly update your <InlineCode>index.tsx</InlineCode> file:
 
 <CodeBlock language="tsx">
 {`import Link from 'next/link';
 export default function Home() {
   return (
-    <div>
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <Link href="/about">About</Link>
       <h1>Home</h1>
     </div>
@@ -196,7 +202,13 @@ Next, create <InlineCode>about.tsx</InlineCode> file and paste the following cod
 {`import Link from 'next/link';
 export default function About() {
   return (
-    <div>
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <Link href="/">Home</Link>
       <h1>About</h1>
     </div>

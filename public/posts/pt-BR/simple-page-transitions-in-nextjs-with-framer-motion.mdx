@@ -171,13 +171,19 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 export default MyApp;`}
 </CodeBlock>
 
-Finalmente nossas transições de páginas foram implementadas! Para ver elas em ação, cole o seguinte código no arquivo <InlineCode>index.tsx</InlineCode>:
+Finalmente nossas transições de páginas foram implementadas! Para ver elas em ação, primeiramente atualize o arquivo <InlineCode>index.tsx</InlineCode>:
 
 <CodeBlock language="tsx">
 {`import Link from 'next/link';
 export default function Home() {
   return (
-    <div>
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <Link href="/about">About</Link>
       <h1>Home</h1>
     </div>
@@ -191,7 +197,13 @@ Depois, crie o arquivo <InlineCode>about.tsx</InlineCode> e cole o seguinte cód
 {`import Link from 'next/link';
 export default function About() {
   return (
-    <div>
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <Link href="/">Home</Link>
       <h1>About</h1>
     </div>
