@@ -76,6 +76,7 @@ export type GetAllSlugsParams = {
 
 export type GetAllPostsParams = {
   locale?: Locale;
+  order?: 'asc' | 'desc';
 };
 
 export type GetLatestPostParams = {

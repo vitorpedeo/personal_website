@@ -43,6 +43,7 @@ export function LocaleSwitcher() {
             alt={`${isEnglishLocaleActive ? 'United states' : 'Brazil'} flag`}
             layout="fill"
             objectFit="cover"
+            priority
           />
         </Box>
       </MenuButton>

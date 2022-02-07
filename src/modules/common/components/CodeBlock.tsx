@@ -1,7 +1,7 @@
 import { Skeleton } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json';
 import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';

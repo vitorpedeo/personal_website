@@ -57,7 +57,10 @@ export function getAllSlugs(
 }
 
 export async function getAllPosts(
-  { locale = 'en-US' }: GetAllPostsParams = { locale: 'en-US' },
+  { locale = 'en-US', order = 'desc' }: GetAllPostsParams = {
+    locale: 'en-US',
+    order: 'desc',
+  },
 ) {
   // Getting all slugs
   const slugs = getAllSlugs();
@@ -70,9 +73,16 @@ export async function getAllPosts(
     return fileContent;
   });
 
-  const parsedPosts = rawPosts.map(async post => parsePost(post));
+  const parsedPosts = await Promise.all(
+    rawPosts.map(async post => parsePost(post)),
+  );
+  const sortedPosts = parsedPosts.sort((a, b) => {
+    return order === 'desc'
+      ? compareISODates(a.frontMatter.publishedAt, b.frontMatter.publishedAt)
+      : compareISODates(b.frontMatter.publishedAt, a.frontMatter.publishedAt);
+  });
 
-  return Promise.all(parsedPosts);
+  return sortedPosts;
 }
 
 export async function getLatestPost(

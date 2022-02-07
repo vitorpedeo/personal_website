@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "analyze": "ANALYZE=true yarn build",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -24,9 +25,11 @@
     "react-icons": "^4.3.1",
     "react-intl": "^5.24.3",
     "react-syntax-highlighter": "^15.4.5",
-    "reading-time": "^1.5.0"
+    "reading-time": "^1.5.0",
+    "sharp": "^0.30.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.10",
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
     "@types/react-syntax-highlighter": "^13.5.2",
