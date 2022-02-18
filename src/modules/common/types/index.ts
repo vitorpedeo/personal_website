@@ -37,21 +37,22 @@ export type GetExperiencesParams = {
 
 /* types for @/modules/common/lib/projects.ts */
 
-type Project = {
-  id: number;
-  company: string;
-  role: string;
-  work_time: string;
+export type ContentfulProject = {
+  image: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
+  title: string;
   description: string;
-  technologies: {
-    id: number;
-    name: string;
-  }[];
+  techs: string[];
+  liveUrl: string;
+  repoUrl: string;
 };
 
-export type ProjectsByLocale = Record<Locale, Project[]>;
-
-export type GetProjectsParams = {
+export type GetAllProjectsParams = {
   locale?: Locale;
 };
 

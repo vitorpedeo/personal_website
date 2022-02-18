@@ -4,14 +4,12 @@ import type { TechNames } from '@/modules/common/types';
 
 type Project = {
   id: string;
+  image: string;
   title: string;
   description: string;
-  repo_url: string;
-  live_url: string;
-  technologies: {
-    id: number;
-    name: TechNames;
-  }[];
+  repoUrl: string;
+  liveUrl: string;
+  techs: TechNames[];
 };
 
 /* types for @/pages/projects.tsx */

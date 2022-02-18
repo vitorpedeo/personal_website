@@ -8,15 +8,7 @@ import { Tech } from './Tech';
 
 export function Project({ project }: ProjectProps) {
   return (
-    <Box
-      as="section"
-      w="full"
-      sx={{
-        '&:not(:last-child)': {
-          marginBottom: '3rem',
-        },
-      }}
-    >
+    <Box as="section" w="full">
       <Box
         w="full"
         h={300}
@@ -25,7 +17,7 @@ export function Project({ project }: ProjectProps) {
         overflow="hidden"
       >
         <Image
-          src={`/images/projects/${project.id}.jpg`}
+          src={project.image}
           alt={`${project.title} Screenshot`}
           layout="fill"
           objectFit="cover"
@@ -46,14 +38,14 @@ export function Project({ project }: ProjectProps) {
       </Text>
 
       <Flex my="6" gap="4" wrap="wrap" align="center" justify="center">
-        {project.technologies.map(tech => (
-          <Tech key={tech.name} name={tech.name} />
+        {project.techs.map(tech => (
+          <Tech key={tech} name={tech} />
         ))}
       </Flex>
 
       <Flex gap="4" wrap="wrap" align="center" justify="center">
-        <ProjectLink urlType="repo" url={project.repo_url} />
-        <ProjectLink urlType="live" url={project.live_url} />
+        <ProjectLink urlType="repo" url={project.repoUrl} />
+        <ProjectLink urlType="live" url={project.liveUrl} />
       </Flex>
     </Box>
   );
