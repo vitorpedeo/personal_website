@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 
-import { getExperiences } from '@/modules/common/lib/experiences';
+import { getAllExperiences } from '@/modules/common/lib/experiences';
 import { getLatestPost } from '@/modules/common/lib/posts';
 
 import type { Locale } from '@/modules/common/types';
@@ -38,7 +38,7 @@ export default function Home({ experiences, latestPost }: HomeProps) {
 export const getStaticProps: GetStaticProps = async ctx => {
   const locale = ctx.locale as Locale;
 
-  const experiences = getExperiences({ locale });
+  const experiences = await getAllExperiences({ locale });
   const latestPost = await getLatestPost({ locale });
 
   return {

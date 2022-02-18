@@ -3,15 +3,12 @@ import type { TechNames } from '@/modules/common/types';
 /* General types */
 
 type Experience = {
-  id: number;
+  id: string;
   company: string;
   role: string;
-  work_time: string;
+  workTime: string;
   description: string;
-  technologies: {
-    id: number;
-    name: TechNames;
-  }[];
+  techs: TechNames[];
 };
 
 export type Post = {

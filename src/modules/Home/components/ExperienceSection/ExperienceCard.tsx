@@ -24,7 +24,7 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
       </Text>
 
       <Text fontSize="sm" lineHeight="6">
-        {experience.work_time}
+        {experience.workTime}
       </Text>
 
       <Text my="4" fontSize="lg" lineHeight="6">
@@ -32,8 +32,8 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
       </Text>
 
       <Flex gap="4" align="center" wrap="wrap">
-        {experience.technologies.map(tech => (
-          <Tech key={tech.name} name={tech.name} />
+        {experience.techs.map(tech => (
+          <Tech key={tech} name={tech} />
         ))}
       </Flex>
     </Box>

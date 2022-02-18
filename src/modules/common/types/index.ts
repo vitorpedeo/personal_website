@@ -17,21 +17,15 @@ export type TechNames =
 
 /* types for @/modules/common/lib/experiences.ts */
 
-type Experience = {
-  id: number;
+export type ContentfulExperience = {
   company: string;
   role: string;
-  work_time: string;
+  workTime: string;
   description: string;
-  technologies: {
-    id: number;
-    name: string;
-  }[];
+  techs: string[];
 };
 
-export type ExperiencesByLocale = Record<Locale, Experience[]>;
-
-export type GetExperiencesParams = {
+export type GetAllExperiencesParams = {
   locale?: Locale;
 };
 

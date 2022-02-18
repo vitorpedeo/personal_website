@@ -1,18 +1,25 @@
-import fs from 'fs';
-import path from 'path';
-
+import { contentfulClient } from '@/modules/common/services/contentful';
 import type {
-  ExperiencesByLocale,
-  GetExperiencesParams,
+  ContentfulExperience,
+  GetAllExperiencesParams,
 } from '@/modules/common/types';
 
-export function getExperiences(
-  { locale = 'en-US' }: GetExperiencesParams = { locale: 'en-US' },
+export async function getAllExperiences(
+  { locale = 'en-US' }: GetAllExperiencesParams = { locale: 'en-US' },
 ) {
-  const experienceFilePath = path.resolve('public', 'experiences.json');
-  const experienceFile = fs.readFileSync(experienceFilePath, 'utf-8');
+  const experiences = await contentfulClient.getEntries<ContentfulExperience>({
+    content_type: 'experience',
+    locale,
+  });
 
-  const parsedExperiences = JSON.parse(experienceFile) as ExperiencesByLocale;
+  const formattedExperiences = experiences.items.map(experience => ({
+    id: experience.sys.id,
+    company: experience.fields.company,
+    role: experience.fields.role,
+    workTime: experience.fields.workTime,
+    description: experience.fields.description,
+    techs: experience.fields.techs,
+  }));
 
-  return parsedExperiences[locale];
+  return formattedExperiences;
 }
