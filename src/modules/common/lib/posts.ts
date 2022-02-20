@@ -1,115 +1,86 @@
-import { compareDesc, parseISO } from 'date-fns';
-import fs from 'fs';
-import matter from 'gray-matter';
-import { serialize } from 'next-mdx-remote/serialize';
-import path from 'path';
 import readingTime from 'reading-time';
 
 import type {
-  GetLatestPostParams,
-  GetAllPostsParams,
+  ContentfulSlug,
+  ContentfulPost,
   GetAllSlugsParams,
+  GetAllPostsParams,
+  GetLatestPostParams,
   GetPostBySlugParams,
-  Post,
 } from '@/modules/common/types';
+import { contentfulClient } from '@/modules/common/services/contentful';
 
-function compareISODates(firstDate: string, secondDate: string) {
-  return compareDesc(parseISO(firstDate), parseISO(secondDate));
-}
-
-async function parsePost(rawPost: string) {
-  // Getting front matter information
-  const { content, data } = matter(rawPost);
-
-  const frontMatter = {
-    ...data,
-    readingTime: Math.ceil(readingTime(content).minutes),
-  };
-  const mdxMarkdown = await serialize(content, { scope: frontMatter });
-
-  const post = {
-    frontMatter,
-    markdown: mdxMarkdown,
-  } as unknown as Post;
-
-  return post;
-}
-
-export function getAllSlugs(
-  { locale = 'en-US', removeExtension = false }: GetAllSlugsParams = {
-    locale: 'en-US',
-    removeExtension: false,
-  },
+export async function getAllSlugs(
+  { locale = 'en-US' }: GetAllSlugsParams = { locale: 'en-US' },
 ) {
-  // Finding all posts inside 'locale' directory
-  const postsDir = path.resolve('public', 'posts', locale);
+  const slugs = await contentfulClient.getEntries<ContentfulSlug>({
+    content_type: 'post',
+    locale,
+    select: 'fields.slug',
+  });
 
-  // Getting all filenames (slugs)
-  const slugs = fs.readdirSync(postsDir);
+  const formattedSlugs = slugs.items.map(rawSlug => rawSlug.fields.slug);
 
-  if (removeExtension) {
-    const slugsWithoutExtension = slugs.map(slug => slug.replace('.mdx', ''));
-
-    return slugsWithoutExtension;
-  }
-
-  return slugs;
+  return formattedSlugs;
 }
 
 export async function getAllPosts(
-  { locale = 'en-US', order = 'desc' }: GetAllPostsParams = {
-    locale: 'en-US',
-    order: 'desc',
-  },
+  { locale = 'en-US' }: GetAllPostsParams = { locale: 'en-US' },
 ) {
-  // Getting all slugs
-  const slugs = getAllSlugs();
-
-  // Reading all files
-  const rawPosts = slugs.map(slug => {
-    const fileDir = path.join('public', 'posts', locale, slug);
-    const fileContent = fs.readFileSync(fileDir, 'utf8');
-
-    return fileContent;
+  const posts = await contentfulClient.getEntries<ContentfulPost>({
+    content_type: 'post',
+    locale,
+    order: '-fields.createdAt',
   });
 
-  const parsedPosts = await Promise.all(
-    rawPosts.map(async post => parsePost(post)),
-  );
-  const sortedPosts = parsedPosts.sort((a, b) => {
-    return order === 'desc'
-      ? compareISODates(a.frontMatter.publishedAt, b.frontMatter.publishedAt)
-      : compareISODates(b.frontMatter.publishedAt, a.frontMatter.publishedAt);
-  });
+  const formattedPosts = posts.items.map(post => ({
+    id: post.sys.id,
+    banner: `https:${post.fields.banner.fields.file.url}`,
+    title: post.fields.title,
+    slug: post.fields.slug,
+    excerpt: post.fields.excerpt,
+    createdAt: post.fields.createdAt,
+    tags: post.fields.tags,
+    readingTime: Math.ceil(readingTime(post.fields.content).minutes),
+    content: post.fields.content,
+  }));
 
-  return sortedPosts;
+  return formattedPosts;
 }
 
 export async function getLatestPost(
   { locale = 'en-US' }: GetLatestPostParams = { locale: 'en-US' },
 ) {
-  const posts = await getAllPosts({ locale });
-  const sortedPosts = posts.sort((a, b) =>
-    compareISODates(a.frontMatter.publishedAt, b.frontMatter.publishedAt),
-  );
+  const allPosts = await getAllPosts({ locale });
+  const latesPost = allPosts[0];
 
-  return sortedPosts[0];
+  return latesPost;
 }
 
-export async function getPostBySlug({
-  slug,
-  locale = 'en-US',
-}: GetPostBySlugParams) {
-  // Generating filename using 'slug'
-  const filename = `${slug}.mdx`;
+export async function getPostBySlug(
+  { slug, locale = 'en-US' }: GetPostBySlugParams = {
+    slug: '',
+    locale: 'en-US',
+  },
+) {
+  const post = await contentfulClient.getEntries<ContentfulPost>({
+    content_type: 'post',
+    locale,
+    'fields.slug': slug,
+  });
 
-  // Getting file path
-  const filePath = path.join('public', 'posts', locale, filename);
+  const postFields = post.items[0].fields;
 
-  // Reading file
-  const rawPost = fs.readFileSync(filePath, 'utf8');
+  const formattedPost = {
+    banner: `https:${postFields.banner.fields.file.url}`,
+    title: postFields.title,
+    slug: postFields.slug,
+    excerpt: postFields.excerpt,
+    createdAt: postFields.createdAt,
+    tags: postFields.tags,
+    readingTime: Math.ceil(readingTime(postFields.content).minutes),
+    content: postFields.content,
+  };
 
-  const parsedPost = await parsePost(rawPost);
-
-  return parsedPost;
+  return formattedPost;
 }

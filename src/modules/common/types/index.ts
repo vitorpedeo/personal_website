@@ -1,5 +1,3 @@
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-
 /* General types */
 
 export type Locale = 'en-US' | 'pt-BR';
@@ -15,68 +13,71 @@ export type TechNames =
   | 'Sass'
   | 'Next.js';
 
+export type Languages = 'javascript' | 'json' | 'bash' | 'typescript' | 'tsx';
+
 /* types for @/modules/common/lib/experiences.ts */
 
-type Experience = {
-  id: number;
+export type ContentfulExperience = {
   company: string;
   role: string;
-  work_time: string;
+  workTime: string;
   description: string;
-  technologies: {
-    id: number;
-    name: string;
-  }[];
+  techs: string[];
 };
 
-export type ExperiencesByLocale = Record<Locale, Experience[]>;
-
-export type GetExperiencesParams = {
+export type GetAllExperiencesParams = {
   locale?: Locale;
 };
 
 /* types for @/modules/common/lib/projects.ts */
 
-type Project = {
-  id: number;
-  company: string;
-  role: string;
-  work_time: string;
+export type ContentfulProject = {
+  image: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
+  };
+  title: string;
   description: string;
-  technologies: {
-    id: number;
-    name: string;
-  }[];
+  techs: string[];
+  liveUrl: string;
+  repoUrl: string;
 };
 
-export type ProjectsByLocale = Record<Locale, Project[]>;
-
-export type GetProjectsParams = {
+export type GetAllProjectsParams = {
   locale?: Locale;
 };
 
 /* types for @/modules/common/lib/posts.ts */
 
-export type Post = {
-  frontMatter: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    tags: string[];
-    readingTime: number;
+export type ContentfulPost = {
+  banner: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
   };
-  markdown: MDXRemoteSerializeResult<Record<string, unknown>>;
+  title: string;
+  slug: string;
+  excerpt: string;
+  createdAt: string;
+  tags: string[];
+  content: string;
+};
+
+export type ContentfulSlug = {
+  slug: string;
 };
 
 export type GetAllSlugsParams = {
   locale?: Locale;
-  removeExtension?: boolean;
 };
 
 export type GetAllPostsParams = {
   locale?: Locale;
-  order?: 'asc' | 'desc';
 };
 
 export type GetLatestPostParams = {

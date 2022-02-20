@@ -12,14 +12,32 @@ import { PostContent } from '@/modules/Post/components/PostContent';
 import { PageWithSeo } from '@/modules/common/components/PageWithSeo';
 
 export default function Post({ post }: PostProps) {
-  const { frontMatter, markdown } = post;
+  const {
+    banner,
+    slug,
+    title,
+    excerpt,
+    createdAt,
+    tags,
+    readingTime,
+    content,
+  } = post;
+
+  const meta = {
+    slug,
+    title,
+    excerpt,
+    createdAt,
+    tags,
+    readingTime,
+  };
 
   return (
-    <PageWithSeo title={frontMatter.title} description={frontMatter.excerpt}>
+    <PageWithSeo title={title} description={excerpt}>
       <Box w="full" h={[200, 300, 400]} position="relative">
         <Image
-          src={`/images/posts/${frontMatter.slug}/banner.jpg`}
-          alt={`${frontMatter.title} Banner`}
+          src={banner}
+          alt={`${title} Banner`}
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -28,15 +46,15 @@ export default function Post({ post }: PostProps) {
       </Box>
 
       <Container pt="12" pb="80" maxW={1020}>
-        <PostIntro meta={frontMatter} />
-        <PostContent content={markdown} />
+        <PostIntro meta={meta} />
+        <PostContent content={content} />
       </Container>
     </PageWithSeo>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = getAllSlugs({ removeExtension: true });
+  const slugs = await getAllSlugs();
 
   const paths = [] as { params: { slug: string }; locale: string }[];
 

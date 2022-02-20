@@ -1,8 +1,8 @@
-import { Container, Heading, Text } from '@chakra-ui/react';
+import { Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { GetStaticProps } from 'next';
 
 import useTranslation from '@/modules/common/hooks/useTranslation';
-import { getProjects } from '@/modules/common/lib/projects';
+import { getAllProjects } from '@/modules/common/lib/projects';
 
 import type { Locale } from '@/modules/common/types';
 import type { ProjectsProps } from '@/modules/Projects/types';
@@ -38,9 +38,11 @@ export default function Projects({ projects }: ProjectsProps) {
           {translate('description')}
         </Text>
 
-        {projects.map(project => (
-          <Project key={project.id} project={project} />
-        ))}
+        <VStack spacing="12" w="full">
+          {projects.map(project => (
+            <Project key={project.id} project={project} />
+          ))}
+        </VStack>
       </Container>
     </PageWithSeo>
   );
@@ -49,7 +51,7 @@ export default function Projects({ projects }: ProjectsProps) {
 export const getStaticProps: GetStaticProps = async ctx => {
   const locale = ctx.locale as Locale;
 
-  const projects = getProjects({ locale });
+  const projects = await getAllProjects({ locale });
 
   return {
     props: {

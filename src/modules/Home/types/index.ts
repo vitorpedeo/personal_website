@@ -3,27 +3,24 @@ import type { TechNames } from '@/modules/common/types';
 /* General types */
 
 type Experience = {
-  id: number;
+  id: string;
   company: string;
   role: string;
-  work_time: string;
+  workTime: string;
   description: string;
-  technologies: {
-    id: number;
-    name: TechNames;
-  }[];
+  techs: TechNames[];
 };
 
-export type Post = {
-  frontMatter: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    tags: string[];
-    readingTime: number;
-  };
-  markdown: string;
+type Post = {
+  id: string;
+  banner: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  createdAt: string;
+  tags: string[];
+  readingTime: number;
+  content: string;
 };
 
 /* types for @/pages/index.tsx */

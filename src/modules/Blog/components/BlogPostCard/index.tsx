@@ -19,11 +19,10 @@ import { Tag } from './Tag';
 export function BlogPostCard({ post }: BlogPostCardProps) {
   const { locale } = useRouter();
 
-  const { frontMatter } = post;
   const readingTime =
     locale === 'en-US'
-      ? `${frontMatter.readingTime} min read`
-      : `${frontMatter.readingTime} min de leitura`;
+      ? `${post.readingTime} min read`
+      : `${post.readingTime} min de leitura`;
 
   const bgColor = useColorModeValue('white', 'accent.dark');
 
@@ -62,8 +61,8 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
     >
       <Box w={['100%', 240]} h={[240]} position="relative">
         <Image
-          src={`/images/posts/${frontMatter.slug}/banner.jpg`}
-          alt={`${frontMatter.title} Thumbnail`}
+          src={post.banner}
+          alt={`${post.title} Thumbnail`}
           layout="fill"
           objectFit="cover"
           priority
@@ -71,10 +70,10 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
       </Box>
 
       <Flex p="6" direction="column">
-        <NextLink href={`/blog/post/${frontMatter.slug}`} passHref>
+        <NextLink href={`/blog/post/${post.slug}`} passHref>
           <LinkOverlay>
             <Heading size="md" fontWeight="700" lineHeight="7">
-              {frontMatter.title}
+              {post.title}
             </Heading>
           </LinkOverlay>
         </NextLink>
@@ -84,11 +83,11 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         </Text>
 
         <Text mb="4" fontSize="lg" lineHeight="6">
-          {frontMatter.excerpt}
+          {post.excerpt}
         </Text>
 
         <Flex mt="auto" gap="4" wrap="wrap">
-          {frontMatter.tags.map(tag => (
+          {post.tags.map(tag => (
             <Tag key={tag}>{tag}</Tag>
           ))}
         </Flex>
