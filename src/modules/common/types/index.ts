@@ -1,5 +1,3 @@
-import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-
 /* General types */
 
 export type Locale = 'en-US' | 'pt-BR';
@@ -14,6 +12,8 @@ export type TechNames =
   | 'Rest API'
   | 'Sass'
   | 'Next.js';
+
+export type Languages = 'javascript' | 'json' | 'bash' | 'typescript' | 'tsx';
 
 /* types for @/modules/common/lib/experiences.ts */
 
@@ -52,26 +52,32 @@ export type GetAllProjectsParams = {
 
 /* types for @/modules/common/lib/posts.ts */
 
-export type Post = {
-  frontMatter: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    tags: string[];
-    readingTime: number;
+export type ContentfulPost = {
+  banner: {
+    fields: {
+      file: {
+        url: string;
+      };
+    };
   };
-  markdown: MDXRemoteSerializeResult<Record<string, unknown>>;
+  title: string;
+  slug: string;
+  excerpt: string;
+  createdAt: string;
+  tags: string[];
+  content: string;
+};
+
+export type ContentfulSlug = {
+  slug: string;
 };
 
 export type GetAllSlugsParams = {
   locale?: Locale;
-  removeExtension?: boolean;
 };
 
 export type GetAllPostsParams = {
   locale?: Locale;
-  order?: 'asc' | 'desc';
 };
 
 export type GetLatestPostParams = {

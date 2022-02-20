@@ -29,7 +29,7 @@ export default function Blog({ posts }: BlogProps) {
 
         <Grid my="12" templateColumns="repeat(2, 1fr)" gap="6">
           {posts.map(post => {
-            return <BlogPostCard key={post.frontMatter.slug} post={post} />;
+            return <BlogPostCard key={post.slug} post={post} />;
           })}
         </Grid>
       </Container>

@@ -2,11 +2,14 @@ import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 
 interface PostImageProps {
-  src: string;
-  altText: string;
+  src?: string;
+  altText?: string;
 }
 
-export function PostImage({ src, altText }: PostImageProps) {
+export function PostImage({
+  src = 'https://via.placeholder.com/300',
+  altText = 'Placeholder',
+}: PostImageProps) {
   return (
     <Box my="6" w="full" h={[200, 300, 400]} position="relative">
       <Image

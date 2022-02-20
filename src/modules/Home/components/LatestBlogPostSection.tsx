@@ -23,11 +23,10 @@ export function LatestBlogPostSection({
 
   const translate = useTranslation();
 
-  const { frontMatter } = latestPost;
   const readingTime =
     locale === 'en-US'
-      ? `${frontMatter.readingTime} min read`
-      : `${frontMatter.readingTime} min de leitura`;
+      ? `${latestPost.readingTime} min read`
+      : `${latestPost.readingTime} min de leitura`;
 
   const latestPostCardBgColor = useColorModeValue('white', 'accent.dark');
 
@@ -63,8 +62,8 @@ export function LatestBlogPostSection({
         >
           <Box position="relative" w="full" h={150}>
             <Image
-              src={`/images/posts/${frontMatter.slug}/banner.jpg`}
-              alt={`${frontMatter.title} Thumbnail`}
+              src={latestPost.banner}
+              alt={`${latestPost.title} Thumbnail`}
               layout="fill"
               objectFit="cover"
               priority
@@ -72,10 +71,10 @@ export function LatestBlogPostSection({
           </Box>
 
           <Box p="6">
-            <NextLink href={`/blog/post/${frontMatter.slug}`} passHref>
+            <NextLink href={`/blog/post/${latestPost.slug}`} passHref>
               <LinkOverlay>
                 <Heading size="md" fontWeight="700" lineHeight="7">
-                  {frontMatter.title}
+                  {latestPost.title}
                 </Heading>
               </LinkOverlay>
             </NextLink>
@@ -85,7 +84,7 @@ export function LatestBlogPostSection({
             </Text>
 
             <Text fontSize="lg" lineHeight="6">
-              {frontMatter.excerpt}
+              {latestPost.excerpt}
             </Text>
           </Box>
         </LinkBox>

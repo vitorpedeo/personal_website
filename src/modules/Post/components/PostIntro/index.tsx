@@ -13,7 +13,7 @@ export function PostIntro({ meta }: PostIntroProps) {
   const { locale } = useRouter();
 
   const formattedPublicationDate = format(
-    parseISO(meta.publishedAt),
+    parseISO(meta.createdAt),
     'dd MMMM yyyy',
     {
       locale: locale === 'en-US' ? enUS : ptBR,

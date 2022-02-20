@@ -1,22 +1,14 @@
 /* General types */
 
-type FrontMatter = {
-  slug: string;
+export type Post = {
+  banner: string;
   title: string;
+  slug: string;
   excerpt: string;
-  publishedAt: string;
+  createdAt: string;
   tags: string[];
   readingTime: number;
-};
-
-type PostContent = {
-  compiledSource: string;
-  scope: FrontMatter;
-};
-
-export type Post = {
-  frontMatter: FrontMatter;
-  markdown: PostContent;
+  content: string;
 };
 
 /* types for @/pages/blog/index.tsx */
@@ -28,11 +20,18 @@ export interface PostProps {
 /* types for @/modules/Post/components/PostIntro/index.tsx */
 
 export interface PostIntroProps {
-  meta: FrontMatter;
+  meta: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    createdAt: string;
+    tags: string[];
+    readingTime: number;
+  };
 }
 
 /* types for @/modules/Post/components/PostContent/index.tsx */
 
 export interface PostContentProps {
-  content: PostContent;
+  content: string;
 }

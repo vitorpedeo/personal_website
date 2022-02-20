@@ -11,16 +11,16 @@ type Experience = {
   techs: TechNames[];
 };
 
-export type Post = {
-  frontMatter: {
-    slug: string;
-    title: string;
-    excerpt: string;
-    publishedAt: string;
-    tags: string[];
-    readingTime: number;
-  };
-  markdown: string;
+type Post = {
+  id: string;
+  banner: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  createdAt: string;
+  tags: string[];
+  readingTime: number;
+  content: string;
 };
 
 /* types for @/pages/index.tsx */
