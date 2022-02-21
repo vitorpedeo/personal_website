@@ -71,6 +71,23 @@ const styles = {
     'h1, h2, h3, h4, h5, h6': {
       color: colorMode === 'light' ? 'heading.light' : 'heading.dark',
     },
+    '::-webkit-scrollbar': {
+      width: '10px',
+    },
+    '::-webkit-scrollbar-track': {
+      borderRadius: '10px',
+      background: colorMode === 'light' ? 'bg.light' : 'bg.dark',
+    },
+    '::-webkit-scrollbar-thumb': {
+      borderRadius: '10px',
+      background: colorMode === 'light' ? 'accent.dark' : 'accent.light',
+    },
+    '::-webkit-scrollbar-thumb:hover': {
+      background:
+        colorMode === 'light'
+          ? 'rgba(46, 49, 58, 0.8)'
+          : 'rgba(237, 237, 237, 0.8)',
+    },
   }),
 };
 
