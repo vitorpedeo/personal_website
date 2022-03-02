@@ -28,10 +28,16 @@ This repo contains all the source code of my [Website](https://www.vitorpedeo.de
 
 ## 🔨 Technologies
 
+I decided to use a CMS in my website. I chose [Contentful](https://www.contentful.com/), a powerful Headless CMS that fitted perfectly in my project.
+
+Besides the CMS, these are the libraries that I think are the most important to my project:
+
 - [Next.js](https://nextjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Chakra UI](https://chakra-ui.com/)
 - [React Intl](https://formatjs.io/docs/react-intl/)
+- [React Markdown](https://remarkjs.github.io/react-markdown/)
+- [React Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/)
 
 ## 🚀 Deploy
 
