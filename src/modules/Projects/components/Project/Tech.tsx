@@ -13,6 +13,10 @@ import {
   SiNextdotjs,
   SiReact,
   SiSass,
+  SiFlutter,
+  SiLaravel,
+  SiOracle,
+  SiVuedotjs,
 } from 'react-icons/si';
 
 import { TechProps } from '@/modules/Projects/types';
@@ -30,6 +34,10 @@ export function Tech({ name }: TechProps) {
       'Rest API': SiFastapi,
       Sass: SiSass,
       'Next.js': SiNextdotjs,
+      Flutter: SiFlutter,
+      Laravel: SiLaravel,
+      PLSQL: SiOracle,
+      Vue: SiVuedotjs,
     }),
     [],
   );
