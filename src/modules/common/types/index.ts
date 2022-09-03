@@ -11,7 +11,11 @@ export type TechNames =
   | 'React'
   | 'Rest API'
   | 'Sass'
-  | 'Next.js';
+  | 'Next.js'
+  | 'Flutter'
+  | 'Laravel'
+  | 'PLSQL'
+  | 'Vue';
 
 export type Languages = 'javascript' | 'json' | 'bash' | 'typescript' | 'tsx';
 
