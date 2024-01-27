@@ -1,0 +1,4 @@
+{
+	"**/*.(ts|tsx)": "yarn tsc --noEmit",
+	"*.{ts,tsx}": ["eslint --fix", "prettier --write"]
+}
