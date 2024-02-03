@@ -1,4 +1,3 @@
 {
-	"**/*.(ts|tsx)": "yarn tsc --noEmit",
-	"*.{ts,tsx}": ["eslint --fix", "prettier --write"]
+	"*.{ts,tsx}": ["yarn prettier --write .", "yarn eslint --max-warnings 0 ."]
 }
