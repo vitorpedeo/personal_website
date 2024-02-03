@@ -22,6 +22,9 @@ const config = {
 			fontFamily: {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 			},
+			backgroundImage: {
+				gradient: 'var(--gradient-background)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
