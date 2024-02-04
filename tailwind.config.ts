@@ -25,6 +25,9 @@ const config = {
 			backgroundImage: {
 				gradient: 'var(--gradient-background)',
 			},
+			minHeight: {
+				content: 'var(--content-height)',
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -38,6 +41,9 @@ const config = {
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
+				},
+				highlight: {
+					DEFAULT: 'hsl(var(--highlight))',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

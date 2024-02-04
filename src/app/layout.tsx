@@ -3,9 +3,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 
-import { Header } from '@/components/header';
-import { ThemeProvider } from '@/components/theme-provider';
+import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
 import { cn } from '@/lib/utils';
+import { ThemeProvider } from '@/providers/theme-provider';
 
 const rubik = Rubik({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -36,9 +37,12 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<main className="mx-auto pt-8 container">
+					<main className="mx-auto min-h-screen pt-8 container">
 						<Header />
-						<section className="pt-12 pb-6">{children}</section>
+						<section className="pt-12 pb-6 min-h-content grid">
+							{children}
+						</section>
+						<Footer />
 					</main>
 				</ThemeProvider>
 			</body>

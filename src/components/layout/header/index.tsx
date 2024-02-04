@@ -10,7 +10,7 @@ export function Header() {
 				{'<vitorpedeo/>'}
 			</Link>
 
-			<div className="flex gap-6 items-center">
+			<div className="flex gap-2 sm:gap-6 items-center">
 				<LangButton />
 				<ThemeButton />
 			</div>
