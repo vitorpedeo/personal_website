@@ -1,15 +1,13 @@
-import Link from 'next/link';
-
+import { DrawerButton } from './drawer-button';
 import { LangButton } from './lang-button';
 import { Links } from './links';
+import { Logo } from './logo';
 import { ThemeButton } from './theme-button';
 
 export function Header() {
 	return (
 		<header className="w-full flex items-center justify-between">
-			<Link href="/" className="text-2xl font-extrabold">
-				{'<vitorpedeo/>'}
-			</Link>
+			<Logo />
 
 			<div className="hidden sm:inline-block">
 				<Links />
@@ -19,6 +17,8 @@ export function Header() {
 				<LangButton />
 				<ThemeButton />
 			</div>
+
+			<DrawerButton />
 		</header>
 	);
 }

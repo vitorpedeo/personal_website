@@ -30,7 +30,7 @@ export function Links() {
 	}
 
 	return (
-		<nav className="flex gap-6 items-center">
+		<nav className="my-8 sm:my-0 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center">
 			{links.map(({ href, label, isActive }) => (
 				<Link
 					key={href}
