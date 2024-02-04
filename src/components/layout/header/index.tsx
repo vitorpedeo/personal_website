@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { LangButton } from './lang-button';
+import { Links } from './links';
 import { ThemeButton } from './theme-button';
 
 export function Header() {
@@ -10,7 +11,11 @@ export function Header() {
 				{'<vitorpedeo/>'}
 			</Link>
 
-			<div className="flex gap-2 sm:gap-6 items-center">
+			<div className="hidden sm:inline-block">
+				<Links />
+			</div>
+
+			<div className="hidden sm:flex gap-6 items-center">
 				<LangButton />
 				<ThemeButton />
 			</div>
