@@ -25,7 +25,7 @@ export function Links() {
 		},
 	];
 
-	if (pathname === '/') {
+	if (pathname === '/' || pathname.includes('/blog/')) {
 		return null;
 	}
 

@@ -39,7 +39,7 @@ export default function RootLayout({
 				>
 					<main className="mx-auto min-h-screen pt-8 container">
 						<Header />
-						<section className="pt-12 pb-6 min-h-content grid">
+						<section className="pt-12 pb-6 min-h-content grid relative">
 							{children}
 						</section>
 						<Footer />
