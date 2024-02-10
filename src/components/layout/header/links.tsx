@@ -35,7 +35,10 @@ export function Links() {
 				<Link
 					key={href}
 					href={href}
-					className={clsx({ 'font-medium text-highlight': isActive })}
+					className={clsx(
+						{ 'text-body': !isActive },
+						{ 'font-medium text-highlight': isActive },
+					)}
 				>
 					{label}
 				</Link>
