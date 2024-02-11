@@ -1,6 +1,49 @@
 {
+	"links": {
+		"about-me": "Sobre mim",
+		"blog": "Blog",
+		"projects": "Projetos"
+	},
+	"footer": {
+		"rights": "Todos os direitos reservados"
+	},
 	"home": {
 		"whoami": "Me chamo",
 		"my-description": "Desenvolvedor Full Stack que adora construir com"
+	},
+	"about-me": {
+		"summary": {
+			"title": "Conteúdo",
+			"curriculum": "Currículo",
+			"experience": "Experiência",
+			"education": "Formação"
+		},
+		"title": "Sobre mim",
+		"description": "Aqui você irá encontrar todas as minhas experiências e formações, bem como o meu currículo profissional.",
+		"curriculum": {
+			"title": "Currículo",
+			"description": "Utilize uma das opções abaixo para fazer o download do meu currículo!",
+			"buttonLabel": "Baixar em"
+		},
+		"experience": {
+			"title": "Experiência",
+			"description": "Minha carreira como desenvolvedor iniciou-se em 2020 e, desde então, sigo evoluindo como profissional.",
+			"role": "Função",
+			"responsibilities": "Responsabilidades",
+			"techs": "Tecnologias"
+		},
+		"education": {
+			"title": "Formação",
+			"description": "Assim como na vida profissional, sempre fui aplicado na minha formação acadêmica.",
+			"summary": "Resumo"
+		}
+	},
+	"blog": {
+		"title": "Meu blog",
+		"description": "Escrevo um pouco sobre minha experiência no dia a dia e também tento dar algumas dicas sobre as tecnologias do momento."
+	},
+	"projects": {
+		"title": "Meus projetos",
+		"description": "Aqui está uma coleção de projetos que desenvolvi durante minha trajetória."
 	}
 }

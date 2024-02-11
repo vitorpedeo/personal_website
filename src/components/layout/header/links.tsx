@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 
 import { pathnames } from '@/config';
 import { Link, usePathname } from '@/navigation';
@@ -12,22 +13,24 @@ type ILink = {
 };
 
 export function Links() {
+	const t = useTranslations();
+
 	const pathname = usePathname();
 
 	const links: ILink[] = [
 		{
 			href: '/about-me',
-			label: 'Sobre mim',
+			label: t('links.about-me'),
 			isActive: pathname === '/about-me',
 		},
 		{
 			href: '/blog',
-			label: 'Blog',
+			label: t('links.blog'),
 			isActive: pathname === '/blog',
 		},
 		{
 			href: '/projects',
-			label: 'Projetos',
+			label: t('links.projects'),
 			isActive: pathname === '/projects',
 		},
 	];

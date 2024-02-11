@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 const options = [
 	{
 		lang: 'PT-BR',
@@ -10,6 +12,8 @@ const options = [
 ];
 
 export function DownloadCVButtons() {
+	const t = useTranslations();
+
 	return (
 		<div className="mt-2 flex gap-8 flex-wrap">
 			{options.map(option => (
@@ -20,7 +24,7 @@ export function DownloadCVButtons() {
 					rel="noopener noreferrer"
 					className="px-6 py-1.5 rounded bg-highlight text-white text-base hover:opacity-50 transition-opacity duration-300 ease-in-out"
 				>
-					Currículo em {option.lang}
+					{t('about-me.curriculum.buttonLabel')} {option.lang}
 				</a>
 			))}
 		</div>

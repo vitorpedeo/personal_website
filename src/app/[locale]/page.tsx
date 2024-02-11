@@ -23,13 +23,13 @@ export default function Home() {
 
 			<ul className="mt-12 list-none flex gap-6 items-center">
 				<li className="hover:text-highlight">
-					<Link href="/about-me">Sobre mim</Link>
+					<Link href="/about-me">{t('links.about-me')}</Link>
 				</li>
 				<li className="hover:text-highlight">
-					<Link href="/blog">Blog</Link>
+					<Link href="/blog">{t('links.blog')}</Link>
 				</li>
 				<li className="hover:text-highlight">
-					<Link href="/projects">Projetos</Link>
+					<Link href="/projects">{t('links.projects')}</Link>
 				</li>
 			</ul>
 		</div>

@@ -1,14 +1,15 @@
+import { useTranslations } from 'next-intl';
+
 import { BlogPost } from '@/components/blog/blog-post';
 
 export default function AboutMe() {
+	const t = useTranslations();
+
 	return (
 		<div className="flex flex-col gap-12 items-start">
 			<div className="flex flex-col gap-2">
-				<h1 className="text-3xl font-bold">Meu blog</h1>
-				<p className="text-body leading-7">
-					Escrevo um pouco sobre minha experiência no dia a dia e também tento
-					dar algumas dicas sobre as tecnologias do momento.
-				</p>
+				<h1 className="text-3xl font-bold">{t('blog.title')}</h1>
+				<p className="text-body leading-7">{t('blog.description')}</p>
 			</div>
 
 			<div className="w-full grid gap-8">

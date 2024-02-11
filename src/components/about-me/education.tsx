@@ -1,4 +1,8 @@
+import { useTranslations } from 'next-intl';
+
 export function Education() {
+	const t = useTranslations();
+
 	return (
 		<div className="mt-8 flex flex-col gap-5">
 			<div className="flex flex-wrap gap-4 items-start justify-between">
@@ -13,7 +17,9 @@ export function Education() {
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<p className="text-xl font-semibold">Resumo</p>
+				<p className="text-xl font-semibold">
+					{t('about-me.education.summary')}
+				</p>
 				<p className="text-body text-base leading-7">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
 					nibh nec velit ornare accumsan. Maecenas scelerisque mollis sem, vel
