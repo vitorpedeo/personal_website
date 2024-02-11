@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 import { Typing } from '@/components/utils/typing';
+import { Link } from '@/navigation';
 
 export default function Home() {
 	const t = useTranslations();

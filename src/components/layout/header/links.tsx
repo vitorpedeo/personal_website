@@ -1,13 +1,20 @@
 'use client';
 
 import clsx from 'clsx';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+
+import { pathnames } from '@/config';
+import { Link, usePathname } from '@/navigation';
+
+type ILink = {
+	href: keyof typeof pathnames;
+	label: string;
+	isActive: boolean;
+};
 
 export function Links() {
 	const pathname = usePathname();
 
-	const links = [
+	const links: ILink[] = [
 		{
 			href: '/about-me',
 			label: 'Sobre mim',
