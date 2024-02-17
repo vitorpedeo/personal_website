@@ -1,50 +1,53 @@
-export default {
+import { defineField, defineType } from "sanity"
+
+export const experience = defineType({
 	name: 'experience',
 	type: 'document',
 	title: 'Experience',
 	fields: [
-		{
+		defineField({
 			name: 'company',
 			type: 'string',
-			title: 'Company'
-		},
-		{
+			title: 'Company',
+		}),
+		defineField({
 			name: 'localization',
-			type: 'string',
-			title: 'Localization'
-		},
-		{
+			type: 'internationalizedArrayString',
+			title: 'Localization',
+		}),
+		defineField({
 			name: 'isCurrent',
 			type: 'boolean',
-			title: 'Current'
-		},
-		{
+			title: 'Current',
+		}),
+		defineField({
 			name: 'startDate',
 			type: 'date',
-			title: 'Start Date'
-		},
-		{
+			title: 'Start Date',
+		}),
+		defineField({
 			name: 'endDate',
 			type: 'date',
 			title: 'End Date',
-			hidden: ({document}: { document: { isCurrent: boolean } }) => document.isCurrent
-		},
-		{
+			hidden: ({ parent }) => parent.isCurrent,
+		}),
+		defineField({
 			name: 'role',
-			type: 'text',
-			title: 'Role'
-		},
-		{
+			type: 'internationalizedArrayText',
+			title: 'Role',
+		}),
+		defineField({
 			name: 'responsibilities',
-			type: 'array',
-			title: 'Responsibilities',
-			of: [ { type: 'text' } ]
-		},
-		{
+			type: 'internationalizedArrayResponsibilities',
+		}),
+		defineField({
 			name: 'techs',
 			type: 'array',
 			title: 'Techs',
-			of: [ { type: 'reference', to: { type: 'tech' } } ]
-		},
-	]
-}
+			of: [ { type: 'reference', to: { type: 'tech' } } ],
+			options: {
+				disableNew: true,
+			}
+		}),
+	],
+});
