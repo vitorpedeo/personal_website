@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { fetchAboutMe } from '@/actions';
-import { DownloadCVButtons } from '@/components/about-me/download-cv-buttons';
+import { DownloadResumeButtons } from '@/components/about-me/download-resume-buttons';
 import { Education } from '@/components/about-me/education';
 import { Experiencie } from '@/components/about-me/experience';
 
@@ -20,13 +20,17 @@ export default async function AboutMe() {
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<h2 className="text-2xl font-bold">{t('curriculum.title')}</h2>
-						<p className="text-body leading-7">{t('curriculum.description')}</p>
-						<DownloadCVButtons />
+						<h2 id="resume" className="text-2xl font-bold">
+							{t('resume.title')}
+						</h2>
+						<p className="text-body leading-7">{t('resume.description')}</p>
+						<DownloadResumeButtons />
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<h2 className="text-2xl font-bold">{t('experience.title')}</h2>
+						<h2 id="experience" className="text-2xl font-bold">
+							{t('experience.title')}
+						</h2>
 						<p className="text-body leading-7">{t('experience.description')}</p>
 
 						{experiences.map((experience, index) => (
@@ -35,7 +39,9 @@ export default async function AboutMe() {
 					</div>
 
 					<div className="flex flex-col gap-2">
-						<h2 className="text-2xl font-bold">{t('education.title')}</h2>
+						<h2 id="education" className="text-2xl font-bold">
+							{t('education.title')}
+						</h2>
 						<p className="text-body leading-7">{t('education.description')}</p>
 
 						{educations.map((education, index) => (
@@ -44,22 +50,22 @@ export default async function AboutMe() {
 					</div>
 				</div>
 
-				<div className="py-3 px-4 rounded bg-accent shadow-md hidden md:flex flex-col gap-2 self-start">
+				<div className="py-3 px-4 rounded bg-accent shadow-md hidden md:flex flex-col gap-2 self-start sticky top-4">
 					<p className="text-sm font-medium">{t('summary.title')}</p>
 					<div className="w-36 h-px round bg-foreground" />
 					<ul className="mt-3 list-none flex flex-col gap-1">
 						<li>
-							<a href="#curriculo" className="text-body text-xs">
-								{t('summary.curriculum')}
+							<a href="#resume" className="text-body text-xs">
+								{t('summary.resume')}
 							</a>
 						</li>
 						<li>
-							<a href="#experiencia" className="text-body text-xs">
+							<a href="#experience" className="text-body text-xs">
 								{t('summary.experience')}
 							</a>
 						</li>
 						<li>
-							<a href="#formacao" className="text-body text-xs">
+							<a href="#education" className="text-body text-xs">
 								{t('summary.education')}
 							</a>
 						</li>

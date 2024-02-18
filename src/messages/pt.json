@@ -14,13 +14,13 @@
 	"about-me": {
 		"summary": {
 			"title": "Conteúdo",
-			"curriculum": "Currículo",
+			"resume": "Currículo",
 			"experience": "Experiência",
 			"education": "Formação"
 		},
 		"title": "Sobre mim",
 		"description": "Aqui você irá encontrar todas as minhas experiências e formações, bem como o meu currículo profissional.",
-		"curriculum": {
+		"resume": {
 			"title": "Currículo",
 			"description": "Utilize uma das opções abaixo para fazer o download do meu currículo!",
 			"buttonLabel": "Baixar em"

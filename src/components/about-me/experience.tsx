@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { IExperience } from '@/types';
-import { formatDate } from '@/utils';
+import { maskDate } from '@/utils';
 
 type IExperiencieProps = {
 	experience: IExperience;
@@ -23,11 +23,11 @@ export function Experiencie({ experience }: IExperiencieProps) {
 
 				<p className="px-6 py-2 rounded bg-accent shadow-md">
 					<span className="inline-block first-letter:uppercase">
-						{formatDate(experience.startDate)}
+						{maskDate(experience.startDate)}
 					</span>{' '}
 					-{' '}
 					<span className="inline-block first-letter:uppercase">
-						{formatDate(experience.endDate) || t('experience.current')}
+						{maskDate(experience.endDate) || t('experience.current')}
 					</span>
 				</p>
 			</div>

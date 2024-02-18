@@ -1,7 +1,6 @@
-import { cookies } from 'next/headers';
-
 import { imageBuilder, sanityClient } from '@/lib/sanity';
 import { IEducation, IExperience } from '@/types';
+import { getLocale } from '@/utils';
 
 export async function fetchAboutMe() {
 	const experienceQuery = `
@@ -25,8 +24,7 @@ export async function fetchAboutMe() {
 		}
 	`;
 
-	const cookiesStore = cookies();
-	const locale = cookiesStore.get('NEXT_LOCALE')?.value ?? 'pt';
+	const locale = getLocale();
 
 	const experiences = await sanityClient.fetch<IExperience[]>(experienceQuery, {
 		locale,

@@ -3,15 +3,15 @@ import { useTranslations } from 'next-intl';
 const options = [
 	{
 		lang: 'PT-BR',
-		url: 'https://yotube.com',
+		url: '/resumes/pt.pdf',
 	},
 	{
 		lang: 'EN-US',
-		url: 'https://yotube.com',
+		url: '/resumes/en.pdf',
 	},
 ];
 
-export function DownloadCVButtons() {
+export function DownloadResumeButtons() {
 	const t = useTranslations();
 
 	return (
@@ -24,7 +24,7 @@ export function DownloadCVButtons() {
 					rel="noopener noreferrer"
 					className="px-6 py-1.5 rounded bg-highlight text-white text-base hover:opacity-50 transition-opacity duration-300 ease-in-out"
 				>
-					{t('about-me.curriculum.buttonLabel')} {option.lang}
+					{t('about-me.resume.buttonLabel')} {option.lang}
 				</a>
 			))}
 		</div>

@@ -1,6 +1,6 @@
 {
 	"links": {
-		"about-me": "About",
+		"about-me": "About me",
 		"blog": "Blog",
 		"projects": "Projects"
 	},
@@ -14,15 +14,15 @@
 	"about-me": {
 		"summary": {
 			"title": "Content",
-			"curriculum": "Curriculum",
+			"resume": "Resume",
 			"experience": "Experience",
 			"education": "Education"
 		},
 		"title": "About me",
-		"description": "Here you'll find all my experiences and education, as well as my professional CV.",
-		"curriculum": {
-			"title": "Curriculum",
-			"description": "Choose one of the options below to download my professional CV!",
+		"description": "Here you'll find all my experiences and education, as well as my professional resume.",
+		"resume": {
+			"title": "Resume",
+			"description": "Choose one of the options below to download my professional resume!",
 			"buttonLabel": "Download in"
 		},
 		"experience": {
