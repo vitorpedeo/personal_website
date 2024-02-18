@@ -28,6 +28,7 @@
 		"experience": {
 			"title": "Experiência",
 			"description": "Minha carreira como desenvolvedor iniciou-se em 2020 e, desde então, sigo evoluindo como profissional.",
+			"current": "Presente",
 			"role": "Função",
 			"responsibilities": "Responsabilidades",
 			"techs": "Tecnologias"
@@ -35,6 +36,7 @@
 		"education": {
 			"title": "Formação",
 			"description": "Assim como na vida profissional, sempre fui aplicado na minha formação acadêmica.",
+			"current": "Presente",
 			"summary": "Resumo"
 		}
 	},

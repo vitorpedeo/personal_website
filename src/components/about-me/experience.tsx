@@ -1,65 +1,73 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-export function Experiencie() {
-	const t = useTranslations();
+import { IExperience } from '@/types';
+import { formatDate } from '@/utils';
+
+type IExperiencieProps = {
+	experience: IExperience;
+};
+
+export function Experiencie({ experience }: IExperiencieProps) {
+	const t = useTranslations('about-me');
 
 	return (
 		<div className="mt-8 flex flex-col gap-5">
 			<div className="flex flex-wrap gap-4 items-start justify-between">
 				<div className="flex flex-col gap-1.5">
-					<p className="text-xl font-semibold">Nome da Empresa</p>
-					<p className="text-body text-base leading-7">Localização</p>
+					<p className="text-xl font-semibold">{experience.company}</p>
+					<p className="text-body text-base leading-7">
+						{experience.localization}
+					</p>
 				</div>
 
 				<p className="px-6 py-2 rounded bg-accent shadow-md">
-					Jan. 2024 - Jan. 2024
+					<span className="inline-block first-letter:uppercase">
+						{formatDate(experience.startDate)}
+					</span>{' '}
+					-{' '}
+					<span className="inline-block first-letter:uppercase">
+						{formatDate(experience.endDate) || t('experience.current')}
+					</span>
 				</p>
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<p className="text-xl font-semibold">{t('about-me.experience.role')}</p>
-				<p className="text-body text-base leading-7">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-					nibh nec velit ornare accumsan. Maecenas scelerisque mollis sem, vel
-					bibendum lectus euismod vel. Mauris fermentum, nisl at semper
-					ullamcorper.
-				</p>
+				<p className="text-xl font-semibold">{t('experience.role')}</p>
+				<p className="text-body text-base leading-7">{experience.role}</p>
 			</div>
 
 			<div className="flex flex-col gap-1.5">
 				<p className="text-xl font-semibold">
-					{t('about-me.experience.responsibilities')}
+					{t('experience.responsibilities')}
 				</p>
 				<ul className="pl-4 list-disc flex flex-col gap-0.5">
-					<li className="text-body text-base leading-7">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-						nibh nec velit ornare accumsan.
-					</li>
-					<li className="text-body text-base leading-7">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-						nibh nec velit ornare accumsan.
-					</li>
-					<li className="text-body text-base leading-7">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel
-						nibh nec velit ornare accumsan.
-					</li>
+					{experience.responsibilities.map((responsibility, index) => (
+						<li key={index} className="text-body text-base leading-7">
+							{responsibility}
+						</li>
+					))}
 				</ul>
 			</div>
 
 			<div className="flex flex-col gap-1.5">
-				<p className="text-xl font-semibold">
-					{t('about-me.experience.techs')}
-				</p>
+				<p className="text-xl font-semibold">{t('experience.techs')}</p>
 				<ul className="mt-2 grid gap-8 grid-cols-2 sm:grid-cols-3">
-					<li className="px-3 py-1.5 rounded bg-accent shadow-md text-body text-xs leading-7 text-center">
-						React
-					</li>
-					<li className="px-3 py-1.5 rounded bg-accent shadow-md text-body text-xs leading-7 text-center">
-						React
-					</li>
-					<li className="px-3 py-1.5 rounded bg-accent shadow-md text-body text-xs leading-7 text-center">
-						React
-					</li>
+					{experience.techs.map((tech, index) => (
+						<li
+							key={index}
+							className="px-3 py-1.5 rounded bg-accent shadow-md flex gap-2 items-center justify-center"
+						>
+							<Image
+								src={tech.logo}
+								alt={tech.name}
+								width={12}
+								height={12}
+								unoptimized
+							/>
+							<p className="text-body text-xs leading-7">{tech.name}</p>
+						</li>
+					))}
 				</ul>
 			</div>
 		</div>

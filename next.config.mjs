@@ -11,6 +11,11 @@ const nextConfig = {
 				hostname: 'placehold.co',
 				port: '',
 			},
+			{
+				protocol: 'https',
+				hostname: 'cdn.sanity.io',
+				port: '',
+			},
 		],
 	},
 };

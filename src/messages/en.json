@@ -28,6 +28,7 @@
 		"experience": {
 			"title": "Experience",
 			"description": "My software development experience started at 2020 and, since then, I keep evolving as a professional.",
+			"current": "Current",
 			"role": "Role",
 			"responsibilities": "Responsibilities",
 			"techs": "Techs"
@@ -35,6 +36,7 @@
 		"education": {
 			"title": "Education",
 			"description": "Just like in my professional life, I've always been diligent in my academic formation.",
+			"current": "Current",
 			"summary": "Summary"
 		}
 	},
