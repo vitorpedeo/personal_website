@@ -1,7 +1,19 @@
 import { CalendarDays, Timer } from 'lucide-react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 const tags = ['API', 'Back End', 'Notion', 'Next.js'];
+
+export async function generateMetadata(): Promise<Metadata> {
+	// TODO: Get both title and summary from sanity
+	const title = 'vitorpedeo.dev | Post';
+	const description = 'Post description';
+
+	return {
+		title,
+		description,
+	};
+}
 
 export default function BlogPost() {
 	return (

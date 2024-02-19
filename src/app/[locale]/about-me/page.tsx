@@ -1,9 +1,19 @@
+import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import { fetchAboutMe } from '@/actions';
 import { DownloadResumeButtons } from '@/components/about-me/download-resume-buttons';
 import { Education } from '@/components/about-me/education';
 import { Experiencie } from '@/components/about-me/experience';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations('about-me');
+
+	return {
+		title: `vitorpedeo.dev | ${t('title')}`,
+		description: t('description'),
+	};
+}
 
 export default async function AboutMe() {
 	const t = await getTranslations('about-me');

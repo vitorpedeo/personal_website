@@ -1,6 +1,17 @@
+import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { BlogPost } from '@/components/blog/blog-post';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const t = await getTranslations('blog');
+
+	return {
+		title: `vitorpedeo.dev | ${t('title')}`,
+		description: t('description'),
+	};
+}
 
 export default function AboutMe() {
 	const t = useTranslations();
