@@ -18,3 +18,15 @@ export type IEducation = {
 	endDate: string | null;
 	summary: string;
 };
+
+export type IProject = {
+	title: string;
+	description: string;
+	image: string;
+	repoLink: string;
+	liveLink: string;
+	techs: {
+		name: string;
+		color: string;
+	}[];
+};

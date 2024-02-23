@@ -33,7 +33,7 @@ export default function RootLayout({
 	const messages = useMessages();
 
 	return (
-		<html lang={locale} suppressHydrationWarning>
+		<html lang={locale} className="scroll-smooth" suppressHydrationWarning>
 			<body
 				className={cn(
 					'min-h-screen bg-gradient font-sans antialiased',
