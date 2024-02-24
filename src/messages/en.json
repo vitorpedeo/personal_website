@@ -42,7 +42,11 @@
 	},
 	"blog": {
 		"title": "My blog",
-		"description": "I write a little about my day-to-day experience and also try to give some tips about current technologies."
+		"description": "I write a little about my day-to-day experience and also try to give some tips about current technologies.",
+		"readingTime": {
+			"singular": "minute read",
+			"plural": "minutes read"
+		}
 	},
 	"projects": {
 		"title": "My projects",

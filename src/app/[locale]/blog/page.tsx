@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 
+import { fetchPosts } from '@/actions';
 import { BlogPost } from '@/components/blog/blog-post';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -13,19 +13,21 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default function AboutMe() {
-	const t = useTranslations();
+export default async function AboutMe() {
+	const t = await getTranslations('blog');
+
+	const posts = await fetchPosts();
 
 	return (
 		<div className="flex flex-col gap-12 items-start">
 			<div className="flex flex-col gap-2">
-				<h1 className="text-3xl font-bold">{t('blog.title')}</h1>
-				<p className="text-body leading-7">{t('blog.description')}</p>
+				<h1 className="text-3xl font-bold">{t('title')}</h1>
+				<p className="text-body leading-7">{t('description')}</p>
 			</div>
 
 			<div className="w-full grid gap-8">
-				{Array.from({ length: 4 }).map((_, index) => (
-					<BlogPost key={index} />
+				{posts.map((blogPost, index) => (
+					<BlogPost key={index} blogPost={blogPost} />
 				))}
 			</div>
 		</div>

@@ -30,3 +30,12 @@ export type IProject = {
 		color: string;
 	}[];
 };
+
+export type IBlogPost = {
+	title: string;
+	slug: string;
+	image: string;
+	excerpt: string;
+	tags: string[];
+	readingTime: number;
+};
