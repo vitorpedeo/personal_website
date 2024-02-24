@@ -6,7 +6,7 @@ export function Footer() {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="py-8 text-body flex items-center justify-center">
+		<footer className="py-8 text-body text-center flex items-center justify-center">
 			<p>
 				© {currentYear} Vitor Pereira. {t('footer.rights')}
 			</p>

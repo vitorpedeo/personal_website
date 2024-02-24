@@ -7,6 +7,10 @@
 	"footer": {
 		"rights": "Todos os direitos reservados"
 	},
+	"hamburguer-menu": {
+		"theme": "Tema",
+		"language": "Idioma"
+	},
 	"home": {
 		"whoami": "Me chamo",
 		"my-description": "Desenvolvedor Full Stack que adora construir com"

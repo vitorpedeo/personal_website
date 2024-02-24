@@ -83,7 +83,7 @@ export default async function BlogPost({ params }: IPageProps) {
 				</div>
 			</div>
 
-			<div className="max-w-full text-justify prose prose-slate dark:prose-invert">
+			<div className="max-w-full text-justify prose dark:prose-invert">
 				<PortableText value={post.content} />
 			</div>
 		</div>
