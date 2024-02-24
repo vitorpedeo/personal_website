@@ -34,14 +34,14 @@ export default defineConfig({
 					of: [ { type: 'text' } ]
 				})
 			],
-    })
-		// documentInternationalization({
-		// 	supportedLanguages: [
-		// 		{ id: 'en', title: 'English'},
-		// 		{ id: 'pt', title: 'Português'},
-		// 	],
-		// 	schemaTypes: [],
-		// })
+    }),
+		documentInternationalization({
+			supportedLanguages: [
+				{ id: 'en', title: 'English'},
+				{ id: 'pt', title: 'Portuguese'},
+			],
+			schemaTypes: ['post'],
+		})
 	],
 
   schema: {
