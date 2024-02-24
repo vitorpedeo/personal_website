@@ -8,9 +8,6 @@ dependencies:
   '@sanity/color-input':
     specifier: ^3.1.0
     version: 3.1.0(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.29.1)(styled-components@6.1.8)
-  '@sanity/document-internationalization':
-    specifier: ^2.0.3
-    version: 2.0.3(@sanity/ui@2.0.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react@18.2.0)(rxjs@7.8.1)(sanity@3.29.1)(styled-components@6.1.8)
   '@sanity/vision':
     specifier: ^3.29.1
     version: 3.29.1(@babel/runtime@7.23.9)(@codemirror/lint@6.5.0)(@codemirror/state@6.4.0)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.1)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
@@ -2219,32 +2216,6 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       '@sanity/diff-match-patch': 3.1.1
-    dev: false
-
-  /@sanity/document-internationalization@2.0.3(@sanity/ui@2.0.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react@18.2.0)(rxjs@7.8.1)(sanity@3.29.1)(styled-components@6.1.8):
-    resolution: {integrity: sha512-kQFn9JwBjE7IKqCB6amJ4rrbft64v2TiSbqyfup+mkF9BNmuo4eFntVl6akOgCM51STUoyisQfUrRf+dc11g7Q==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      '@sanity/ui': ^1.0 || ^2.0
-      react: ^18
-      react-dom: ^18
-      sanity: ^3.0.0
-      styled-components: ^5.0 || ^6.0
-    dependencies:
-      '@sanity/icons': 2.10.2(react@18.2.0)
-      '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
-      '@sanity/ui': 2.0.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
-      '@sanity/uuid': 3.0.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      sanity: 3.29.1(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
-      sanity-plugin-internationalized-array: 1.10.8(@sanity/ui@2.0.3)(react-dom@18.2.0)(react@18.2.0)(sanity@3.29.1)(styled-components@6.1.8)
-      sanity-plugin-utils: 1.6.4(@sanity/ui@2.0.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react@18.2.0)(rxjs@7.8.1)(sanity@3.29.1)(styled-components@6.1.8)
-      styled-components: 6.1.8(react-dom@18.2.0)(react@18.2.0)
-    transitivePeerDependencies:
-      - react-fast-compare
-      - rxjs
-      - supports-color
     dev: false
 
   /@sanity/eslint-config-studio@3.0.1(eslint@8.56.0)(typescript@5.3.3):
@@ -6321,29 +6292,6 @@ packages:
       suspend-react: 0.0.8(react@18.2.0)
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /sanity-plugin-utils@1.6.4(@sanity/ui@2.0.3)(react-dom@18.2.0)(react-fast-compare@3.2.2)(react@18.2.0)(rxjs@7.8.1)(sanity@3.29.1)(styled-components@6.1.8):
-    resolution: {integrity: sha512-j4LdOlvvM/Utyrl8RWE4VbBwOUx8m+GUoel4CjsBl5h8K1Tgjvpw8J7ftULwCwpcl/yzVGwQutgNw3FXxFbYYg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@sanity/ui': ^1.0 || ^2.0
-      react: ^18
-      react-dom: ^18
-      react-fast-compare: ^3.2.0
-      rxjs: ^7.0.0
-      sanity: ^3.0.0
-      styled-components: ^5.0 || ^6.0
-    dependencies:
-      '@sanity/icons': 2.10.2(react@18.2.0)
-      '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
-      '@sanity/ui': 2.0.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-fast-compare: 3.2.2
-      rxjs: 7.8.1
-      sanity: 3.29.1(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
-      styled-components: 6.1.8(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /sanity@3.29.1(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8):

@@ -34,8 +34,10 @@ export type IProject = {
 export type IBlogPost = {
 	title: string;
 	slug: string;
+	publishedAt: string;
 	image: string;
 	excerpt: string;
+	content: any;
 	tags: string[];
 	readingTime: number;
 };

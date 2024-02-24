@@ -4,16 +4,28 @@ export const post = defineType({
 	name: 'post',
 	type: 'document',
 	title: 'Post',
+	preview: {
+		select: {
+      title: 'title',
+      subtitle: 'excerpt',
+			media: 'image'
+    },
+		prepare(selection, viewOptions) {
+			const title = (selection.title as { _key: string; value: string }[]).find(t => t._key === 'en')?.value ?? 'Untitled';
+			const subtitle = (selection.subtitle as { _key: string; value: string }[]).find(t => t._key === 'en')?.value ?? '';
+			const media = selection.media;
+
+			return {
+				title,
+				subtitle,
+				media,
+			};
+		},
+	},
 	fields: [
 		defineField({
-			name: 'language',
-			type: 'string',
-			readOnly: true,
-			hidden: true,
-		}),
-		defineField({
 			name: 'title',
-			type: 'string',
+			type: 'internationalizedArrayString',
 			title: 'Title',
 		}),
 		defineField({
@@ -21,7 +33,7 @@ export const post = defineType({
 			type: 'slug',
 			title: 'Slug',
 			options: {
-				source: 'title',
+				source: (doc, options) => (doc.title as { _key: string; value: string }[]).find(t => t._key === 'en')?.value ?? 'slug',
 				maxLength: 200,
 			},
 		}),
@@ -32,27 +44,18 @@ export const post = defineType({
 		}),
 		defineField({
 			name: 'excerpt',
-			type: 'text',
+			type: 'internationalizedArrayText',
 			title: 'Excerpt',
 		}),
 		defineField({
 			name: 'content',
-			type: 'array',
-			title: 'Content',
-			of: [ { type: 'block' } ]
+			type: 'internationalizedArrayContent',
 		}),
 		defineField({
 			name: 'tags',
 			type: 'array',
 			title: 'Tags',
 			of: [ { type: 'string' } ]
-		}),
-		defineField({
-			name: 'publishDate',
-			type: 'datetime',
-			title: 'Publish Date',
-			initialValue: () => new Date().toISOString(),
-			readOnly: true,
 		}),
 	],
 });
