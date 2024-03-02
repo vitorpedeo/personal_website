@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 	keywords: ['vitorpedeo', 'vitor', 'pereira', 'personal', 'website', 'blog'],
 };
 
+export const revalidate = 3600 * 24; // 24 hours
+
 export default function RootLayout({
 	children,
 	params: { locale },
