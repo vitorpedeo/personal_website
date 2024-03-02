@@ -12,16 +12,16 @@ export async function fetchAboutMe() {
 			"role": role[_key == $locale][0].value,
 			"responsibilities": responsibilities[_key == $locale][0].value,
 			"techs": techs[]-> { name, logo }
-		}
+		} | order(startDate desc)
 	`;
 	const educationQuery = `
 		*[_type == "education"] {
-			institution,
+			"institution": institution[_key == $locale][0].value,
 			"degree": degree[_key == $locale][0].value,
 			startDate,
 			endDate,
 			"summary": summary[_key == $locale][0].value,
-		}
+		} | order(startDate desc)
 	`;
 
 	const locale = getLocale();

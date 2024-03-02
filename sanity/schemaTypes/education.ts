@@ -4,10 +4,22 @@ export const education = defineType({
 	name: 'education',
 	type: 'document',
 	title: 'Education',
+	preview: {
+		select: {
+      title: 'institution',
+    },
+		prepare(selection, viewOptions) {
+			const title = (selection.title as { _key: string; value: string }[]).find(t => t._key === 'pt')?.value ?? '';
+
+			return {
+				title,
+			};
+		},
+	},
 	fields: [
 		defineField({
 			name: 'institution',
-			type: 'string',
+			type: 'internationalizedArrayString',
 			title: 'Institution',
 		}),
 		defineField({
