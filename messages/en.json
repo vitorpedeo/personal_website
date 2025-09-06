@@ -1,18 +1,63 @@
 {
 	"Metadata": {
-		"description": "My personal website and blog."
-	},
-	"HomePage": {
-		"title": "Welcome to Next.js + shadcn/ui + Tailwind CSS",
-		"description": "Your new project is ready! This setup includes Next.js 15, shadcn/ui components, Tailwind CSS v4, TypeScript, ESLint, and Prettier with your custom configuration.",
-		"primaryButton": "Primary Button",
-		"secondaryButton": "Secondary Button",
-		"outlineButton": "Outline Button"
+		"description": "Vitor Pereira - Full Stack Developer specializing in React, React Native, Next.js, TypeScript, Node.js, NestJS, and Laravel. Personal website and portfolio."
 	},
 	"Navigation": {
 		"home": "Home",
 		"about": "About",
-		"contact": "Contact"
+		"tech": "Tech Stack",
+		"experience": "Experience",
+		"education": "Education",
+		"contact": "Contact",
+		"blog": "Blog"
+	},
+	"Hero": {
+		"name": "Vitor Pereira",
+		"subtitle": "Full Stack Developer",
+		"description": "Passionate about creating amazing digital experiences with modern technologies",
+		"downloadResume": "Download Resume",
+		"animatedTexts": [
+			"Full Stack Developer",
+			"React Specialist",
+			"Mobile Developer",
+			"Open Source Contributor"
+		]
+	},
+	"About": {
+		"title": "About Me",
+		"description": "I'm a passionate full-stack developer with expertise in modern web and mobile technologies. I love creating efficient, scalable, and user-friendly applications that make a difference. With experience in React, React Native, Next.js, TypeScript, Node.js, NestJS, and Laravel, I bring ideas to life through clean, maintainable code."
+	},
+	"TechStack": {
+		"title": "Tech Stack",
+		"frontend": "Frontend",
+		"backend": "Backend",
+		"mobile": "Mobile",
+		"tools": "Tools & Others"
+	},
+	"Experience": {
+		"title": "Experience",
+		"current": "Current",
+		"present": "Present"
+	},
+	"Projects": {
+		"title": "Projects",
+		"subtitle": "Some of my recent work and side projects",
+		"viewProject": "View Project",
+		"viewCode": "View Code",
+		"technologies": "Technologies"
+	},
+	"Education": {
+		"title": "Education"
+	},
+	"Blog": {
+		"title": "Blog",
+		"subtitle": "Latest articles and thoughts",
+		"readMore": "Read More",
+		"noPosts": "No blog posts available yet. Check back soon!"
+	},
+	"Footer": {
+		"rights": "All rights reserved",
+		"builtWith": "Built with Next.js and Tailwind CSS"
 	},
 	"Theme": {
 		"light": "Light",
@@ -24,12 +69,5 @@
 		"english": "English",
 		"portuguese": "Português",
 		"toggle": "Toggle language"
-	},
-	"Features": {
-		"prettier": "✨ Prettier configured with single quotes, semicolons, and tabs",
-		"eslint": "🔧 ESLint integrated with Prettier for consistent code style",
-		"shadcn": "🎨 shadcn/ui components ready to use",
-		"theme": "🌙 Dark/Light theme toggle with system preference support",
-		"i18n": "🌍 Internationalization with pt-br and en-us locales"
 	}
 }
