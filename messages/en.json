@@ -1,0 +1,35 @@
+{
+	"Metadata": {
+		"description": "My personal website and blog."
+	},
+	"HomePage": {
+		"title": "Welcome to Next.js + shadcn/ui + Tailwind CSS",
+		"description": "Your new project is ready! This setup includes Next.js 15, shadcn/ui components, Tailwind CSS v4, TypeScript, ESLint, and Prettier with your custom configuration.",
+		"primaryButton": "Primary Button",
+		"secondaryButton": "Secondary Button",
+		"outlineButton": "Outline Button"
+	},
+	"Navigation": {
+		"home": "Home",
+		"about": "About",
+		"contact": "Contact"
+	},
+	"Theme": {
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System",
+		"toggle": "Toggle theme"
+	},
+	"Language": {
+		"english": "English",
+		"portuguese": "Português",
+		"toggle": "Toggle language"
+	},
+	"Features": {
+		"prettier": "✨ Prettier configured with single quotes, semicolons, and tabs",
+		"eslint": "🔧 ESLint integrated with Prettier for consistent code style",
+		"shadcn": "🎨 shadcn/ui components ready to use",
+		"theme": "🌙 Dark/Light theme toggle with system preference support",
+		"i18n": "🌍 Internationalization with pt-br and en-us locales"
+	}
+}

@@ -1,0 +1,23 @@
+# lefthook.yml
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: prettier
+      run: pnpm format
+      glob: '*.{ts,tsx,js,jsx,json,css,md}'
+      stage_fixed: true
+
+    - name: eslint
+      run: pnpm lint:fix
+      glob: '*.{ts,tsx,js,jsx}'
+      stage_fixed: true
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: type-check
+      run: pnpm tsc --noEmit
+
+    - name: build
+      run: pnpm build
