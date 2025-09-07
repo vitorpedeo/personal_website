@@ -14,14 +14,16 @@
 	"Hero": {
 		"name": "Vitor Pereira",
 		"subtitle": "Full Stack Developer",
+		"location": "Goiás, Brazil",
 		"description": "Passionate about creating amazing digital experiences with modern technologies",
 		"downloadResume": "Download Resume",
 		"animatedTexts": [
 			"Full Stack Developer",
 			"React Specialist",
-			"Mobile Developer",
-			"Open Source Contributor"
-		]
+			"JavaScript ecosystem enthusiast",
+			"Information Systems Bachelor"
+		],
+		"profileImageAltText": "Picture using Ghibli Studio style of me"
 	},
 	"About": {
 		"title": "About Me",
@@ -60,14 +62,11 @@
 		"builtWith": "Built with Next.js and Tailwind CSS"
 	},
 	"Theme": {
-		"light": "Light",
-		"dark": "Dark",
-		"system": "System",
-		"toggle": "Toggle theme"
+		"toLight": "Change to light theme",
+		"toDark": "Change to dark theme"
 	},
 	"Language": {
-		"english": "English",
-		"portuguese": "Português",
-		"toggle": "Toggle language"
+		"toEnglish": "Change language to English",
+		"toPortuguese": "Change language to Portuguese"
 	}
 }

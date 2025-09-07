@@ -70,7 +70,7 @@ export default async function LocaleLayout({
 		<html lang={locale} suppressHydrationWarning>
 			<body
 				className={cn(
-					'min-h-screen font-sans antialiased',
+					'min-h-screen bg-background font-sans antialiased',
 					mulishSans.variable,
 					geistMono.variable
 				)}

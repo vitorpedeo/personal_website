@@ -8,6 +8,7 @@ import { LocaleToggle } from '@/components/locale-toggle';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Link } from '@/i18n/navigation';
 
 export function Header() {
 	const t = useTranslations('Navigation');
@@ -29,38 +30,31 @@ export function Header() {
 
 	return (
 		<header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-			<div className="container mx-auto px-4">
+			<div className="max-w-3xl mx-auto px-4">
 				<div className="flex items-center justify-between h-16">
-					{/* Logo */}
-					<div className="flex items-center space-x-2">
-						<div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-							<span className="text-primary-foreground font-bold text-sm">
-								VP
-							</span>
+					<Link href="/" className="font-mono text-lg font-bold">
+						v<span className="text-primary text-2xl">/</span>p
+					</Link>
+
+					<div className="flex items-center gap-8">
+						<nav className="hidden md:flex items-center space-x-8">
+							{navigationItems.map(item => (
+								<button
+									key={item.key}
+									onClick={() => scrollToSection(item.href)}
+									className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+								>
+									{t(item.key as keyof typeof t)}
+								</button>
+							))}
+						</nav>
+
+						<div className="hidden md:flex items-center space-x-2">
+							<LocaleToggle />
+							<ThemeToggle />
 						</div>
-						<span className="font-bold text-lg">vitorpedeo.dev</span>
 					</div>
 
-					{/* Desktop Navigation */}
-					<nav className="hidden md:flex items-center space-x-8">
-						{navigationItems.map(item => (
-							<button
-								key={item.key}
-								onClick={() => scrollToSection(item.href)}
-								className="text-muted-foreground hover:text-foreground transition-colors duration-200"
-							>
-								{t(item.key as keyof typeof t)}
-							</button>
-						))}
-					</nav>
-
-					{/* Desktop Controls */}
-					<div className="hidden md:flex items-center space-x-2">
-						<LocaleToggle />
-						<ThemeToggle />
-					</div>
-
-					{/* Mobile Menu */}
 					<div className="md:hidden">
 						<Sheet open={isOpen} onOpenChange={setIsOpen}>
 							<SheetTrigger asChild>
@@ -71,7 +65,6 @@ export function Header() {
 							</SheetTrigger>
 							<SheetContent side="right" className="w-[300px] sm:w-[400px]">
 								<div className="flex flex-col space-y-6 mt-8">
-									{/* Mobile Navigation */}
 									<nav className="flex flex-col space-y-4">
 										{navigationItems.map(item => (
 											<button
@@ -84,7 +77,6 @@ export function Header() {
 										))}
 									</nav>
 
-									{/* Mobile Controls */}
 									<div className="flex items-center space-x-2 pt-4 border-t border-border">
 										<LocaleToggle />
 										<ThemeToggle />
