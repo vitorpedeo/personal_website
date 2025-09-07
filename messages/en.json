@@ -23,11 +23,16 @@
 			"JavaScript ecosystem enthusiast",
 			"Information Systems Bachelor"
 		],
-		"profileImageAltText": "Picture using Ghibli Studio style of me"
+		"profileImageAltText": "Picture using Ghibli Studio style of me",
+		"flagImageAltText": "Picture of the Brazilian flag"
 	},
 	"About": {
 		"title": "About Me",
-		"description": "I'm a passionate full-stack developer with expertise in modern web and mobile technologies. I love creating efficient, scalable, and user-friendly applications that make a difference. With experience in React, React Native, Next.js, TypeScript, Node.js, NestJS, and Laravel, I bring ideas to life through clean, maintainable code."
+		"description": {
+			"firstParagraph": "I am a Full Stack Developer with over 4 years of experience working on projects of different sizes and industries. I have achieved important deliveries at the companies where I worked, contributing to every stage of software development — from requirements analysis to production deployment.",
+			"secondParagraph": "My journey includes working with legacy systems as well as building new solutions such as marketplaces, mobile apps and robust web platforms. I have hands-on experience with React, VueJS, Next.js, NestJS, Laravel, Flutter, Oracle Forms, PL/SQL, and in creating and consuming REST APIs, along with modern version control and CI/CD practices using Git, GitHub Actions, Bitbucket and GitLab.",
+			"thirdParagraph": "Currently I focus on building scalable and efficient solutions, paying close attention to both user experience and system architecture."
+		}
 	},
 	"TechStack": {
 		"title": "Tech Stack",

@@ -23,11 +23,16 @@
 			"Apaixonado pelo ecossistema do JavaScript",
 			"Bacharel em Sistemas de Informação"
 		],
-		"profileImageAltText": "Foto usando o estilo Ghibli Studio de mim"
+		"profileImageAltText": "Foto usando o estilo Ghibli Studio de mim",
+		"flagImageAltText": "Foto da bandeira brasileira"
 	},
 	"About": {
 		"title": "Sobre Mim",
-		"description": "Sou um desenvolvedor full-stack apaixonado com expertise em tecnologias web e mobile modernas. Adoro criar aplicações eficientes, escaláveis e amigáveis que fazem a diferença. Com experiência em React, React Native, Next.js, TypeScript, Node.js, NestJS e Laravel, transformo ideias em realidade através de código limpo e manutenível."
+		"description": {
+			"firstParagraph": "Sou Desenvolvedor Full Stack com mais de 4 anos de experiência atuando em projetos de diferentes portes e segmentos. Realizei entregas importantes pelas empresas onde trabalhei, contribuindo em todas as etapas do desenvolvimento de sistemas — da análise de requisitos à entrega em produção.",
+			"secondParagraph": "Minha trajetória inclui atuação em sistemas legados e no desenvolvimento de novas soluções, como marketplaces, aplicativos móveis e plataformas web robustas. Tenho experiência em tecnologias como React, VueJS, Next.js, NestJS, Laravel, Flutter, Oracle Forms, PL/SQL e na criação e consumo de APIs Rest, além de práticas modernas de versionamento e integração contínua com Git, GitHub Actions, Bitbucket e GitLab.",
+			"thirdParagraph": "Atualmente estou focado em construir soluções escaláveis e eficientes, com atenção tanto à parte visual e experiência do usuário quanto à arquitetura e integração de sistemas."
+		}
 	},
 	"TechStack": {
 		"title": "Tecnologias",

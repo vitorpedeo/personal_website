@@ -28,7 +28,7 @@ export function HeroSection() {
 
 					<Image
 						src="/images/brazil-flag.webp"
-						alt={t('profileImageAltText')}
+						alt={t('flagImageAltText')}
 						className="-top-2 -left-2 absolute"
 						width={48}
 						height={48}

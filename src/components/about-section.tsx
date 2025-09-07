@@ -5,14 +5,17 @@ export function AboutSection() {
 
 	return (
 		<section id="about" className="py-20 px-4">
-			<div className="container mx-auto max-w-4xl">
-				<div className="text-center space-y-8">
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground">
-						{t('title')}
-					</h2>
-					<div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-					<p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-						{t('description')}
+			<div className="max-w-3xl mx-auto">
+				<div className="text-center md:text-left space-y-6">
+					<h2 className="text-3xl font-bold text-foreground">{t('title')}</h2>
+					<p className="text-base text-muted-foreground leading-relaxed">
+						{t('description.firstParagraph')}
+						<br />
+						<br />
+						{t('description.secondParagraph')}
+						<br />
+						<br />
+						{t('description.thirdParagraph')}
 					</p>
 				</div>
 			</div>
