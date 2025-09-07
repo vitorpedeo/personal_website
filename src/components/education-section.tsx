@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 
+import { ExperienceItemType, WorkExperience } from './work-experience';
+
 const education = [
 	{
 		degree: 'Bachelor of Computer Science',
@@ -30,41 +32,50 @@ const education = [
 export function EducationSection() {
 	const t = useTranslations('Education');
 
-	return (
-		<section id="education" className="py-20 px-4 bg-muted/30">
-			<div className="container mx-auto max-w-4xl">
-				<div className="text-center space-y-8 mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground">
-						{t('title')}
-					</h2>
-					<div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-				</div>
+	const workExperiences: ExperienceItemType[] = [
+		{
+			id: 'ufg',
+			companyName: t('educations.ufg.name'),
+			positions: [
+				{
+					id: '1',
+					title: t('educations.ufg.title'),
+					employmentPeriod: '03/2019 - 07/2023',
+					icon: 'education',
+					description: t('educations.ufg.description'),
+					isExpanded: true,
+				},
+			],
+			isCurrentEmployer: false,
+		},
+		{
+			id: 'intelectual',
+			companyName: t('educations.intelectual.name'),
+			positions: [
+				{
+					id: '1',
+					title: t('educations.intelectual.title'),
+					employmentPeriod: '01/2016 - 12/2018',
+					icon: 'education',
+					description: t('educations.intelectual.description'),
+					isExpanded: true,
+				},
+			],
+			isCurrentEmployer: false,
+		},
+	];
 
-				<div className="space-y-8">
-					{education.map((edu, index) => (
-						<div
-							key={index}
-							className="bg-background rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow"
-						>
-							<div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-								<div>
-									<h3 className="text-xl font-semibold text-foreground">
-										{edu.degree}
-									</h3>
-									<p className="text-primary font-medium">
-										{edu.university || edu.school}
-									</p>
-									<p className="text-sm text-muted-foreground">
-										{edu.location} • {edu.period}
-									</p>
-								</div>
-							</div>
-							<p className="text-muted-foreground leading-relaxed">
-								{edu.description}
-							</p>
-						</div>
-					))}
-				</div>
+	return (
+		<section id="education" className="py-20 px-4">
+			<div className="mx-auto max-w-3xl space-y-6">
+				<h2 className="text-3xl font-bold text-foreground text-center md:text-left">
+					{t('title')}
+				</h2>
+
+				<WorkExperience
+					className="w-full rounded-lg border"
+					experiences={workExperiences}
+				/>
 			</div>
 		</section>
 	);

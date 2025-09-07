@@ -60,7 +60,19 @@
 		"technologies": "Technologies"
 	},
 	"Education": {
-		"title": "Education"
+		"title": "Education",
+		"educations": {
+			"ufg": {
+				"name": "Federal University of Goiás",
+				"title": "Bachelor of Information Systems",
+				"description": "During my Information Systems degree at FUG, I maintained consistent academic performance and completed the program without failures. The course significantly contributed to my technical and professional development, strengthening my foundation in technology and software engineering best practices."
+			},
+			"intelectual": {
+				"name": "Intelectual High School",
+				"title": "High School",
+				"description": "Completed high school at Intelectual High School with consistent performance and no failures. During this period, maintained strong academic dedication and actively participated in both academic and extracurricular activities, demonstrating commitment and discipline."
+			}
+		}
 	},
 	"Blog": {
 		"title": "Blog",
@@ -70,7 +82,7 @@
 	},
 	"Footer": {
 		"rights": "All rights reserved",
-		"builtWith": "Built with Next.js and Tailwind CSS"
+		"builtWith": "Built with Next.js, Tailwind CSS and Shadcn UI"
 	},
 	"Theme": {
 		"toLight": "Change to light theme",

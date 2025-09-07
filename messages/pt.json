@@ -60,7 +60,19 @@
 		"technologies": "Tecnologias"
 	},
 	"Education": {
-		"title": "Educação"
+		"title": "Formação",
+		"educations": {
+			"ufg": {
+				"name": "Universidade Federal de Goiás",
+				"title": "Bacharelado em Sistemas de Informação",
+				"description": "Durante minha graduação em Sistemas de Informação na UFG, mantive desempenho acadêmico consistente e concluí o curso sem reprovações. A formação contribuiu significativamente para meu desenvolvimento técnico e profissional, fortalecendo minha base em tecnologia e boas práticas de engenharia de software."
+			},
+			"intelectual": {
+				"name": "Colégio Intelectual",
+				"title": "Ensino Médio",
+				"description": "Concluí o ensino médio no Colégio Intelectual com desempenho consistente, sem reprovações. Durante esse período, mantive forte dedicação acadêmica e participei ativamente de atividades escolares e extracurriculares, reforçando meu comprometimento e disciplina."
+			}
+		}
 	},
 	"Blog": {
 		"title": "Blog",
@@ -70,7 +82,7 @@
 	},
 	"Footer": {
 		"rights": "Todos os direitos reservados",
-		"builtWith": "Construído com Next.js e Tailwind CSS"
+		"builtWith": "Construído com Next.js, Tailwind CSS e Shadcn UI"
 	},
 	"Theme": {
 		"toLight": "Alterar para tema claro",
