@@ -1,45 +1,81 @@
-import '../globals.css';
+import '@/app/globals.css';
 
-import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { Geist_Mono, Mulish } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, getTranslations } from 'next-intl/server';
 
-import { Footer } from '@/components/layout/footer';
-import { Header } from '@/components/layout/header';
+import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/providers/theme-provider';
 
-type IRootLayoutProps = {
-	children: React.ReactNode;
-	params: {
-		locale: 'en' | 'pt';
+const mulishSans = Mulish({
+	variable: '--font-mulish-sans',
+	subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+	variable: '--font-geist-mono',
+	subsets: ['latin'],
+});
+
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+	const t = await getTranslations({ locale, namespace: 'Metadata' });
+
+	return {
+		title: 'vitorpedeo.dev',
+		description: t('description'),
+		creator: 'Vitor Pereira',
+		authors: [{ name: 'Vitor Pereira', url: 'https://github.com/vitorpedeo' }],
+		keywords: [
+			'vitorpedeo',
+			'dev',
+			'vitor',
+			'pereira',
+			'personal',
+			'website',
+			'blog',
+			'react',
+			'react native',
+			'nextjs',
+			'typescript',
+			'nodejs',
+			'nestjs',
+			'laravel',
+		],
 	};
-};
+}
 
-const rubik = Rubik({ subsets: ['latin'], variable: '--font-sans' });
-
-export const metadata: Metadata = {
-	title: 'vitorpedeo.dev',
-	description: 'My personal website and blog.',
-	creator: 'Vitor Pereira',
-	authors: [{ name: 'Vitor Pereira', url: 'https://github.com/vitorpedeo' }],
-	keywords: ['vitorpedeo', 'vitor', 'pereira', 'personal', 'website', 'blog'],
-};
-
-export const revalidate = 3600 * 24; // 24 hours
-
-export default function RootLayout({
+export default async function LocaleLayout({
 	children,
-	params: { locale },
-}: Readonly<IRootLayoutProps>) {
-	const messages = useMessages();
+	params,
+}: {
+	children: React.ReactNode;
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+
+	if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
+		notFound();
+	}
+
+	const messages = await getMessages();
 
 	return (
-		<html lang={locale} className="scroll-smooth" suppressHydrationWarning>
+		<html lang={locale} suppressHydrationWarning>
+			<head>
+				<meta name="apple-mobile-web-app-title" content="vitorpedeo" />
+			</head>
 			<body
 				className={cn(
-					'min-h-screen bg-gradient font-sans antialiased',
-					rubik.variable,
+					'min-h-screen bg-background font-sans antialiased',
+					mulishSans.variable,
+					geistMono.variable
 				)}
 			>
 				<NextIntlClientProvider messages={messages}>
@@ -49,13 +85,7 @@ export default function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<main className="mx-auto min-h-screen pt-8 container">
-							<Header />
-							<section className="pt-12 pb-6 min-h-content grid relative">
-								{children}
-							</section>
-							<Footer />
-						</main>
+						{children}
 					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>

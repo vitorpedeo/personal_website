@@ -1,0 +1,111 @@
+{
+	"Metadata": {
+		"description": "Vitor Pereira - Desenvolvedor Full Stack especializado em React, React Native, Next.js, TypeScript, Node.js, NestJS e Laravel. Site pessoal e portfólio."
+	},
+	"Navigation": {
+		"home": "Início",
+		"about": "Sobre",
+		"tech": "Tecnologias",
+		"experience": "Experiência",
+		"education": "Educação",
+		"contact": "Contato",
+		"blog": "Blog"
+	},
+	"Hero": {
+		"name": "Vitor Pereira",
+		"subtitle": "Desenvolvedor Full Stack",
+		"location": "Goiás, Brasil",
+		"description": "Apaixonado por criar experiências digitais incríveis com tecnologias modernas",
+		"downloadResume": "Baixar Currículo",
+		"animatedTexts": [
+			"Desenvolvedor Full Stack",
+			"Especialista em React",
+			"Apaixonado pelo ecossistema do JavaScript",
+			"Bacharel em Sistemas de Informação"
+		],
+		"profileImageAltText": "Foto usando o estilo Ghibli Studio de mim",
+		"flagImageAltText": "Foto da bandeira brasileira"
+	},
+	"About": {
+		"title": "Sobre Mim",
+		"description": {
+			"firstParagraph": "Sou Desenvolvedor Full Stack com mais de 4 anos de experiência atuando em projetos de diferentes portes e segmentos. Realizei entregas importantes pelas empresas onde trabalhei, contribuindo em todas as etapas do desenvolvimento de sistemas — da análise de requisitos à entrega em produção.",
+			"secondParagraph": "Minha trajetória inclui atuação em sistemas legados e no desenvolvimento de novas soluções, como marketplaces, aplicativos móveis e plataformas web robustas. Tenho experiência em tecnologias como React, VueJS, Next.js, NestJS, Laravel, Flutter, Oracle Forms, PL/SQL e na criação e consumo de APIs Rest, além de práticas modernas de versionamento e integração contínua com Git, GitHub Actions, Bitbucket e GitLab.",
+			"thirdParagraph": "Atualmente estou focado em construir soluções escaláveis e eficientes, com atenção tanto à parte visual e experiência do usuário quanto à arquitetura e integração de sistemas."
+		}
+	},
+	"TechStack": {
+		"title": "Tecnologias",
+		"all": "Tudo",
+		"languages": "Linguagens",
+		"tools": "Ferramentas e Outros"
+	},
+	"Experience": {
+		"title": "Experiência",
+		"roles": {
+			"fullStackDeveloper": "Desenvolvedor Full Stack",
+			"frontEndDeveloper": "Desenvolvedor Front End",
+			"fullTimeEmploymentType": "Tempo integral",
+			"currentWorkplace": "Presente",
+			"igdExperience": "- Atuei na construção da segunda versão do sistema de gerenciamento de mentorias, que proporcionou à empresa uma **economia anual superior a R$200 mil**.\n- Desenvolvi **integrações com plataformas externas**, como Zoom, otimizando fluxos de trabalho e a experiência do usuário.\n- Apoiei a **distribuição de tarefas e coordenação do time**, garantindo eficiência e alinhamento nas entregas.",
+			"novoMundoExperience": "- Realizei **manutenções e implementações de novas funcionalidades** em sistemas legados, garantindo estabilidade e evolução contínua das aplicações.\n- Desenvolvi **rotinas automatizadas de relatórios diários e mensais**, otimizando a tomada de decisão baseada em dados.\n- Colaborei em **melhorias estruturais no maior sistema de vendas da empresa**, ampliando sua performance e confiabilidade.\n- Conduzi o **levantamento e análise de requisitos** para novos sistemas, assegurando alinhamento entre necessidades do negócio e soluções técnicas.\n- Apoiei na **construção de um marketplace (site e aplicativo)**, expandindo os canais digitais e a presença da empresa no mercado.",
+			"conttaExperience": "- Desenvolvi o **visual e a usabilidade** de um sistema responsável pelo fechamento do Simples Nacional, contribuindo para maior clareza e eficiência no processo fiscal.\n- Participei ativamente do **time de análise de requisitos**, garantindo que as soluções técnicas atendessem às necessidades legais e de negócio.\n- Colaborei na **integração entre front-end e APIs Rest**, assegurando melhor performance e experiência de uso."
+		}
+	},
+	"Projects": {
+		"title": "Projetos",
+		"viewProject": "Ver Projeto",
+		"viewCode": "Ver Código",
+		"technologies": "Tecnologias",
+		"featured": "Em destaque",
+		"projects": {
+			"primedash": {
+				"title": "Prime Dash",
+				"description": "Sistema completo para pessoas e empresas que desejam vender seus produtos online."
+			},
+			"perninhaEntregas": {
+				"title": "Perninha Entregas",
+				"description": "Uma LP simples para divulgar os serviços de entregas do meu pai em sua cidade."
+			},
+			"megaModa": {
+				"title": "Mega Moda",
+				"description": "App focado em vendas de roupas de moda a atacado do shopping Mega Moda, o maior centro comercial de moda do Brasil."
+			},
+			"localiza": {
+				"title": "Localiza",
+				"description": "Dashboard para gerenciar veículos e clientes da Localiza, uma das maiores locadoras de veículos do Brasil."
+			}
+		}
+	},
+	"Education": {
+		"title": "Formação",
+		"educations": {
+			"ufg": {
+				"name": "Universidade Federal de Goiás",
+				"title": "Bacharelado em Sistemas de Informação",
+				"description": "Durante minha graduação em Sistemas de Informação na UFG, mantive desempenho acadêmico consistente e concluí o curso sem reprovações. A formação contribuiu significativamente para meu desenvolvimento técnico e profissional, fortalecendo minha base em tecnologia e boas práticas de engenharia de software."
+			},
+			"intelectual": {
+				"name": "Colégio Intelectual",
+				"title": "Ensino Médio",
+				"description": "Concluí o ensino médio no Colégio Intelectual com desempenho consistente, sem reprovações. Durante esse período, mantive forte dedicação acadêmica e participei ativamente de atividades escolares e extracurriculares, reforçando meu comprometimento e disciplina."
+			}
+		}
+	},
+	"Blog": {
+		"title": "Blog",
+		"subtitle": "Em breve!"
+	},
+	"Footer": {
+		"rights": "Todos os direitos reservados",
+		"builtWith": "Construído com Next.js, Tailwind CSS e Shadcn UI"
+	},
+	"Theme": {
+		"toLight": "Alterar para tema claro",
+		"toDark": "Alterar para tema escuro"
+	},
+	"Language": {
+		"toEnglish": "Alterar linguagem para inglês",
+		"toPortuguese": "Alterar linguagem para português"
+	}
+}

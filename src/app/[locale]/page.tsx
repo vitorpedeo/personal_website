@@ -1,37 +1,29 @@
-import { useTranslations } from 'next-intl';
-
-import { Typing } from '@/components/utils/typing';
-import { Link } from '@/navigation';
+import { AboutSection } from '@/components/about-section';
+import { AnimatedBackground } from '@/components/animated-background';
+import { BlogSection } from '@/components/blog-section';
+import { EducationSection } from '@/components/education-section';
+import { ExperienceSection } from '@/components/experience-section';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
+import { HeroSection } from '@/components/hero-section';
+import { ProjectsSection } from '@/components/projects-section';
+import { TechStackSection } from '@/components/tech-stack-section';
 
 export default function Home() {
-	const t = useTranslations();
-
 	return (
-		<div className="flex flex-col items-center justify-center">
-			<div className="flex flex-col gap-2">
-				<p className="text-2xl sm:text-4xl font-semibold text-center">
-					{t('home.whoami')}
-				</p>
-				<p className="text-highlight text-5xl sm:text-7xl font-bold text-center">
-					Vitor Pereira
-				</p>
-				<p className="text-2xl sm:text-4xl font-semibold text-center">
-					{t('home.my-description')}
-				</p>
-				<Typing />
-			</div>
-
-			<ul className="mt-12 list-none flex gap-6 items-center">
-				<li className="hover:text-highlight">
-					<Link href="/about-me">{t('links.about-me')}</Link>
-				</li>
-				<li className="hover:text-highlight">
-					<Link href="/blog">{t('links.blog')}</Link>
-				</li>
-				<li className="hover:text-highlight">
-					<Link href="/projects">{t('links.projects')}</Link>
-				</li>
-			</ul>
-		</div>
+		<>
+			<AnimatedBackground />
+			<Header />
+			<main>
+				<HeroSection />
+				<AboutSection />
+				<TechStackSection />
+				<ExperienceSection />
+				<ProjectsSection />
+				<EducationSection />
+				<BlogSection />
+			</main>
+			<Footer />
+		</>
 	);
 }
