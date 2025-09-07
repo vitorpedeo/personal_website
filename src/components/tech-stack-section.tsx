@@ -613,18 +613,18 @@ const techStack: Tech[] = [
 	},
 ];
 
-const categories = [
-	{ value: 'all', label: 'All' },
-	{ value: 'languages', label: 'Languages' },
-	{ value: 'frontend', label: 'Front End' },
-	{ value: 'backend', label: 'Back End' },
-	{ value: 'mobile', label: 'Mobile' },
-	{ value: 'tools', label: 'Tools' },
-] as const;
-
 export function TechStackSection() {
 	const t = useTranslations('TechStack');
 	const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+	const categories = [
+		{ value: 'all', label: t('all') },
+		{ value: 'languages', label: t('languages') },
+		{ value: 'frontend', label: 'Front End' },
+		{ value: 'backend', label: 'Back End' },
+		{ value: 'mobile', label: 'Mobile' },
+		{ value: 'tools', label: t('tools') },
+	];
 
 	const filteredTechs =
 		selectedCategory === 'all'
@@ -634,9 +634,11 @@ export function TechStackSection() {
 	return (
 		<section id="tech" className="py-20 px-4">
 			<div className="max-w-3xl mx-auto space-y-6">
-				<h2 className="text-3xl font-bold text-foreground">{t('title')}</h2>
+				<h2 className="text-3xl font-bold text-foreground text-center md:text-left">
+					{t('title')}
+				</h2>
 
-				<div className="flex items-center gap-2 flex-wrap">
+				<div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
 					{categories.map(c => (
 						<Button
 							key={c.value}

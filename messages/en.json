@@ -36,15 +36,21 @@
 	},
 	"TechStack": {
 		"title": "Tech Stack",
-		"frontend": "Frontend",
-		"backend": "Backend",
-		"mobile": "Mobile",
+		"all": "All",
+		"languages": "Languages",
 		"tools": "Tools & Others"
 	},
 	"Experience": {
 		"title": "Experience",
-		"current": "Current",
-		"present": "Present"
+		"roles": {
+			"fullStackDeveloper": "Full Stack Developer",
+			"frontEndDeveloper": "Front End Developer",
+			"fullTimeEmploymentType": "Full-time",
+			"currentWorkplace": "Current",
+			"igdExperience": "- Contributed to the development of the second version of the company's mentorship management system, **generating an annual cost reduction of over R$200k**.\n- Implemented **integrations with external platforms**, such as Zoom, optimizing workflows and improving user experience.\n- Supported task **distribution and team coordination**, ensuring efficiency and alignment in project deliveries.",
+			"novoMundoExperience": "- Performed **maintenance and implemented new features** in legacy systems, ensuring stability and continuous improvement of applications.\n- Developed **automated routines for daily and monthly reports**, enhancing data-driven decision-making.\n- Contributed to **structural improvements in the company’s largest sales system**, increasing performance and reliability.\n- Led the **requirements gathering and analysis** for new systems, ensuring alignment between business needs and technical solutions.\n- Assisted in the **development of a marketplace (website and mobile app)**, expanding the company’s digital channels and market presence.",
+			"conttaExperience": "- Developed the **UI and user experience** of a system responsible for handling Simples Nacional tax closing, improving clarity and operational efficiency.\n- Actively participated in the **requirements analysis team**, ensuring technical solutions aligned with business and legal needs.\n- Collaborated on the **integration between front-end and REST APIs**, enhancing performance and user experience."
+		}
 	},
 	"Projects": {
 		"title": "Projects",

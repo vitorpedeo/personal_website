@@ -36,15 +36,21 @@
 	},
 	"TechStack": {
 		"title": "Tecnologias",
-		"frontend": "Frontend",
-		"backend": "Backend",
-		"mobile": "Mobile",
+		"all": "Tudo",
+		"languages": "Linguagens",
 		"tools": "Ferramentas e Outros"
 	},
 	"Experience": {
 		"title": "Experiência",
-		"current": "Atual",
-		"present": "Presente"
+		"roles": {
+			"fullStackDeveloper": "Desenvolvedor Full Stack",
+			"frontEndDeveloper": "Desenvolvedor Front End",
+			"fullTimeEmploymentType": "Tempo integral",
+			"currentWorkplace": "Presente",
+			"igdExperience": "- Atuei na construção da segunda versão do sistema de gerenciamento de mentorias, que proporcionou à empresa uma **economia anual superior a R$200 mil**.\n- Desenvolvi **integrações com plataformas externas**, como Zoom, otimizando fluxos de trabalho e a experiência do usuário.\n- Apoiei a **distribuição de tarefas e coordenação do time**, garantindo eficiência e alinhamento nas entregas.",
+			"novoMundoExperience": "- Realizei **manutenções e implementações de novas funcionalidades** em sistemas legados, garantindo estabilidade e evolução contínua das aplicações.\n- Desenvolvi **rotinas automatizadas de relatórios diários e mensais**, otimizando a tomada de decisão baseada em dados.\n- Colaborei em **melhorias estruturais no maior sistema de vendas da empresa**, ampliando sua performance e confiabilidade.\n- Conduzi o **levantamento e análise de requisitos** para novos sistemas, assegurando alinhamento entre necessidades do negócio e soluções técnicas.\n- Apoiei na **construção de um marketplace (site e aplicativo)**, expandindo os canais digitais e a presença da empresa no mercado.",
+			"conttaExperience": "- Desenvolvi o **visual e a usabilidade** de um sistema responsável pelo fechamento do Simples Nacional, contribuindo para maior clareza e eficiência no processo fiscal.\n- Participei ativamente do **time de análise de requisitos**, garantindo que as soluções técnicas atendessem às necessidades legais e de negócio.\n- Colaborei na **integração entre front-end e APIs Rest**, assegurando melhor performance e experiência de uso."
+		}
 	},
 	"Projects": {
 		"title": "Projetos",
