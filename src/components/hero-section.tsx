@@ -2,14 +2,25 @@
 
 import { Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { AnimatedText } from '@/components/animated-text';
 import { Button } from '@/components/ui/button';
 
 export function HeroSection() {
 	const t = useTranslations('Hero');
+	const locale = useLocale();
 	const animatedTexts = t.raw('animatedTexts') as string[];
+
+	const handleDownloadResume = () => {
+		const resumeFile = locale === 'pt' ? 'pt.pdf' : 'en.pdf';
+		const link = document.createElement('a');
+		link.href = `/resumes/${resumeFile}`;
+		link.download = `Vitor_Pereira_Resume_${locale.toUpperCase()}.pdf`;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	};
 
 	return (
 		<section id="hero" className="max-w-3xl mx-auto px-4 pt-32 space-y-8">
@@ -57,7 +68,11 @@ export function HeroSection() {
 			</div>
 
 			<div className="flex items-center justify-center">
-				<Button size="lg" className="w-full sm:w-auto">
+				<Button
+					size="lg"
+					className="w-full sm:w-auto"
+					onClick={handleDownloadResume}
+				>
 					<Download className="mr-2 h-4 w-4" />
 					{t('downloadResume')}
 				</Button>
