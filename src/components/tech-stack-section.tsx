@@ -632,8 +632,8 @@ export function TechStackSection() {
 			: techStack.filter(tech => tech.category === selectedCategory);
 
 	return (
-		<section id="tech" className="py-20 px-4">
-			<div className="max-w-3xl mx-auto space-y-6">
+		<section id="tech" className="pt-20">
+			<div className="max-w-3xl px-4 mx-auto space-y-6">
 				<h2 className="text-3xl font-bold text-foreground text-center md:text-left">
 					{t('title')}
 				</h2>

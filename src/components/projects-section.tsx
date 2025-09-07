@@ -58,8 +58,8 @@ export function ProjectsSection() {
 	];
 
 	return (
-		<section id="projects" className="py-20 px-4">
-			<div className="max-w-3xl mx-auto space-y-6">
+		<section id="projects" className="pt-20">
+			<div className="max-w-3xl px-4 mx-auto space-y-6">
 				<h2 className="text-3xl font-bold text-foreground text-center md:text-left">
 					{t('title')}
 				</h2>
@@ -74,8 +74,9 @@ export function ProjectsSection() {
 								<Image
 									src={project.image}
 									alt={project.title}
-									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									className="object-cover"
+									fill
 								/>
 								{project.featured && (
 									<div className="absolute top-4 left-4 bg-green-600 text-white font-bold text-xs px-2 py-1 rounded-full">

@@ -39,8 +39,8 @@ export function EducationSection() {
 	];
 
 	return (
-		<section id="education" className="py-20 px-4">
-			<div className="mx-auto max-w-3xl space-y-6">
+		<section id="education" className="pt-20">
+			<div className="max-w-3xl px-4 mx-auto space-y-6">
 				<h2 className="text-3xl font-bold text-foreground text-center md:text-left">
 					{t('title')}
 				</h2>

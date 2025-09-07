@@ -95,9 +95,7 @@
 	},
 	"Blog": {
 		"title": "Blog",
-		"subtitle": "Latest articles and thoughts",
-		"readMore": "Read More",
-		"noPosts": "No blog posts available yet. Check back soon!"
+		"subtitle": "Coming soon!"
 	},
 	"Footer": {
 		"rights": "All rights reserved",

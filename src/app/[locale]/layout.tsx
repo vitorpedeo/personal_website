@@ -68,6 +68,9 @@ export default async function LocaleLayout({
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
+			<head>
+				<meta name="apple-mobile-web-app-title" content="vitorpedeo" />
+			</head>
 			<body
 				className={cn(
 					'min-h-screen bg-background font-sans antialiased',

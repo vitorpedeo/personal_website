@@ -94,9 +94,7 @@
 	},
 	"Blog": {
 		"title": "Blog",
-		"subtitle": "Últimos artigos e pensamentos",
-		"readMore": "Ler Mais",
-		"noPosts": "Nenhum post do blog disponível ainda. Volte em breve!"
+		"subtitle": "Em breve!"
 	},
 	"Footer": {
 		"rights": "Todos os direitos reservados",

@@ -12,7 +12,7 @@ export function HeroSection() {
 	const animatedTexts = t.raw('animatedTexts') as string[];
 
 	return (
-		<section id="home" className="max-w-3xl mx-auto px-4 pt-32 space-y-8">
+		<section id="hero" className="max-w-3xl mx-auto px-4 pt-32 space-y-8">
 			<div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
 				<div className="relative">
 					<div className="relative size-24 sm:size-32 bg-primary rounded-full">
@@ -29,9 +29,9 @@ export function HeroSection() {
 					<Image
 						src="/images/brazil-flag.webp"
 						alt={t('flagImageAltText')}
-						className="-top-2 -left-2 absolute"
+						className="-top-2 -left-2 absolute w-12 h-8"
 						width={48}
-						height={48}
+						height={32}
 						priority
 					/>
 				</div>

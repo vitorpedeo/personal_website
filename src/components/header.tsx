@@ -7,7 +7,12 @@ import { useState } from 'react';
 import { LocaleToggle } from '@/components/locale-toggle';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+	Sheet,
+	SheetContent,
+	SheetTitle,
+	SheetTrigger,
+} from '@/components/ui/sheet';
 import { Link } from '@/i18n/navigation';
 
 export function Header() {
@@ -42,7 +47,7 @@ export function Header() {
 								<button
 									key={item.key}
 									onClick={() => scrollToSection(item.href)}
-									className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+									className="cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
 								>
 									{t(item.key as keyof typeof t)}
 								</button>
@@ -63,7 +68,11 @@ export function Header() {
 									<span className="sr-only">Toggle menu</span>
 								</Button>
 							</SheetTrigger>
-							<SheetContent side="right" className="w-[300px] sm:w-[400px]">
+							<SheetContent
+								side="right"
+								className="pl-4 w-[300px] sm:w-[400px]"
+							>
+								<SheetTitle className="sr-only">Sidebar</SheetTitle>
 								<div className="flex flex-col space-y-6 mt-8">
 									<nav className="flex flex-col space-y-4">
 										{navigationItems.map(item => (
