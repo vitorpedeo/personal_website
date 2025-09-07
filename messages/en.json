@@ -57,7 +57,26 @@
 		"subtitle": "Some of my recent work and side projects",
 		"viewProject": "View Project",
 		"viewCode": "View Code",
-		"technologies": "Technologies"
+		"technologies": "Technologies",
+		"featured": "Featured",
+		"projects": {
+			"primedash": {
+				"title": "Prime Dash",
+				"description": "Complete system for people and companies that want to sell their products online."
+			},
+			"perninhaEntregas": {
+				"title": "Perninha Entregas",
+				"description": "A simple LP to advertise my father's delivery services in his city."
+			},
+			"megaModa": {
+				"title": "Mega Moda",
+				"description": "App focused on wholesale clothing sales from Mega Moda, the largest sector shopping center in Brazil."
+			},
+			"localiza": {
+				"title": "Localiza",
+				"description": "Dashboard to manage vehicles and customers from Localiza, one of the largest car rental companies in Brazil."
+			}
+		}
 	},
 	"Education": {
 		"title": "Education",
