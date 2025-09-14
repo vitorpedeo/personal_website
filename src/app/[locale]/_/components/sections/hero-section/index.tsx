@@ -24,7 +24,7 @@ export function HeroSection() {
 	};
 
 	return (
-		<section id="hero" className="max-w-3xl mx-auto px-4 pt-32 space-y-8">
+		<section id="hero" className="max-w-3xl mx-auto px-4 space-y-8">
 			<div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
 				<div className="relative">
 					<div className="relative size-24 sm:size-32 bg-primary rounded-full">

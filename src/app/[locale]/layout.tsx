@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 
+import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
+import { AnimatedBackground } from '@/components/utils/animated-background';
 import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/providers/theme-provider';
@@ -85,7 +88,10 @@ export default async function LocaleLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						{children}
+						<Header />
+						<AnimatedBackground />
+						<main className="py-32 min-h-[calc(100vh-243px)]">{children}</main>
+						<Footer />
 					</ThemeProvider>
 				</NextIntlClientProvider>
 			</body>

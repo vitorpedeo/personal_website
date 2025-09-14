@@ -5,25 +5,17 @@ import { ExperienceSection } from '@/app/[locale]/_/components/sections/experien
 import { HeroSection } from '@/app/[locale]/_/components/sections/hero-section';
 import { ProjectsSection } from '@/app/[locale]/_/components/sections/projects-section';
 import { TechStackSection } from '@/app/[locale]/_/components/sections/tech-stack-section';
-import { Footer } from '@/components/layout/footer';
-import { Header } from '@/components/layout/header';
-import { AnimatedBackground } from '@/components/utils/animated-background';
 
 export default function Home() {
 	return (
 		<>
-			<AnimatedBackground />
-			<Header />
-			<main>
-				<HeroSection />
-				<AboutSection />
-				<TechStackSection />
-				<ExperienceSection />
-				<ProjectsSection />
-				<EducationSection />
-				<BlogSection />
-			</main>
-			<Footer />
+			<HeroSection />
+			<AboutSection />
+			<TechStackSection />
+			<ExperienceSection />
+			<ProjectsSection />
+			<EducationSection />
+			<BlogSection />
 		</>
 	);
 }
