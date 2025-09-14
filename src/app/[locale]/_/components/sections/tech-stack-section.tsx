@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { ReactNode, useState } from 'react';
 
-import { Button } from './ui/button';
+import { Button } from '../../../../../components/ui/button';
 
 interface Tech {
 	name: string;

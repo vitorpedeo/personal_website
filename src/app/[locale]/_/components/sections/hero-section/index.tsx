@@ -4,8 +4,9 @@ import { Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 
-import { AnimatedText } from '@/components/animated-text';
 import { Button } from '@/components/ui/button';
+
+import { AnimatedText } from './animated-text';
 
 export function HeroSection() {
 	const t = useTranslations('Hero');

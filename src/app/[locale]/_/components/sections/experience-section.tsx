@@ -1,6 +1,9 @@
 import { useTranslations } from 'next-intl';
 
-import { ExperienceItemType, WorkExperience } from './work-experience';
+import {
+	ExperienceItemType,
+	WorkExperience,
+} from '../../../../../components/utils/work-experience';
 
 export function ExperienceSection() {
 	const t = useTranslations('Experience');

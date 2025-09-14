@@ -4,8 +4,8 @@ import { Menu } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
-import { LocaleToggle } from '@/components/locale-toggle';
-import { ThemeToggle } from '@/components/theme-toggle';
+import { LocaleToggle } from '@/components/layout/header/locale-toggle';
+import { ThemeToggle } from '@/components/layout/header/theme-toggle';
 import { Button } from '@/components/ui/button';
 import {
 	Sheet,
