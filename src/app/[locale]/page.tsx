@@ -8,8 +8,15 @@ import { TechStackSection } from '@/app/[locale]/_/components/sections/tech-stac
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { AnimatedBackground } from '@/components/utils/animated-background';
+import type { BlogLocale } from '@/lib/blog';
 
-export default function Home() {
+export default async function Home({
+	params,
+}: {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+
 	return (
 		<>
 			<AnimatedBackground />
@@ -21,7 +28,7 @@ export default function Home() {
 				<ExperienceSection />
 				<ProjectsSection />
 				<EducationSection />
-				<BlogSection />
+				<BlogSection locale={locale as BlogLocale} />
 			</main>
 			<Footer />
 		</>

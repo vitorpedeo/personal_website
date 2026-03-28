@@ -15,15 +15,29 @@ import {
 } from '@/components/ui/sheet';
 import { Link } from '@/i18n/navigation';
 
-export function Header() {
+type HeaderMode = 'home' | 'blog';
+
+type NavigationItem = {
+	href: string;
+	key: 'blog' | 'experience' | 'home' | 'tech';
+	type: 'page' | 'section';
+};
+
+export function Header({ mode = 'home' }: { mode?: HeaderMode }) {
 	const t = useTranslations('Navigation');
 	const [isOpen, setIsOpen] = useState(false);
 
-	const navigationItems = [
-		{ key: 'tech', href: '#tech' },
-		{ key: 'experience', href: '#experience' },
-		{ key: 'blog', href: '#blog' },
-	];
+	const navigationItems: NavigationItem[] =
+		mode === 'blog'
+			? [
+					{ key: 'home', href: '/', type: 'page' },
+					{ key: 'blog', href: '/blog', type: 'page' },
+				]
+			: [
+					{ key: 'tech', href: '#tech', type: 'section' },
+					{ key: 'experience', href: '#experience', type: 'section' },
+					{ key: 'blog', href: '#blog', type: 'section' },
+				];
 
 	const scrollToSection = (href: string) => {
 		const element = document.querySelector(href);
@@ -31,6 +45,37 @@ export function Header() {
 			element.scrollIntoView({ behavior: 'smooth' });
 		}
 		setIsOpen(false);
+	};
+
+	const navigationItemClassName =
+		'text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground';
+
+	const mobileNavigationItemClassName =
+		'py-2 text-left text-muted-foreground transition-colors duration-200 hover:text-foreground';
+
+	const renderNavigationItem = (item: NavigationItem, className: string) => {
+		if (item.type === 'section') {
+			return (
+				<button
+					key={item.key}
+					onClick={() => scrollToSection(item.href)}
+					className={`cursor-pointer ${className}`}
+				>
+					{t(item.key)}
+				</button>
+			);
+		}
+
+		return (
+			<Link
+				key={item.key}
+				href={item.href}
+				onClick={() => setIsOpen(false)}
+				className={className}
+			>
+				{t(item.key)}
+			</Link>
+		);
 	};
 
 	return (
@@ -43,15 +88,9 @@ export function Header() {
 
 					<div className="flex items-center gap-8">
 						<nav className="hidden md:flex items-center space-x-8">
-							{navigationItems.map(item => (
-								<button
-									key={item.key}
-									onClick={() => scrollToSection(item.href)}
-									className="cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-								>
-									{t(item.key as keyof typeof t)}
-								</button>
-							))}
+							{navigationItems.map(item =>
+								renderNavigationItem(item, navigationItemClassName)
+							)}
 						</nav>
 
 						<div className="hidden md:flex items-center space-x-2">
@@ -75,15 +114,9 @@ export function Header() {
 								<SheetTitle className="sr-only">Sidebar</SheetTitle>
 								<div className="flex flex-col space-y-6 mt-8">
 									<nav className="flex flex-col space-y-4">
-										{navigationItems.map(item => (
-											<button
-												key={item.key}
-												onClick={() => scrollToSection(item.href)}
-												className="text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-2"
-											>
-												{t(item.key as keyof typeof t)}
-											</button>
-										))}
+										{navigationItems.map(item =>
+											renderNavigationItem(item, mobileNavigationItemClassName)
+										)}
 									</nav>
 
 									<div className="flex items-center space-x-2 pt-4 border-t border-border">

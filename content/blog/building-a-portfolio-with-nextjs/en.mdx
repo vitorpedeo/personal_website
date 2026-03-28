@@ -1,0 +1,50 @@
+import { defineBlogPostMetadata } from '@/lib/blog';
+
+export const metadata = defineBlogPostMetadata({
+	title: 'Building a Developer Portfolio with Next.js',
+	summary:
+		'A basic summary of how I built this portfolio using Next.js 15, Tailwind CSS v4 and next-intl for bilingual support.',
+	publishedAt: '2026-03-28',
+	tags: ['Next.js', 'React', 'Tailwind', 'Portfolio'],
+});
+
+When I decided to rebuild my personal website, I wanted it to reflect how I actually work: fast iteration, good DX, and full TypeScript. Here's what I landed on and why.
+
+## The Stack
+
+- **Next.js** with the App Router
+- **Tailwind CSS** using the v4
+- **next-intl** so I can implement both English and Portuguese content
+- **shadcn/ui** for accessible, unstyled-first component primitives
+
+## Why Next.js App Router?
+
+The App Router changed how I think about React. Server Components let you fetch data directly in the component tree without waterfalls or prop drilling. For a my case, a portfolio, this is more than enough.
+
+```tsx
+// Server Component — no 'use client' needed
+export default async function Page({ params }) {
+	const { locale } = await params;
+	const t = await getTranslations({ locale, namespace: 'Hero' });
+
+	return <h1>{t('name')}</h1>;
+}
+```
+
+## Bilingual Support with next-intl
+
+Supporting Portuguese out of the box was a requirement. `next-intl` integrates cleanly with the App Router and handles locale detection, URL prefixing and type-safe translation keys.
+
+The key config is `localePrefix: 'as-needed'`. This way English URLs stay clean (`/blog`) while Portuguese gets a prefix (`/pt/blog`). No duplicate content issues, no manual redirects.
+
+## Tailwind CSS v4
+
+The v4 migration drops the `tailwind.config.js` file in favor of CSS-native configuration. Design tokens live in `globals.css` as `@theme` blocks.
+
+## Lessons Learned
+
+- Keep section components as Server Components whenever possible to simplify data fetching and reduce bundle size
+- Put all translation strings in JSON files early, even for copy you think won't change
+- Tailwind Typography (`@tailwindcss/typography`) is worth adding from day one if you plan a blog
+
+The full source is on [GitHub](https://github.com/vitorpedeo/personal_website).

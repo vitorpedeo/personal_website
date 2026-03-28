@@ -1,0 +1,50 @@
+import { defineBlogPostMetadata } from '@/lib/blog';
+
+export const metadata = defineBlogPostMetadata({
+	title: 'Construindo um Portfólio com Next.js',
+	summary:
+		'Um resumo básico de como construí este portfólio com Next.js 15, Tailwind CSS v4 e next-intl para suporte bilíngue.',
+	publishedAt: '2026-03-28',
+	tags: ['Next.js', 'React', 'Tailwind', 'Portfólio'],
+});
+
+Quando decidi reconstruir meu site pessoal, queria que ele refletisse como eu realmente trabalho: iteração rápida, boa DX e TypeScript em todo lugar. Aqui está o que escolhi e por quê.
+
+## A Stack
+
+- **Next.js** com o App Router
+- **Tailwind CSS** usando a v4
+- **next-intl** para implementar conteúdo em inglês e português
+- **shadcn/ui** para componentes acessíveis e sem estilo definido
+
+## Por que o App Router do Next.js?
+
+O App Router mudou como penso sobre React. Server Components permitem buscar dados diretamente na árvore de componentes, sem waterfalls ou prop drilling. Para meu caso, um portfólio, isso é mais do que suficiente.
+
+```tsx
+// Server Component — sem 'use client' necessário
+export default async function Page({ params }) {
+	const { locale } = await params;
+	const t = await getTranslations({ locale, namespace: 'Hero' });
+
+	return <h1>{t('name')}</h1>;
+}
+```
+
+## Suporte Bilíngue com next-intl
+
+Suportar português nativamente era um requisito. O `next-intl` se integra muito bem ao App Router e cuida da detecção de locale, prefixação de URLs e chaves de tradução com tipagem.
+
+A configuração principal é `localePrefix: 'as-needed'`. Isso faz com que as URLs em inglês fiquem limpas (`/blog`) enquanto o português recebe o prefixo (`/pt/blog`). Sem problemas de conteúdo duplicado, sem redirecionamentos manuais.
+
+## Tailwind CSS v4
+
+A migração para v4 elimina o arquivo `tailwind.config.js` em favor de configuração nativa em CSS. Os tokens de design ficam em `globals.css` como blocos `@theme`.
+
+## Lições Aprendidas
+
+- Mantenha componentes de seção como Server Components sempre que possível para simplificar o fetch de dados e reduzir o tamanho do bundle
+- Coloque todas as strings de tradução em arquivos JSON desde cedo, mesmo para textos que você acha que não vão mudar
+- O Tailwind Typography (`@tailwindcss/typography`) vale a pena adicionar desde o início se você planeja um blog
+
+O código completo está no [GitHub](https://github.com/vitorpedeo/personal_website).

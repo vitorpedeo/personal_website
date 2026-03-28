@@ -94,7 +94,14 @@
 	},
 	"Blog": {
 		"title": "Blog",
-		"subtitle": "Em breve!"
+		"subtitle": "Anotações sobre Next.js, React e as decisões de engenharia por trás do meu trabalho.",
+		"empty": "Ainda não há posts publicados neste idioma.",
+		"viewAll": "Ver todos os posts",
+		"readPost": "Ler post",
+		"post": {
+			"backToBlog": "Voltar para o blog",
+			"publishedOn": "Publicado em"
+		}
 	},
 	"Footer": {
 		"rights": "Todos os direitos reservados",

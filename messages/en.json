@@ -95,7 +95,14 @@
 	},
 	"Blog": {
 		"title": "Blog",
-		"subtitle": "Coming soon!"
+		"subtitle": "Notes on Next.js, React, and the engineering choices behind my work.",
+		"empty": "No posts have been published in this language yet.",
+		"viewAll": "View all posts",
+		"readPost": "Read post",
+		"post": {
+			"backToBlog": "Back to blog",
+			"publishedOn": "Published on"
+		}
 	},
 	"Footer": {
 		"rights": "All rights reserved",

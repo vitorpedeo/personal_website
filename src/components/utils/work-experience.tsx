@@ -16,6 +16,7 @@ import {
 	CollapsibleTrigger,
 } from '@/components/ui/collapsible';
 import { Separator } from '@/components/ui/separator';
+import { Prose } from '@/components/utils/prose';
 import { cn } from '@/lib/utils';
 
 const iconMap = {
@@ -203,25 +204,11 @@ export function ExperiencePositionItem({
 	);
 }
 
-function Prose({ className, ...props }: React.ComponentProps<'div'>) {
-	return (
-		<div
-			className={cn(
-				'prose prose-sm max-w-none font-mono text-foreground prose-zinc dark:prose-invert',
-				'prose-a:font-medium prose-a:break-words prose-a:text-foreground prose-a:underline prose-a:underline-offset-4',
-				'prose-code:rounded-md prose-code:border prose-code:bg-muted/50 prose-code:px-[0.3rem] prose-code:py-[0.2rem] prose-code:text-sm prose-code:font-normal prose-code:before:content-none prose-code:after:content-none',
-				className
-			)}
-			{...props}
-		/>
-	);
-}
-
 function Skill({ className, ...props }: React.ComponentProps<'span'>) {
 	return (
 		<span
 			className={cn(
-				'inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground',
+				'inline-flex items-center rounded-full border border-border bg-muted/60 px-2.5 py-1 text-xs font-medium text-muted-foreground font-mono',
 				className
 			)}
 			{...props}
