@@ -31,7 +31,7 @@ export default async function BlogIndexPage({
 	]);
 
 	return (
-		<section className="mx-auto max-w-4xl px-4 pb-20 pt-28">
+		<section className="max-w-3xl mx-auto px-4 pt-32 space-y-8">
 			<div className="space-y-4 text-center md:text-left">
 				<h1 className="text-4xl font-bold tracking-tight text-foreground">
 					{t('title')}
