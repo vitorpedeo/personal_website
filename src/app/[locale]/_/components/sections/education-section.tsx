@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 import {
-	ExperienceItemType,
+	type ExperienceItemType,
 	WorkExperience,
 } from '../../../../../components/utils/work-experience';
 

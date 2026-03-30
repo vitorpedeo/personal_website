@@ -2,8 +2,6 @@ import type { MDXComponents } from 'mdx/types';
 
 import { cn } from '@/lib/utils';
 
-/* eslint-disable @next/next/no-img-element */
-
 const components: MDXComponents = {
 	a: props => (
 		<a
@@ -15,6 +13,7 @@ const components: MDXComponents = {
 		/>
 	),
 	img: props => (
+		// biome-ignore lint/performance/noImgElement: there is no need to use the Image component here
 		<img
 			{...props}
 			alt={props.alt ?? ''}

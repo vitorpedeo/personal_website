@@ -3,14 +3,9 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: prettier
-      run: pnpm format
-      glob: '*.{ts,tsx,js,jsx,json,css,md}'
-      stage_fixed: true
-
-    - name: eslint
-      run: pnpm lint:fix
-      glob: '*.{ts,tsx,js,jsx}'
+    - name: biome
+      run: pnpx @biomejs/biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      glob: '*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}'
       stage_fixed: true
 
 pre-push:

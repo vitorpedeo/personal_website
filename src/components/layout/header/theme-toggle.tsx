@@ -3,7 +3,6 @@
 import { Moon, Sun } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
-import * as React from 'react';
 
 import { Button } from '@/components/ui/button';
 

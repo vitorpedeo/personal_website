@@ -7,7 +7,7 @@ import {
 	GraduationCapIcon,
 } from 'lucide-react';
 import Image from 'next/image';
-import React from 'react';
+import type React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import {
@@ -191,8 +191,8 @@ export function ExperiencePositionItem({
 
 					{Array.isArray(position.skills) && position.skills.length > 0 && (
 						<ul className="not-prose flex flex-wrap gap-1.5 pt-2 pl-9">
-							{position.skills.map((skill, index) => (
-								<li key={index} className="flex">
+							{position.skills.map(skill => (
+								<li key={skill} className="flex">
 									<Skill>{skill}</Skill>
 								</li>
 							))}

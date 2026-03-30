@@ -1,10 +1,10 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-
 import type { ComponentType } from 'react';
 import { cache } from 'react';
 
 import { routing } from '@/i18n/routing';
+
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export type BlogLocale = (typeof routing.locales)[number];
 

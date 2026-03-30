@@ -58,6 +58,7 @@ export function Header({ mode = 'home' }: { mode?: HeaderMode }) {
 			return (
 				<button
 					key={item.key}
+					type="button"
 					onClick={() => scrollToSection(item.href)}
 					className={`cursor-pointer ${className}`}
 				>
